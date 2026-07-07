@@ -65,7 +65,7 @@ function Headline({ show }: { show: boolean }) {
 
 export default function Hero({ show }: HeroProps) {
   return (
-    <section className="relative z-10 flex min-h-[100dvh] flex-col items-center justify-center px-5 pt-24 pb-16">
+    <section className="relative z-10 flex min-h-[100vh] flex-col items-center justify-center px-5 pt-24 pb-16">
       <HeroShapes show={show} />
 
       {/* Welcome Banner */}

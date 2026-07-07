@@ -132,7 +132,7 @@ export default function ConcernCards() {
       style={{ height: `${(CARDS.length + 0.2) * 100}vh` }}
     >
       {/* pinned stage — cards overlap in the same grid cell, later ones paint on top */}
-      <div className="sticky top-0 grid h-[100dvh] place-items-center overflow-hidden px-5 sm:px-8">
+      <div className="sticky top-0 grid h-[100vh] place-items-center overflow-hidden px-5 sm:px-8">
         {CARDS.map((card, i) => (
           <DeckCard
             key={card.title}
