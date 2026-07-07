@@ -28,7 +28,7 @@ export default function Navbar({ show }: NavbarProps) {
           <a href="#" className="text-2xl sm:text-3xl font-bold tracking-tightest text-ink leading-none">
             Selfera<span className="text-brand-blue">.</span>
           </a>
-          <span className="mt-1 text-[10px] sm:text-xs font-semibold text-ink-secondary tracking-wide uppercase">
+          <span className="mt-1 text-[10px] sm:text-xs font-semibold text-brand-blue tracking-wide uppercase">
             Build Your(Self) AI Era
           </span>
         </div>
