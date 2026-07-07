@@ -35,13 +35,17 @@ export default function NodeNetwork() {
 
     const seed = () => {
       const area = width * height;
-      const count = Math.min(90, Math.max(35, Math.round(area / 26000)));
+      const isMobile = width < 640;
+      const minNodes = isMobile ? 18 : 35;
+      const count = Math.min(90, Math.max(minNodes, Math.round(area / 26000)));
+      const maxSpeed = isMobile ? 0.12 : 0.22;
+
       nodes = Array.from({ length: count }, () => ({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.22,
-        vy: (Math.random() - 0.5) * 0.22,
-        r: 1.2 + Math.random() * 1.6,
+        vx: (Math.random() - 0.5) * maxSpeed,
+        vy: (Math.random() - 0.5) * maxSpeed,
+        r: isMobile ? 0.8 + Math.random() * 1.2 : 1.2 + Math.random() * 1.6,
         pulseOffset: Math.random() * Math.PI * 2,
       }));
     };
@@ -64,6 +68,8 @@ export default function NodeNetwork() {
 
     const draw = (t: number) => {
       ctx.clearRect(0, 0, width, height);
+      const isMobile = width < 640;
+      const currentLinkDist = isMobile ? 90 : LINK_DISTANCE;
 
       for (const n of nodes) {
         n.x += n.vx;
@@ -79,8 +85,8 @@ export default function NodeNetwork() {
           const dx = nodes[i].x - nodes[j].x;
           const dy = nodes[i].y - nodes[j].y;
           const dist = Math.hypot(dx, dy);
-          if (dist < LINK_DISTANCE) {
-            const alpha = (1 - dist / LINK_DISTANCE) * 0.1;
+          if (dist < currentLinkDist) {
+            const alpha = (1 - dist / currentLinkDist) * 0.08;
             ctx.strokeStyle = `rgba(${NODE_COLOR}, ${alpha})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
