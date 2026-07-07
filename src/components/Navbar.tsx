@@ -5,10 +5,10 @@ interface NavbarProps {
 }
 
 const LINKS = [
-  { label: 'ROI Calculator', href: '#roi' },
+  { label: 'Services', href: '#services' },
   { label: 'Case Studies', href: '#case-studies' },
-  { label: 'Consultation', href: '#booking' },
-  { label: 'Tech Engine', href: '#tech-deck' },
+  { label: 'Team', href: '#team' },
+  { label: 'Sustainability Practices', href: '#sustainability' },
 ];
 
 export default function Navbar({ show }: NavbarProps) {
