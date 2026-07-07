@@ -107,7 +107,7 @@ export default function Hero({ show }: HeroProps) {
         </a>
         <a
           href="#booking"
-          className="rounded-full border border-ink/15 bg-white/60 px-7 py-3 text-sm font-semibold text-ink backdrop-blur transition-all duration-200 hover:border-ink/30 hover:scale-[1.04] active:scale-95"
+          className="rounded-full border border-ink/15 bg-white/90 px-7 py-3 text-sm font-semibold text-ink transition-all duration-200 hover:border-ink/30 hover:scale-[1.04] active:scale-95"
         >
           Book Strategy Call
         </a>

@@ -18,7 +18,7 @@ export default function Navbar({ show }: NavbarProps) {
 
   return (
     <motion.header
-      className="fixed top-0 left-0 right-0 z-[100] border-b border-ink/5 bg-white/72 backdrop-blur-md"
+      className="fixed top-0 left-0 right-0 z-[100] border-b border-ink/5 bg-white md:bg-white/72 md:backdrop-blur-md"
       initial={{ y: -64, opacity: 0 }}
       animate={show ? { y: 0, opacity: 1 } : {}}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}

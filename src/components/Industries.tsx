@@ -41,7 +41,7 @@ export default function Industries() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-5%' }}
               transition={{ duration: 0.7, delay: i * 0.05, ease: EASE }}
-              className="relative flex flex-col items-center justify-center p-4 sm:p-8 rounded-[28px] border border-ink/5 bg-white/40 backdrop-blur-sm hover:border-brand-blue/20 hover:bg-white transition-all duration-300 hover:shadow-[0_16px_40px_-16px_rgba(0,113,227,0.1)] hover:-translate-y-1 group select-none"
+              className="relative flex flex-col items-center justify-center p-4 sm:p-8 rounded-[28px] border border-ink/5 bg-white/70 hover:border-brand-blue/20 hover:bg-white transition-all duration-300 hover:shadow-[0_16px_40px_-16px_rgba(0,113,227,0.1)] hover:-translate-y-1 group select-none"
             >
               {/* Icon slot */}
               <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-blue/5 text-brand-blue/80 transition-all duration-300 group-hover:bg-brand-blue group-hover:text-white group-hover:scale-110">
