@@ -73,7 +73,7 @@ export default function Navbar({ show }: NavbarProps) {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="md:hidden absolute top-full left-0 right-0 border-b border-ink/5 bg-white/95 backdrop-blur-lg overflow-hidden shadow-lg"
+            className="md:hidden absolute top-full left-0 right-0 border-b border-ink/5 bg-white overflow-hidden shadow-lg"
           >
             <div className="flex flex-col gap-4 px-6 py-8">
               {LINKS.map((link) => (

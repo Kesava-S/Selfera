@@ -32,6 +32,7 @@ export default function NodeNetwork() {
     let width = 0;
     let height = 0;
     let lastWidth = 0;
+    let lastHeight = 0;
 
     const seed = () => {
       const area = width * height;
@@ -51,17 +52,23 @@ export default function NodeNetwork() {
     };
 
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const newWidth = window.innerWidth;
       const newHeight = window.innerHeight;
-      width = newWidth;
-      height = newHeight;
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      
-      if (newWidth !== lastWidth) {
+
+      // Skip resizing the canvas on mobile address-bar changes during scrolls (minor height changes)
+      const widthChanged = newWidth !== lastWidth;
+      const heightChanged = Math.abs(newHeight - lastHeight) > 80;
+
+      if (widthChanged || heightChanged) {
         lastWidth = newWidth;
+        lastHeight = newHeight;
+
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = newWidth;
+        height = newHeight;
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         seed();
       }
     };
@@ -70,6 +77,7 @@ export default function NodeNetwork() {
       ctx.clearRect(0, 0, width, height);
       const isMobile = width < 640;
       const currentLinkDist = isMobile ? 90 : LINK_DISTANCE;
+      const currentLinkDistSq = currentLinkDist * currentLinkDist;
 
       for (const n of nodes) {
         n.x += n.vx;
@@ -84,8 +92,9 @@ export default function NodeNetwork() {
         for (let j = i + 1; j < nodes.length; j++) {
           const dx = nodes[i].x - nodes[j].x;
           const dy = nodes[i].y - nodes[j].y;
-          const dist = Math.hypot(dx, dy);
-          if (dist < currentLinkDist) {
+          const distSq = dx * dx + dy * dy;
+          if (distSq < currentLinkDistSq) {
+            const dist = Math.sqrt(distSq);
             const alpha = (1 - dist / currentLinkDist) * 0.08;
             ctx.strokeStyle = `rgba(${NODE_COLOR}, ${alpha})`;
             ctx.lineWidth = 1;
