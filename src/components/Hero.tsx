@@ -33,8 +33,8 @@ const HEADLINE: HeadlineWord[] = [
 function Headline({ show }: { show: boolean }) {
   return (
     <h1
-      className="relative z-10 text-center font-bold leading-[1.08] tracking-tightest text-ink"
-      style={{ fontSize: 'clamp(2rem, 5.2vw, 3.6rem)' }}
+      className="relative z-10 text-left sm:text-center font-bold leading-[1.08] tracking-tightest text-ink w-[62%] sm:w-full"
+      style={{ fontSize: 'clamp(1.35rem, 5vw, 3.6rem)' }}
     >
       {HEADLINE.map((word, i) => (
         <span
@@ -79,7 +79,7 @@ export default function Hero({ show }: HeroProps) {
       </motion.div>
 
       {/* Headline with the avatar parked slightly behind its right end */}
-      <div className="relative w-full max-w-4xl">
+      <div className="relative w-full max-w-4xl flex flex-row-reverse items-center justify-between gap-4 sm:block px-4 sm:px-0">
         <HeroAvatar show={show} />
         <Headline show={show} />
       </div>
