@@ -36,27 +36,32 @@ export default function IntroOverlay({ onComplete }: IntroOverlayProps) {
 
   return (
     <motion.div
-      className="fixed inset-0 z-[200] flex items-center justify-center bg-white w-full h-full"
+      className="fixed inset-0 z-[200] bg-white"
       initial={{ opacity: 1 }}
       exit={{ opacity: 0, transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] } }}
       aria-hidden="true"
     >
-      <motion.div
-        className="flex items-baseline justify-center text-4xl sm:text-5xl font-bold tracking-tightest text-ink w-full text-center"
-        initial={{ opacity: 0, y: 18, filter: 'blur(10px)' }}
-        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-        transition={{ duration: 0.9, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-      >
-        Selfera
-        <motion.span
-          className="text-brand-blue"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.45, delay: 1.05, ease: [0.16, 1, 0.3, 1] }}
+      {/* Anchored to exact viewport center via coordinates, not flex — mobile
+          browsers resolve percentage heights inconsistently during load, which
+          let the wordmark drift off-center on real devices. */}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        <motion.div
+          className="flex items-baseline whitespace-nowrap text-4xl sm:text-5xl font-bold tracking-tightest text-ink"
+          initial={{ opacity: 0, y: 18, filter: 'blur(10px)' }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          transition={{ duration: 0.9, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
         >
-          .
-        </motion.span>
-      </motion.div>
+          Selfera
+          <motion.span
+            className="text-brand-blue"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.45, delay: 1.05, ease: [0.16, 1, 0.3, 1] }}
+          >
+            .
+          </motion.span>
+        </motion.div>
+      </div>
     </motion.div>
   );
 }
