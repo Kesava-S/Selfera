@@ -22,6 +22,12 @@ export default function Navbar({ show }: NavbarProps) {
       initial={{ y: -64, opacity: 0 }}
       animate={show ? { y: 0, opacity: 1 } : {}}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      style={{
+        willChange: 'transform, opacity',
+        WebkitBackfaceVisibility: 'hidden',
+        backfaceVisibility: 'hidden',
+        transformStyle: 'preserve-3d',
+      }}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 sm:px-8 py-3.5">
         <div className="flex flex-col items-start leading-none">
