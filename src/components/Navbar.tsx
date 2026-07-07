@@ -25,7 +25,7 @@ export default function Navbar({ show }: NavbarProps) {
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 sm:px-8 py-3.5">
         <div className="flex items-center gap-3">
-          <a href="#" className="text-xl font-bold tracking-tightest text-ink">
+          <a href="#" className="text-2xl sm:text-3xl font-bold tracking-tightest text-ink">
             Selfera<span className="text-brand-blue">.</span>
           </a>
           <span className="hidden lg:inline-flex items-center rounded-full border border-brand-blue/15 bg-brand-blue/5 px-3 py-1 text-[11px] font-semibold text-brand-deep">
@@ -39,7 +39,7 @@ export default function Navbar({ show }: NavbarProps) {
             <a
               key={link.href}
               href={link.href}
-              className="rounded-full px-4 py-1.5 text-sm font-medium text-ink-secondary transition-colors duration-200 hover:bg-ink/5 hover:text-ink"
+              className="rounded-full px-4 py-1.5 text-[15px] font-semibold text-ink-secondary transition-colors duration-200 hover:bg-ink/5 hover:text-ink"
             >
               {link.label}
             </a>
@@ -81,7 +81,7 @@ export default function Navbar({ show }: NavbarProps) {
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-base font-semibold text-ink-secondary hover:text-brand-blue transition-colors duration-200 py-1"
+                  className="text-[17px] font-bold text-ink-secondary hover:text-brand-blue transition-colors duration-200 py-1"
                 >
                   {link.label}
                 </a>
