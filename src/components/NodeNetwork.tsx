@@ -31,6 +31,7 @@ export default function NodeNetwork() {
     let nodes: Node[] = [];
     let width = 0;
     let height = 0;
+    let lastWidth = 0;
 
     const seed = () => {
       const area = width * height;
@@ -47,12 +48,18 @@ export default function NodeNetwork() {
 
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      width = window.innerWidth;
-      height = window.innerHeight;
+      const newWidth = window.innerWidth;
+      const newHeight = window.innerHeight;
+      width = newWidth;
+      height = newHeight;
       canvas.width = width * dpr;
       canvas.height = height * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      seed();
+      
+      if (newWidth !== lastWidth) {
+        lastWidth = newWidth;
+        seed();
+      }
     };
 
     const draw = (t: number) => {

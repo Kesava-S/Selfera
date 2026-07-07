@@ -5,7 +5,7 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 export default function AboutSelfera() {
   return (
     <section className="relative z-20 pb-32 px-6">
-      <div className="max-w-4xl mx-auto flex flex-col gap-24 text-center items-center">
+      <div className="max-w-4xl mx-auto flex flex-col gap-16 sm:gap-24 text-center items-center">
         {/* Column 1: What Selfera is */}
         <motion.div
           initial={{ opacity: 0, y: 32 }}

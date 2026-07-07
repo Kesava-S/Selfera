@@ -90,7 +90,7 @@ export default function Hero({ show }: HeroProps) {
         transition={{ duration: 0.8, delay: 0.95, ease: EASE }}
         className="relative z-10 mt-6 max-w-2xl text-center text-base sm:text-lg leading-relaxed text-ink-secondary"
       >
-        Sounds complicated? Not at all, we do all the setup customised for you.<br />It all starts with a simple consultation.
+        Sounds complicated? Not at all, we do all the setup customised for you.<br className="hidden sm:inline" /> It all starts with a simple consultation.
       </motion.p>
 
       <motion.div

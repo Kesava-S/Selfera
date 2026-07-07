@@ -116,7 +116,7 @@ export default function HeroAvatar({ show }: HeroAvatarProps) {
   return (
     /* outer div owns the static placement; inner motion.div owns the slide */
     <div
-      className="pointer-events-none absolute -right-8 top-1/2 z-0 w-[180px] -translate-y-[54%] sm:-right-[4.5rem] sm:w-[230px] md:-right-[6.5rem] md:w-[300px] lg:-right-[9rem] lg:w-[350px]"
+      className="pointer-events-none relative mx-auto mb-6 w-[180px] top-auto left-auto right-auto translate-y-0 flex justify-center items-center sm:absolute sm:mb-0 sm:mx-0 sm:w-[230px] sm:-right-[4.5rem] sm:top-1/2 sm:-translate-y-[54%] md:-right-[6.5rem] md:w-[300px] lg:-right-[9rem] lg:w-[350px]"
       aria-hidden="true"
     >
       <motion.div
@@ -124,6 +124,7 @@ export default function HeroAvatar({ show }: HeroAvatarProps) {
         animate={show ? { x: '0%', opacity: 1 } : {}}
         transition={{ type: 'spring', damping: 28, stiffness: 75, mass: 1, delay: 0.75, restDelta: 0.0001 }}
         style={{ willChange: 'transform, opacity', backfaceVisibility: 'hidden' }}
+        className="w-full flex justify-center"
       >
         <canvas
           ref={canvasRef}
