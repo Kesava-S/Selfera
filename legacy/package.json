@@ -1,0 +1,17 @@
+{
+  "name": "selfera-uk",
+  "version": "1.0.0",
+  "description": "SelfEra - UK operating sales brand of Automaitee",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx -y http-server . -p 3000"
+  },
+  "keywords": [
+    "selfera",
+    "automaitee",
+    "automation",
+    "uk"
+  ],
+  "author": "",
+  "license": "ISC"
+}

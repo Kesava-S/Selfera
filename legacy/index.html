@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SelfEra | AI Automation for Owner-Led UK Businesses</title>
+  <meta name="description" content="Scale your UK business with custom AI integrations and automated workflows. SelfEra is the UK sales and implementation operating brand of Automaitee.">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Header & Navigation -->
+  <header id="main-header">
+    <div class="nav-container">
+      <div class="logo-group">
+        <a href="#" class="logo-text">SelfEra<span class="logo-dot">.</span></a>
+        <div class="nav-badge" title="SelfEra is an operating brand of Automaitee">
+          <span class="badge-pulse"></span>
+          UK Brand of Automaitee
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#roi" class="nav-link-item">ROI Calculator</a>
+        <a href="#case-studies" class="nav-link-item">Case Studies</a>
+        <a href="#booking" class="nav-link-item">Book Consultation</a>
+        <a href="#tech-deck" class="nav-link-item">Our Tech Engine</a>
+      </nav>
+      <div>
+        <a href="#booking" class="btn btn-primary btn-sm" style="padding: 8px 16px; font-size: 0.85rem;">Book Call</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="badge badge-emerald">
+            UK Sales &amp; Deployment Partner
+          </div>
+          <h1 class="hero-title">
+            AI Automation for <span class="text-gradient-emerald">Owner-Led</span> UK Businesses
+          </h1>
+          <p class="hero-subtitle">
+            We eliminate administrative bottlenecks, synchronize software platforms, and deploy custom AI agents. Tailored specifically for British SMEs, powered by the global enterprise engine of Automaitee.
+          </p>
+          <div class="hero-actions">
+            <a href="#roi" class="btn btn-primary">Calculate Savings</a>
+            <a href="#booking" class="btn btn-secondary">Book Strategy Call</a>
+          </div>
+          <div class="trust-card glass-card">
+            <p>
+              🇬🇧 <strong>Local Execution:</strong> SelfEra is the dedicated UK sales &amp; implementation operating brand of <a href="#tech-deck">Automaitee</a>. We customize and deploy global enterprise technology directly into local UK workflows.
+            </p>
+          </div>
+        </div>
+        
+        <div class="hero-visual">
+          <div class="mockup-wrapper">
+            <img src="assets/dashboard_mockup.png" alt="SelfEra AI Automation Dashboard Mockup" class="hero-img" loading="eager">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI Calculator Section -->
+  <section id="roi">
+    <div class="container">
+      <div class="roi-intro">
+        <div class="badge badge-emerald">Savings Projection</div>
+        <h2 class="section-title">Calculate Your Time &amp; Cost Reclaimer</h2>
+        <p>Estimate how many hours and pounds (£) your UK business can reclaim by automating repetitive manual processes.</p>
+      </div>
+      
+      <div class="roi-grid">
+        <!-- Controls -->
+        <div class="calculator-controls glass-card">
+          <div class="control-group">
+            <label class="control-label" for="sector-select">Select Business Sector</label>
+            <select id="sector-select" class="select-box">
+              <option value="professional" selected>Professional Services (Agency, Consulting, Legal)</option>
+              <option value="retail">E-Commerce &amp; Retail Logistics</option>
+              <option value="logistics">Supply Chain &amp; Freight Services</option>
+              <option value="realestate">Real Estate &amp; Lettings Agency</option>
+              <option value="trades">Construction &amp; Commercial Trades</option>
+            </select>
+          </div>
+          
+          <div class="control-group">
+            <div class="control-header">
+              <span class="control-label">Number of Employees</span>
+              <span id="employees-val" class="control-value">10</span>
+            </div>
+            <input type="range" id="employees-slider" class="input-slider" min="1" max="150" value="10">
+          </div>
+          
+          <div class="control-group">
+            <div class="control-header">
+              <span class="control-label">Weekly Hours Lost per Employee (Repetitive Admin)</span>
+              <span id="hours-val" class="control-value">8 hrs</span>
+            </div>
+            <input type="range" id="hours-slider" class="input-slider" min="1" max="40" value="8">
+          </div>
+          
+          <div class="control-group">
+            <div class="control-header">
+              <span class="control-label">Average Hourly Employee Cost (£)</span>
+              <span id="wage-val" class="control-value">£25/hr</span>
+            </div>
+            <input type="range" id="wage-slider" class="input-slider" min="10" max="150" value="25">
+          </div>
+        </div>
+        
+        <!-- Results -->
+        <div class="calculator-results glass-card">
+          <div class="result-main">
+            <p style="font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary);">Estimated Monthly Savings</p>
+            <div id="savings-main" class="result-main-value">£8,666</div>
+          </div>
+          
+          <div class="result-stats">
+            <div class="stat-box">
+              <span class="stat-label">Hours Saved / Month</span>
+              <div id="stat-hours" class="stat-value">346 hrs</div>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">Projected Annual ROI</span>
+              <div id="stat-annual" class="stat-value">£103,992</div>
+            </div>
+          </div>
+          
+          <div class="gauge-container">
+            <div class="control-header" style="margin-bottom: 4px;">
+              <span class="control-label" style="font-size: 0.85rem;">Automation Potential Rating</span>
+              <span id="gauge-label" class="control-value" style="font-size: 0.95rem; color: var(--accent-indigo);">GOLD</span>
+            </div>
+            <div class="gauge-track">
+              <div id="gauge-fill" class="gauge-fill" style="width: 70%;"></div>
+            </div>
+            <div class="gauge-markers">
+              <span>Bronze</span>
+              <span>Silver</span>
+              <span>Gold</span>
+              <span>Platinum</span>
+            </div>
+          </div>
+          
+          <div style="text-align: center; margin-top: 8px;">
+            <a href="#booking" class="btn btn-primary" style="width: 100%;">Reclaim Your Time Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies Section -->
+  <section id="case-studies">
+    <div class="container">
+      <div class="roi-intro">
+        <div class="badge badge-emerald">Success Stories</div>
+        <h2 class="section-title">Case Studies: Local UK Deployments</h2>
+        <p>Discover how we help local owner-led businesses in London and across the UK scale operations with intelligent automations.</p>
+      </div>
+      
+      <!-- Tab selectors -->
+      <div class="case-tabs">
+        <button class="tab-btn active" data-tab="london-prop">London Property Group</button>
+        <button class="tab-btn" data-tab="midlands-log">Midlands Logistics</button>
+        <button class="tab-btn" data-tab="manchester-retail">Manchester E-Retail</button>
+      </div>
+      
+      <!-- London Property Group -->
+      <div id="london-prop" class="case-card glass-card active">
+        <div class="case-info">
+          <div class="case-company">London Residential Property Group</div>
+          <h3 class="case-headline">Automating Tenant Inquiry Triaging &amp; Calendars</h3>
+          <p>This mid-sized London estate agency was overwhelmed by tenant inquiries from portals like Rightmove and Zoopla, taking hours to filter and schedule viewings.</p>
+          <div class="case-details">
+            <div class="detail-item">
+              <span class="detail-icon">✔</span>
+              <p>Implemented AI Inquiry Ingest Agent that filters out unqualified applicants.</p>
+            </div>
+            <div class="detail-item">
+              <span class="detail-icon">✔</span>
+              <p>Integrated calendar coordination, allowing hot leads to instantly schedule viewings.</p>
+            </div>
+          </div>
+          <div class="case-metrics">
+            <div class="metric-card">
+              <div class="metric-value">94%</div>
+              <div class="metric-label">Reduction in Lead Response Time</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value">42 hrs</div>
+              <div class="metric-label">Staff Hours Saved Weekly</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="flow-chart-wrapper">
+          <div class="flow-title">Inquiry Workflow Transformation</div>
+          <div class="flow-node">
+            <div class="flow-node-icon">📩</div>
+            <div class="flow-node-text">
+              <h4>Inquiry Received</h4>
+              <p>Rightmove or Zoopla webhook parsed</p>
+            </div>
+          </div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-node automated">
+            <div class="flow-node-icon">🤖</div>
+            <div class="flow-node-text">
+              <h4>AI Agent Classifier</h4>
+              <p>SelfEra Agent filters based on requirements</p>
+            </div>
+          </div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-node automated">
+            <div class="flow-node-icon">📅</div>
+            <div class="flow-node-text">
+              <h4>Auto-Scheduler</h4>
+              <p>Qualified leads get personalized booking links</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Midlands Logistics -->
+      <div id="midlands-log" class="case-card glass-card">
+        <div class="case-info">
+          <div class="case-company">Midlands Logistics &amp; Haulage Ltd</div>
+          <h3 class="case-headline">Automating Customs Documentation &amp; Billing Data Extraction</h3>
+          <p>A regional shipping company was handling customs manifests and client invoices manually, causing data entry bottlenecks and invoicing delays.</p>
+          <div class="case-details">
+            <div class="detail-item">
+              <span class="detail-icon">✔</span>
+              <p>Deployed Automaitee OCR pipelines to extract billing details from PDFs automatically.</p>
+            </div>
+            <div class="detail-item">
+              <span class="detail-icon">✔</span>
+              <p>Direct sync setup to push dispatch records into Sage 50 Accounting software.</p>
+            </div>
+          </div>
+          <div class="case-metrics">
+            <div class="metric-card">
+              <div class="metric-value">&lt; 3 min</div>
+              <div class="metric-label">Invoice Processing Time</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value">£3,400</div>
+              <div class="metric-label">Monthly Administrative Cost Saved</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="flow-chart-wrapper">
+          <div class="flow-title">Document Processing Workflow</div>
+          <div class="flow-node">
+            <div class="flow-node-icon">📄</div>
+            <div class="flow-node-text">
+              <h4>PDF Manifest Ingestion</h4>
+              <p>Document uploaded or fetched from email attachment</p>
+            </div>
+          </div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-node automated">
+            <div class="flow-node-icon">🔍</div>
+            <div class="flow-node-text">
+              <h4>Automaitee OCR Pipeline</h4>
+              <p>Line items extracted with 99.8% precision</p>
+            </div>
+          </div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-node automated">
+            <div class="flow-node-icon">💼</div>
+            <div class="flow-node-text">
+              <h4>Sage 50 Direct Post</h4>
+              <p>Invoice draft generated and dispatch queued</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Manchester E-Retail -->
+      <div id="manchester-retail" class="case-card glass-card">
+        <div class="case-info">
+          <div class="case-company">Manchester Apparel Brands</div>
+          <h3 class="case-headline">Inventory Synchronization &amp; Returns Processing</h3>
+          <p>This online apparel store was struggling with inventory discrepancies between Shopify and their warehouse management platform, alongside slow customer returns.</p>
+          <div class="case-details">
+            <div class="detail-item">
+              <span class="detail-icon">✔</span>
+              <p>Built real-time stock sync triggers, updating Shopify quantities dynamically.</p>
+            </div>
+            <div class="detail-item">
+              <span class="detail-icon">✔</span>
+              <p>Deployed AI Customer Returns assistant to authorize refunds based on tracking info.</p>
+            </div>
+          </div>
+          <div class="case-metrics">
+            <div class="metric-card">
+              <div class="metric-value">100%</div>
+              <div class="metric-label">Inventory Discrepancy Resolved</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value">£28,000</div>
+              <div class="metric-label">Yearly Operational Leakage Reclaimed</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="flow-chart-wrapper">
+          <div class="flow-title">Stock &amp; Returns Integration Flow</div>
+          <div class="flow-node">
+            <div class="flow-node-icon">🛒</div>
+            <div class="flow-node-text">
+              <h4>Shopify Order/Return Filed</h4>
+              <p>Customer creates order or flags item return</p>
+            </div>
+          </div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-node automated">
+            <div class="flow-node-icon">🔄</div>
+            <div class="flow-node-text">
+              <h4>Real-time Sync Middleware</h4>
+              <p>Middleware synchronizes item catalog instantly</p>
+            </div>
+          </div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-node automated">
+            <div class="flow-node-icon">💰</div>
+            <div class="flow-node-text">
+              <h4>AI Returns Refund Agent</h4>
+              <p>Analyzes delivery state &amp; auto-releases credit</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Consultation Booking Section -->
+  <section id="booking">
+    <div class="container">
+      <div class="roi-intro">
+        <div class="badge badge-emerald">Consultation</div>
+        <h2 class="section-title">Schedule a 15-Min Automation Audit</h2>
+        <p>Choose an available slot for a session with a UK workflow consultant. We'll identify your bottlenecks and build your custom ROI blueprint.</p>
+      </div>
+      
+      <div class="booking-grid">
+        <!-- Calendar Widget Card -->
+        <div class="calendar-card glass-card" id="calendar-section">
+          <div class="calendar-header">
+            <h3 class="calendar-title" id="month-title">June 2026</h3>
+            <div class="month-nav">
+              <button class="nav-arrow" id="prev-month" aria-label="Previous Month">&lt;</button>
+              <button class="nav-arrow" id="next-month" aria-label="Next Month">&gt;</button>
+            </div>
+          </div>
+          
+          <div class="weekdays-grid">
+            <span>MON</span>
+            <span>TUE</span>
+            <span>WED</span>
+            <span>THU</span>
+            <span>FRI</span>
+            <span>SAT</span>
+            <span>SUN</span>
+          </div>
+          
+          <div class="days-grid" id="days-container">
+            <!-- Dynamically populated via JS -->
+          </div>
+        </div>
+        
+        <!-- Booking Form Card -->
+        <div class="booking-form-card glass-card" id="form-section">
+          <div id="form-interactive">
+            <h3 class="form-title">Consultation Details</h3>
+            <p style="font-size: 0.85rem; margin-bottom: 16px;" id="selected-date-label">
+              Please select a date on the calendar first.
+            </p>
+            
+            <div class="form-group" style="margin-bottom: 16px;">
+              <label class="form-label">Available Times (GMT / London Time)</label>
+              <div class="time-slots" id="slots-container">
+                <!-- Dynamically populated when date selected -->
+                <span class="text-muted" style="font-size: 0.85rem; grid-column: span 3; text-align: center; padding: 12px 0;">No date selected.</span>
+              </div>
+            </div>
+            
+            <form id="booking-details-form" onsubmit="return false;">
+              <input type="hidden" id="selected-date" value="">
+              <input type="hidden" id="selected-time" value="">
+              
+              <div class="form-group" style="margin-bottom: 16px;">
+                <label class="form-label" for="user-name">Your Name</label>
+                <input type="text" id="user-name" class="form-input" placeholder="e.g. Richard Branson" required disabled>
+              </div>
+              
+              <div class="form-group" style="margin-bottom: 16px;">
+                <label class="form-label" for="user-email">Work Email</label>
+                <input type="email" id="user-email" class="form-input" placeholder="e.g. richard@virgin.co.uk" required disabled>
+              </div>
+              
+              <div class="form-group" style="margin-bottom: 16px;">
+                <label class="form-label" for="user-company">UK Company Name</label>
+                <input type="text" id="user-company" class="form-input" placeholder="e.g. Virgin Group Ltd" required disabled>
+              </div>
+              
+              <div class="form-group" style="margin-bottom: 24px;">
+                <label class="form-label" for="user-bottleneck">What is your biggest manual bottleneck?</label>
+                <textarea id="user-bottleneck" class="form-input form-textarea" placeholder="e.g. Copying orders manually from email PDFs into Sage..." required disabled></textarea>
+              </div>
+              
+              <button type="submit" id="submit-booking-btn" class="btn btn-primary" style="width: 100%;" disabled>Confirm Strategy Booking</button>
+            </form>
+          </div>
+          
+          <!-- Success view -->
+          <div class="booking-success-view" id="form-success">
+            <div class="success-icon">✓</div>
+            <h3 class="form-title" style="border:none; padding:0; margin:0;">Booking Confirmed!</h3>
+            <p id="success-summary">We have scheduled your 15-minute Strategy Call. Check your inbox for a Google Calendar invitation containing the video conference link.</p>
+            <button class="btn btn-secondary" id="reset-booking-btn" style="margin-top: 10px;">Book Another Session</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Automaitee Engine Section -->
+  <section id="tech-deck" style="background-color: var(--bg-darker);">
+    <div class="container">
+      <div class="tech-intro">
+        <div class="badge badge-indigo">Core Infrastructure</div>
+        <h2 class="section-title">Powered by <span class="text-gradient-indigo">Automaitee</span> Global Engine</h2>
+        <p>SelfEra's bespoke front-end solutions are backed by Automaitee's global enterprise integration engine, ensuring military-grade security, rapid routing speed, and 99.9% pipeline uptime.</p>
+      </div>
+      
+      <div class="tech-grid">
+        <!-- Real-time Console Log simulator -->
+        <div class="console-card glass-card">
+          <div class="console-header">
+            <div class="console-dots">
+              <span class="console-dot red"></span>
+              <span class="console-dot yellow"></span>
+              <span class="console-dot green"></span>
+            </div>
+            <div class="console-title">automaitee-core-engine.service - logs</div>
+            <div class="badge badge-indigo" style="font-size: 0.6rem; padding: 2px 8px;">LIVE NODE</div>
+          </div>
+          <div class="console-body" id="console-logs-container">
+            <!-- Live mock logs populated via JS -->
+            <div class="console-log">
+              <span class="log-time">12:18:25</span>
+              <span class="log-tag">[SYSTEM]</span>
+              <span class="log-msg">Automaitee engine service initialized. Monitoring node pipelines...</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Tech Stack Details -->
+        <div class="flow-viz-card glass-card">
+          <h3 class="flow-title-side text-gradient-indigo">Engine Integration Architecture</h3>
+          <p style="font-size: 0.85rem; margin-bottom: 8px;">Automaitee's core backend orchestration layer securely routes data across external systems and monitors agent actions.</p>
+          
+          <div class="flow-node-diagram">
+            <div class="node-link active" id="node-webhook">
+              <span class="node-label">1. Webhook Ingest Layer</span>
+              <span class="node-status">LISTENING</span>
+            </div>
+            <div class="node-link" id="node-agent">
+              <span class="node-label">2. AI Agent Reasoning</span>
+              <span class="node-status">STANDBY</span>
+            </div>
+            <div class="node-link" id="node-integration">
+              <span class="node-label">3. API Connector Sync</span>
+              <span class="node-status">STANDBY</span>
+            </div>
+            <div class="node-link" id="node-monitor">
+              <span class="node-label">4. Real-time Log Stream</span>
+              <span class="node-status">STREAMING</span>
+            </div>
+          </div>
+          
+          <div style="border-top: 1px solid var(--surface-border); padding-top: 16px; margin-top: 8px; font-size: 0.8rem; color: var(--text-muted);">
+            On Automaitee.com: <em>"Automaitee powers SelfEra and global SME automation systems."</em>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer & Brand Authority -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo-text">SelfEra<span class="logo-dot">.</span></a>
+          <p class="footer-description">
+            Bespoke AI consulting and custom software automation deployments designed specifically for owner-led businesses in the United Kingdom.
+          </p>
+          <div class="footer-authority footer-authority-global">
+            🇬🇧 <strong>Brand Relationship:</strong> SelfEra is a UK operating brand of <a href="https://www.automaitee.com" target="_blank" style="color: var(--accent-emerald); text-decoration: none; font-weight: 600;">Automaitee</a>. Automaitee powers SelfEra and global SME automation systems.
+          </div>
+        </div>
+        
+        <div class="footer-links-grid">
+          <div class="footer-links-col">
+            <h4 class="footer-links-title">Features</h4>
+            <a href="#roi">ROI Calculator</a>
+            <a href="#case-studies">Local Case Studies</a>
+            <a href="#booking">Book Consultations</a>
+            <a href="#tech-deck">Core Tech Engine</a>
+          </div>
+          <div class="footer-links-col">
+            <h4 class="footer-links-title">Automaitee Global</h4>
+            <a href="https://www.automaitee.com" target="_blank">Global HQ website</a>
+            <a href="#" class="preview-docs-btn">Documentation</a>
+            <a href="#" class="preview-product-btn">Product Dashboard</a>
+            <a href="#" class="preview-careers-btn">Careers / Hiring</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 SelfEra Ltd. Registered in England &amp; Wales.
+        </div>
+        <div>
+          SelfEra is an authorized UK trading brand. Powered by Automaitee.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- App JavaScript Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
