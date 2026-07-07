@@ -36,15 +36,25 @@ export default function IntroOverlay({ onComplete }: IntroOverlayProps) {
 
   return (
     <motion.div
-      className="fixed inset-0 z-[200] bg-white"
+      className="z-[200] bg-white"
+      style={{
+        // Inline styles on purpose: the splash must be positioned correctly
+        // even if the stylesheet is still streaming in on a slow mobile
+        // connection. inset:0 on a fixed box needs no viewport-height units,
+        // so URL-bar resizing on phones can't shift it either.
+        position: 'fixed',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        display: 'grid',
+        placeItems: 'center',
+      }}
       initial={{ opacity: 1 }}
       exit={{ opacity: 0, transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] } }}
       aria-hidden="true"
     >
-      {/* Anchored to exact viewport center via coordinates, not flex — mobile
-          browsers resolve percentage heights inconsistently during load, which
-          let the wordmark drift off-center on real devices. */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+      <div style={{ gridArea: '1 / 1' }}>
         <motion.div
           className="flex items-baseline whitespace-nowrap text-4xl sm:text-5xl font-bold tracking-tightest text-ink"
           initial={{ opacity: 0, y: 18, filter: 'blur(10px)' }}
