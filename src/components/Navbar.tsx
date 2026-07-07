@@ -24,12 +24,12 @@ export default function Navbar({ show }: NavbarProps) {
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 sm:px-8 py-3.5">
-        <div className="flex items-center gap-3">
-          <a href="#" className="text-2xl sm:text-3xl font-bold tracking-tightest text-ink">
+        <div className="flex flex-col items-start leading-none">
+          <a href="#" className="text-2xl sm:text-3xl font-bold tracking-tightest text-ink leading-none">
             Selfera<span className="text-brand-blue">.</span>
           </a>
-          <span className="hidden lg:inline-flex items-center rounded-full border border-brand-blue/15 bg-brand-blue/5 px-3 py-1 text-[11px] font-semibold text-brand-deep">
-            For the Era of Owning Self- AI Automation
+          <span className="mt-1 text-[10px] sm:text-xs font-semibold text-ink-secondary tracking-wide uppercase">
+            Build Your(Self) AI Era
           </span>
         </div>
 
