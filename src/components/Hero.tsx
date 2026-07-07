@@ -33,8 +33,8 @@ const HEADLINE: HeadlineWord[] = [
 function Headline({ show }: { show: boolean }) {
   return (
     <h1
-      className="relative z-10 text-left sm:text-center font-bold leading-[1.08] tracking-tightest text-ink w-[64%] sm:w-full"
-      style={{ fontSize: 'clamp(1.6rem, 5vw, 3.6rem)' }}
+      className="relative z-10 text-left sm:text-center font-bold leading-[1.08] tracking-tightest text-ink w-[72%] sm:w-full"
+      style={{ fontSize: 'clamp(1.75rem, 5.2vw, 3.6rem)' }}
     >
       {HEADLINE.map((word, i) => (
         <span

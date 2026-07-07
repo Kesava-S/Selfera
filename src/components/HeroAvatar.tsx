@@ -116,7 +116,7 @@ export default function HeroAvatar({ show }: HeroAvatarProps) {
   return (
     /* outer div owns the static placement; inner motion.div owns the slide */
     <div
-      className="pointer-events-none relative w-[42%] -mr-5 flex justify-center items-center sm:absolute sm:mr-0 sm:w-[230px] sm:-right-[4.5rem] sm:top-1/2 sm:-translate-y-[54%] md:-right-[6.5rem] md:w-[300px] lg:-right-[9rem] lg:w-[350px]"
+      className="pointer-events-none relative w-[55%] -mr-10 -ml-16 flex justify-center items-center sm:absolute sm:mr-0 sm:ml-0 sm:w-[230px] sm:-right-[4.5rem] sm:top-1/2 sm:-translate-y-[54%] md:-right-[6.5rem] md:w-[300px] lg:-right-[9rem] lg:w-[350px]"
       aria-hidden="true"
     >
       <motion.div
