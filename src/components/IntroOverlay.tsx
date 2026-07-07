@@ -13,13 +13,25 @@ const HOLD_MS = 1900;
  */
 export default function IntroOverlay({ onComplete }: IntroOverlayProps) {
   useEffect(() => {
+    // Force viewport reset to top on mount to avoid scroll restoration layout bugs on refresh
+    window.scrollTo(0, 0);
+    const prevRestoration = 'scrollRestoration' in window.history ? window.history.scrollRestoration : null;
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reducedMotion) {
       onComplete();
       return;
     }
     const timer = window.setTimeout(onComplete, HOLD_MS);
-    return () => window.clearTimeout(timer);
+    return () => {
+      window.clearTimeout(timer);
+      if (prevRestoration && 'scrollRestoration' in window.history) {
+        window.history.scrollRestoration = prevRestoration;
+      }
+    };
   }, [onComplete]);
 
   return (
