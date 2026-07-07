@@ -1,4 +1,6 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
 
 interface NavbarProps {
   show: boolean;
@@ -12,6 +14,8 @@ const LINKS = [
 ];
 
 export default function Navbar({ show }: NavbarProps) {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <motion.header
       className="fixed top-0 left-0 right-0 z-[100] border-b border-ink/5 bg-white/72 backdrop-blur-md"
@@ -24,11 +28,12 @@ export default function Navbar({ show }: NavbarProps) {
           <a href="#" className="text-xl font-bold tracking-tightest text-ink">
             Selfera<span className="text-brand-blue">.</span>
           </a>
-          <span className="hidden sm:inline-flex items-center rounded-full border border-brand-blue/15 bg-brand-blue/5 px-3 py-1 text-[11px] font-semibold text-brand-deep">
+          <span className="hidden lg:inline-flex items-center rounded-full border border-brand-blue/15 bg-brand-blue/5 px-3 py-1 text-[11px] font-semibold text-brand-deep">
             For the Era of Owning Self- AI Automation
           </span>
         </div>
 
+        {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-1">
           {LINKS.map((link) => (
             <a
@@ -41,13 +46,57 @@ export default function Navbar({ show }: NavbarProps) {
           ))}
         </div>
 
-        <a
-          href="#booking"
-          className="rounded-full bg-brand-blue px-5 py-2 text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-deep hover:scale-[1.04] hover:shadow-lg hover:shadow-brand-blue/25 active:scale-95"
-        >
-          Book Call
-        </a>
+        {/* Action Button & Mobile Trigger */}
+        <div className="flex items-center gap-2">
+          <a
+            href="#booking"
+            className="hidden md:inline-flex rounded-full bg-brand-blue px-5 py-2 text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-deep hover:scale-[1.04] hover:shadow-lg hover:shadow-brand-blue/25 active:scale-95"
+          >
+            Book Call
+          </a>
+
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden flex h-10 w-10 items-center justify-center rounded-full hover:bg-ink/5 text-ink transition-colors duration-200"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </nav>
+
+      {/* Mobile Drawer Dropdown */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="md:hidden absolute top-full left-0 right-0 border-b border-ink/5 bg-white/95 backdrop-blur-lg overflow-hidden shadow-lg"
+          >
+            <div className="flex flex-col gap-4 px-6 py-8">
+              {LINKS.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-base font-semibold text-ink-secondary hover:text-brand-blue transition-colors duration-200 py-1"
+                >
+                  {link.label}
+                </a>
+              ))}
+              <a
+                href="#booking"
+                onClick={() => setIsOpen(false)}
+                className="mt-2 rounded-full bg-brand-blue px-5 py-3 text-center text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-deep active:scale-95"
+              >
+                Book Call
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 }
