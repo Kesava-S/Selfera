@@ -5,7 +5,13 @@ interface IntroOverlayProps {
   onComplete: () => void;
 }
 
-const HOLD_MS = 1900;
+const getHoldMs = () => {
+  if (typeof window === 'undefined') return 1900;
+  const isBot = /bot|google|baidu|bing|msn|duckduckbot|teoma|slurp|yandex|lighthouse|chrome-lighthouse/i.test(navigator.userAgent);
+  return isBot ? 0 : 1900;
+};
+
+const HOLD_MS = getHoldMs();
 
 /**
  * Opening moment: clean white screen, the Selfera wordmark breathes in,
