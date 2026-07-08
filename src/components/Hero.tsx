@@ -25,10 +25,6 @@ const HEADLINE: HeadlineWord[] = [
   { text: 'Management' },
   { text: 'and' },
   { text: 'Marketing' },
-  { text: 'without' },
-  { text: 'hiring' },
-  { text: 'a' },
-  { text: 'team' },
 ];
 
 function Headline({ show }: { show: boolean }) {
