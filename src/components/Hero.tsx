@@ -21,6 +21,7 @@ const HEADLINE: HeadlineWord[] = [
   { text: 'a' },
   { text: 'week' },
   { text: 'on' },
+  { text: 'your' },
   { text: 'Management' },
   { text: 'and' },
   { text: 'Marketing' },
