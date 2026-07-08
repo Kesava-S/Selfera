@@ -46,7 +46,7 @@ export default function AboutSelfera() {
           </span>
           <div className="text-base sm:text-lg text-ink-secondary leading-relaxed font-normal max-w-2xl">
             <p>
-              Our solutions can also be paired with an Automation Associate who works alongside your business, supported by experienced mentors, to assist with analytics, reporting, and operational tasks, giving you access to greater capabilities at a fraction of the cost.
+              We don't just deliver the customised AI Automation solution. We also provide a dedicated Automation Associate who already knows your system inside out to help you use it. Our dedicated Automation Associates work alongside your business to manage your AI system, dashboards, reporting, analytics, and routine operational tasks, and they are monitored by senior managers to ensure the best quality, communication, consistency and assurance at a fraction of cost.
             </p>
           </div>
         </motion.div>

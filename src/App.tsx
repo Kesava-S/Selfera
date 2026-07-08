@@ -12,7 +12,10 @@ import Industries from './components/Industries';
 import Footer from './components/Footer';
 
 export default function App() {
-  const [introDone, setIntroDone] = useState(false);
+  // During build-time prerendering (no window) the intro is skipped so the
+  // static HTML snapshot contains the full page content for crawlers. In the
+  // browser this is always false and the intro plays as normal.
+  const [introDone, setIntroDone] = useState(() => typeof window === 'undefined');
 
   return (
     <div className="relative min-h-screen">
