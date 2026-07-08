@@ -7,10 +7,11 @@ interface NavbarProps {
 }
 
 const LINKS = [
-  { label: 'Services', href: '#services' },
+  { label: 'Solutions', href: '#solutions' },
+  { label: 'How it Works', href: '#how-it-works' },
   { label: 'Case Studies', href: '#case-studies' },
-  { label: 'Team', href: '#team' },
-  { label: 'Sustainability Practices', href: '#sustainability' },
+  { label: 'Pricing', href: '#pricing' },
+  { label: 'About', href: '#about' },
 ];
 
 export default function Navbar({ show }: NavbarProps) {
