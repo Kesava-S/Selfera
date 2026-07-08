@@ -18,7 +18,7 @@ export default function AboutSelfera() {
             What Selfera is
           </h3>
           <span className="text-lg sm:text-xl font-semibold tracking-tight text-brand-blue mb-6 block">
-            Enterprise level capabilities. Built for you
+            Enterprise-Level AI. Built for Small Businesses.
           </span>
           <div className="text-base sm:text-lg text-ink-secondary leading-relaxed space-y-4 font-normal max-w-2xl">
             <p>

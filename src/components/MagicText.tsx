@@ -24,7 +24,7 @@ export default function MagicText() {
         className="text-center px-6"
       >
         <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tightest text-ink leading-tight">
-          We know what you think now
+          Common concerns we hear from business owners
         </h2>
       </motion.div>
     </section>
