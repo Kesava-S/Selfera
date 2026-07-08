@@ -26,7 +26,23 @@ html = html
   .replace(/style="\s*"/g, '');
 
 const indexPath = resolve(root, 'dist/index.html');
-const template = readFileSync(indexPath, 'utf8');
+let template = readFileSync(indexPath, 'utf8');
+
+// Inline compiled CSS to eliminate render-blocking network requests
+const cssLinkRegex = /<link rel="stylesheet"[^>]*href="([^"]+\.css)"[^>]*>/;
+const cssMatch = template.match(cssLinkRegex);
+if (cssMatch) {
+  const cssUrl = cssMatch[1];
+  try {
+    const cssFilePath = resolve(root, 'dist', cssUrl.replace(/^\//, ''));
+    const cssContent = readFileSync(cssFilePath, 'utf8');
+    const styleTag = `<style>${cssContent}</style>`;
+    template = template.replace(cssLinkRegex, styleTag);
+    console.log(`prerender: successfully inlined ${cssUrl} (${Math.round(cssContent.length / 1024)} KB)`);
+  } catch (err) {
+    console.warn(`prerender warning: could not inline CSS file ${cssUrl}:`, err.message);
+  }
+}
 
 const marker = '<div id="root"></div>';
 if (!template.includes(marker)) {
@@ -37,3 +53,4 @@ writeFileSync(indexPath, template.replace(marker, `<div id="root">${html}</div>`
 
 const kb = Math.round(Buffer.byteLength(html, 'utf8') / 1024);
 console.log(`prerender: injected ${kb} KB of static HTML into dist/index.html`);
+
