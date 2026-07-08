@@ -29,7 +29,7 @@ export default function Industries() {
           transition={{ duration: 0.8, ease: EASE }}
           className="text-3xl sm:text-4xl lg:text-[2.5rem] font-bold tracking-tightest text-ink text-center mb-16"
         >
-          Businesses we work with
+          SMEs we work with
         </motion.h2>
 
         {/* Grid stack */}
