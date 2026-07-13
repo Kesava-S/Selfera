@@ -29,16 +29,21 @@ const HEADLINE: HeadlineWord[] = [
 function Headline({ show }: { show: boolean }) {
   return (
     <h1
-      className="relative z-10 text-left sm:text-center font-bold leading-[1.08] tracking-tightest text-white w-[72%] sm:w-full"
+      className="relative z-10 text-left sm:text-center font-bold leading-[1.08] tracking-tightest text-ink w-[72%] sm:w-full"
       style={{ fontSize: 'clamp(1.75rem, 5.2vw, 3.6rem)' }}
     >
       {HEADLINE.map((word, i) => (
         <span
           key={i}
           className="inline-block overflow-hidden pb-1 align-bottom"
+          style={{
+            // white halo so the text stays readable over the avatar video
+            filter:
+              'drop-shadow(0 0 10px rgba(255,255,255,0.95)) drop-shadow(0 0 22px rgba(255,255,255,0.8))',
+          }}
         >
           <motion.span
-            className={`inline-block ${word.accent ? 'text-yellow-200' : ''}`}
+            className={`inline-block ${word.accent ? 'text-gradient-blue' : ''}`}
             initial={{ y: '110%', opacity: 0, filter: 'blur(8px)' }}
             animate={show ? { y: 0, opacity: 1, filter: 'blur(0px)' } : {}}
             transition={{ duration: 0.85, delay: 0.15 + i * 0.08, ease: EASE }}
@@ -56,13 +61,13 @@ function Headline({ show }: { show: boolean }) {
 
 export default function Hero({ show }: HeroProps) {
   return (
-    <section className="relative z-10 flex min-h-[100vh] flex-col items-center justify-center px-5 pt-24 pb-16 bg-[#10B981]">
+    <section className="relative z-10 flex min-h-[100vh] flex-col items-center justify-center px-5 pt-24 pb-16">
       {/* Welcome Banner */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={show ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7, delay: 0.05, ease: EASE }}
-        className="relative z-10 mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-center text-[11px] sm:text-xs font-semibold tracking-wide text-white max-w-[92vw]"
+        className="relative z-10 mb-6 inline-flex items-center gap-2 rounded-full border border-brand-blue/15 bg-brand-blue/5 px-4 py-1.5 text-center text-[11px] sm:text-xs font-semibold tracking-wide text-brand-deep max-w-[92vw]"
       >
         Welcome to Selfera! Empowering SME Owners with Simple and Effective AI Automations
       </motion.div>
@@ -77,7 +82,7 @@ export default function Hero({ show }: HeroProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={show ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, delay: 0.95, ease: EASE }}
-        className="relative z-10 mt-6 max-w-2xl text-center text-base sm:text-lg leading-relaxed text-emerald-50"
+        className="relative z-10 mt-6 max-w-2xl text-center text-base sm:text-lg leading-relaxed text-ink-secondary"
       >
         Sounds complicated? Not at all, we do all the setup customised for you.<br className="hidden sm:inline" /> It all starts with a simple consultation.
       </motion.p>
@@ -90,13 +95,13 @@ export default function Hero({ show }: HeroProps) {
       >
         <a
           href="#roi"
-          className="rounded-full bg-white px-7 py-3 text-sm font-semibold text-[#10B981] transition-all duration-200 hover:bg-white/95 hover:scale-[1.04] hover:shadow-lg hover:shadow-white/25 active:scale-95"
+          className="rounded-full bg-brand-blue px-7 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-deep hover:scale-[1.04] hover:shadow-lg hover:shadow-brand-blue/30 active:scale-95"
         >
           Calculate Savings
         </a>
         <a
           href="#booking"
-          className="rounded-full border border-white/30 bg-white/10 px-7 py-3 text-sm font-semibold text-white transition-all duration-200 hover:border-white/50 hover:bg-white/20 hover:scale-[1.04] active:scale-95"
+          className="rounded-full border border-ink/15 bg-white/90 px-7 py-3 text-sm font-semibold text-ink transition-all duration-200 hover:border-ink/30 hover:scale-[1.04] active:scale-95"
         >
           Book Strategy Call
         </a>
