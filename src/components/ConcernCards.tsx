@@ -1,12 +1,11 @@
-import { useRef } from 'react';
-import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowRight, PiggyBank, Blocks, ShieldCheck, HeartHandshake, type LucideIcon } from 'lucide-react';
 
 interface ConcernCard {
   icon: LucideIcon;
   title: string;
   line: string;
-  href?: string; // destination page — TBD (likely testimonials)
+  href?: string;
   hasLink?: boolean;
 }
 
@@ -15,13 +14,13 @@ const CARDS: ConcernCard[] = [
     icon: PiggyBank,
     title: 'Worried on high cost of implementation?',
     line: "It's not what you think. See why our clients say it's worth every penny",
-    href: '#', // TODO: point at the testimonials page once it exists
+    href: '#',
   },
   {
     icon: Blocks,
     title: "Concerned you'll need technical skills to get started?",
     line: "Absolutely not, and here's why and how we make it easy",
-    href: '#', // TODO: destination page to be decided
+    href: '#',
   },
   {
     icon: ShieldCheck,
@@ -37,112 +36,85 @@ const CARDS: ConcernCard[] = [
   },
 ];
 
-interface DeckCardProps {
-  card: ConcernCard;
-  index: number;
-  total: number;
-  progress: MotionValue<number>;
-}
-
-function DeckCard({ card, index, total, progress }: DeckCardProps) {
-  // Scroll slice this card uses to slide in from the left of the viewport.
-  const start = index / total;
-  const end = (index + 0.82) / total;
-
-  // Slides from off-screen left to its resting spot (x = 0), while resting a
-  // touch lower than the previous card (y = index * 3.2vh) so the pile's edges peek out.
-  const x = useTransform(progress, [start, end], ['-100vw', '0px']);
-  const y = `${index * 3.2}vh`;
-
-  // Once covered by the next card, settle slightly smaller for depth.
-  const scale = useTransform(
-    progress,
-    [(index + 1) / total, 1],
-    [1, 1 - (total - 1 - index) * 0.045]
-  );
-
+function DeckCard({ card }: { card: ConcernCard }) {
   const isInteractive = card.hasLink !== false;
-  const Component = isInteractive ? motion.a : motion.div;
+  const Component = isInteractive ? 'a' : 'div';
 
   return (
-    <div className="w-full max-w-4xl [grid-area:1/1]">
-      <Component
-        {...(isInteractive ? { href: card.href } : {})}
-        className={`block ${isInteractive ? 'group cursor-pointer' : ''}`}
-        style={{ x, y, scale, transformOrigin: 'top center', willChange: 'transform' }}
-      >
-        <div className={`relative h-[400px] overflow-hidden rounded-[32px] border border-ink/10 bg-white p-8 shadow-[0_24px_70px_-24px_rgba(0,95,192,0.28)] transition-colors duration-300 sm:h-[440px] sm:rounded-[40px] sm:p-12 ${isInteractive ? 'group-hover:border-brand-blue/25' : ''}`}>
-          {/* soft corner glow */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-brand-sky/10 blur-3xl"
-          />
+    <Component
+      {...(isInteractive ? { href: card.href } : {})}
+      className={`block h-full ${isInteractive ? 'group cursor-pointer' : ''}`}
+    >
+      <div className={`relative h-[340px] sm:h-[380px] overflow-hidden rounded-[32px] border border-ink/10 bg-white p-6 shadow-[0_16px_48px_-16px_rgba(0,95,192,0.12)] transition-all duration-300 sm:p-8 ${isInteractive ? 'hover:border-brand-blue/25 hover:shadow-[0_24px_64px_-16px_rgba(0,95,192,0.18)] hover:scale-[1.01]' : ''}`}>
+        {/* soft corner glow */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-brand-sky/10 blur-3xl"
+        />
 
-          <div className="relative grid h-full items-center gap-8 md:grid-cols-[1.15fr_1fr]">
-            {/* copy */}
-            <div>
-              <span className={`mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-blue/10 text-brand-blue transition-colors duration-300 ${isInteractive ? 'group-hover:bg-brand-blue group-hover:text-white' : ''}`}>
-                <card.icon size={26} strokeWidth={2.1} />
-              </span>
+        <div className="relative flex flex-col justify-between h-full gap-6">
+          <div>
+            <span className={`mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue transition-colors duration-300 ${isInteractive ? 'group-hover:bg-brand-blue group-hover:text-white' : ''}`}>
+              <card.icon size={22} strokeWidth={2.1} />
+            </span>
 
-              <h3 className="text-2xl font-bold leading-tight tracking-tight text-ink sm:text-3xl lg:text-[2.35rem]">
-                {card.title}
-              </h3>
+            <h3 className="text-xl font-bold leading-snug tracking-tight text-ink sm:text-2xl">
+              {card.title}
+            </h3>
 
-              <p className="mt-4 max-w-md text-base leading-relaxed text-ink-secondary sm:text-lg">
-                {card.line}
-                {isInteractive && (
-                  <ArrowRight
-                    size={19}
-                    strokeWidth={2.4}
-                    className="ml-2 inline-block align-[-3px] text-brand-blue transition-transform duration-300 group-hover:translate-x-1.5"
-                  />
-                )}
-              </p>
-            </div>
+            <p className="mt-3 text-sm leading-relaxed text-ink-secondary sm:text-base">
+              {card.line}
+              {isInteractive && (
+                <ArrowRight
+                  size={16}
+                  strokeWidth={2.4}
+                  className="ml-1.5 inline-block align-[-2px] text-brand-blue transition-transform duration-300 group-hover:translate-x-1.5"
+                />
+              )}
+            </p>
+          </div>
 
-            {/* dedicated animated avatar for this card mounts here (Higgsfield clips, pending credits) */}
-            <div className="relative hidden h-full md:block" data-avatar-slot={index} aria-hidden="true">
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-brand-blue/[0.04] to-brand-sky/[0.08]" />
-            </div>
+          <div className="border-t border-ink/5 pt-4 flex items-center justify-between">
+            <span className="text-[10px] font-semibold text-brand-blue uppercase tracking-wider">
+              Selfera Assurance
+            </span>
           </div>
         </div>
-      </Component>
-    </div>
+      </div>
+    </Component>
   );
 }
 
-/**
- * Concern cards below the hero: a pinned deck. The stage sticks in place
- * while each card slides in from the left of the screen and lands on top
- * of the pile; when every card has landed, the page releases and scrolls
- * on to the next section.
- */
 export default function ConcernCards() {
-  const containerRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start end', 'end end'],
-  });
+  // Combine two sets of cards for a seamless infinite loop marquee.
+  const marqueeCards = [...CARDS, ...CARDS];
 
   return (
-    <section
-      ref={containerRef}
-      id="concerns"
-      className="relative z-10 -mt-40 sm:-mt-56"
-      style={{ height: `${(CARDS.length + 0.2) * 100}vh` }}
-    >
-      {/* pinned stage — cards overlap in the same grid cell, later ones paint on top */}
-      <div className="sticky top-0 grid h-[100vh] place-items-center overflow-hidden px-5 sm:px-8">
-        {CARDS.map((card, i) => (
-          <DeckCard
-            key={card.title}
-            card={card}
-            index={i}
-            total={CARDS.length}
-            progress={scrollYProgress}
-          />
-        ))}
+    <section id="concerns" className="relative z-10 py-12 overflow-hidden">
+      {/* Marquee Wrapper */}
+      <div className="relative flex w-full overflow-hidden py-4">
+        {/* Soft edge-fading gradients */}
+        <div className="pointer-events-none absolute left-0 top-0 z-20 h-full w-20 bg-gradient-to-r from-white to-transparent sm:w-32" />
+        <div className="pointer-events-none absolute right-0 top-0 z-20 h-full w-20 bg-gradient-to-l from-white to-transparent sm:w-32" />
+
+        <motion.div
+          className="flex gap-6 sm:gap-8 flex-nowrap"
+          animate={{
+            x: ['-50%', '0%'], // Slide from left to right continuously
+          }}
+          transition={{
+            ease: 'linear',
+            duration: 30,
+            repeat: Infinity,
+          }}
+          style={{ width: 'max-content' }}
+        >
+          {marqueeCards.map((card, i) => (
+            <div key={`${card.title}-${i}`} className="w-[280px] sm:w-[360px] md:w-[400px] flex-shrink-0">
+              <DeckCard card={card} />
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
