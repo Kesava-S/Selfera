@@ -62,3 +62,19 @@ body {
     scroll-behavior: auto;
   }
 }
+
+/* Infinite Marquee Left to Right */
+@keyframes marquee-l2r {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-marquee-left-to-right {
+  display: flex;
+  width: max-content;
+  animation: marquee-l2r 32s linear infinite;
+}
+
+.animate-marquee-left-to-right:hover {
+  animation-play-state: paused;
+}
