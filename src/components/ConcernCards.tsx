@@ -45,13 +45,14 @@ interface DeckCardProps {
 }
 
 function DeckCard({ card, index, total, progress }: DeckCardProps) {
-  // Scroll slice this card uses to fly in from below the viewport.
+  // Scroll slice this card uses to slide in from the left of the viewport.
   const start = index / total;
   const end = (index + 0.82) / total;
 
-  // Rises from off-screen bottom to its resting spot (each card rests a
-  // touch lower than the previous so the pile's edges peek out).
-  const y = useTransform(progress, [start, end], ['68vh', `${index * 3.2}vh`]);
+  // Slides from off-screen left to its resting spot (x = 0), while resting a
+  // touch lower than the previous card (y = index * 3.2vh) so the pile's edges peek out.
+  const x = useTransform(progress, [start, end], ['-100vw', '0px']);
+  const y = `${index * 3.2}vh`;
 
   // Once covered by the next card, settle slightly smaller for depth.
   const scale = useTransform(
@@ -68,7 +69,7 @@ function DeckCard({ card, index, total, progress }: DeckCardProps) {
       <Component
         {...(isInteractive ? { href: card.href } : {})}
         className={`block ${isInteractive ? 'group cursor-pointer' : ''}`}
-        style={{ y, scale, transformOrigin: 'top center', willChange: 'transform' }}
+        style={{ x, y, scale, transformOrigin: 'top center', willChange: 'transform' }}
       >
         <div className={`relative h-[400px] overflow-hidden rounded-[32px] border border-ink/10 bg-white p-8 shadow-[0_24px_70px_-24px_rgba(0,95,192,0.28)] transition-colors duration-300 sm:h-[440px] sm:rounded-[40px] sm:p-12 ${isInteractive ? 'group-hover:border-brand-blue/25' : ''}`}>
           {/* soft corner glow */}
@@ -113,7 +114,7 @@ function DeckCard({ card, index, total, progress }: DeckCardProps) {
 
 /**
  * Concern cards below the hero: a pinned deck. The stage sticks in place
- * while each card flies up from the bottom of the screen and lands on top
+ * while each card slides in from the left of the screen and lands on top
  * of the pile; when every card has landed, the page releases and scrolls
  * on to the next section.
  */

@@ -19,7 +19,7 @@ export default function Navbar({ show }: NavbarProps) {
 
   return (
     <motion.header
-      className="fixed top-0 left-0 right-0 z-[100] border-b border-ink/5 bg-white md:bg-white/72 md:backdrop-blur-md"
+      className="fixed top-0 left-0 right-0 z-[100] border-b border-ink/5 bg-white md:bg-white/72 md:backdrop-blur-md shadow-[0_4px_20px_rgba(29,29,31,0.04)]"
       initial={{ y: -64, opacity: 0 }}
       animate={show ? { y: 0, opacity: 1 } : {}}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -36,7 +36,7 @@ export default function Navbar({ show }: NavbarProps) {
             Selfera<span className="text-brand-blue">.</span>
           </a>
           <span className="mt-1 text-[10px] sm:text-xs font-semibold text-brand-blue tracking-wide uppercase">
-            Build Your(Self) AI Era
+            Enterprise Level AI Built for Small Businesses
           </span>
         </div>
 
