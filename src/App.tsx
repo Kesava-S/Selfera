@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import NodeNetwork from './components/NodeNetwork';
 import IntroOverlay from './components/IntroOverlay';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -23,7 +22,6 @@ export default function App() {
         {!introDone && <IntroOverlay onComplete={() => setIntroDone(true)} />}
       </AnimatePresence>
 
-      <NodeNetwork />
       <Navbar show={introDone} />
       <main>
         <Hero show={introDone} />
