@@ -314,7 +314,13 @@ export default function Hero({ show }: HeroProps) {
                 MANAGEMENT
               </textPath>
             </text>
-            {THREE_LEFT_LOGOS.map((logo, index) => (
+            {/* Input line links for each Management logo */}
+            {/* Output lines and circles */}
+            {/* Base lines */}
+            {/* Animating traces */}
+            {/* Render Management logos inside the circle */}
+            {/* management logo paths */}
+            {THIRD_LEFT_LOGOS.map((logo, index) => (
               <g key={`third-line-${index}`}>
                 <line x1={`${logo.x}%`} y1={`${logo.y}%`} x2="50%" y2="50%" stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" />
                 <motion.line
@@ -339,7 +345,13 @@ export default function Hero({ show }: HeroProps) {
               />
             </g>
           </svg>
-          {THREE_LEFT_LOGOS.map((logo, index) => (
+          {/* Render Management logos inside the circle */}
+          {/* management logos */}
+          {/* Third left features logos */}
+          {/* render Management logos inside the circle */}
+          {/* management logos */}
+          {/* Third left features logos */}
+          {THIRD_LEFT_LOGOS.map((logo, index) => (
             <img
               key={index}
               src={logo.src}
