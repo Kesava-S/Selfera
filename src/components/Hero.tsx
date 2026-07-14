@@ -445,7 +445,7 @@ export default function Hero({ show }: HeroProps) {
         initial={{ opacity: 0, y: 16 }}
         animate={show ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, delay: 0.05, ease: EASE }}
-        className="relative z-10 -mt-10 sm:-mt-16 mb-16 sm:mb-20 flex items-center justify-center gap-6 sm:gap-8 flex-wrap"
+        className="relative z-10 -mt-4 sm:-mt-10 mb-16 sm:mb-20 flex items-center justify-center gap-6 sm:gap-8 flex-wrap"
       >
         <span className="absolute top-[-24px] sm:top-[-32px] left-1/2 -translate-x-1/2 text-[10px] font-bold tracking-[2px] font-mono text-[#00f5c0]/70 uppercase select-none">
           AI Brains
@@ -454,8 +454,8 @@ export default function Hero({ show }: HeroProps) {
           // Lines drop straight down to absolute 650 to join the bus
           const dx = (2 - index) * 75; // -150, -75, 0, 75, 150
           const pathD = dx === 0 
-            ? `M 0 0 L 0 520` 
-            : `M 0 0 L 0 520 L ${-dx} 520`;
+            ? `M 0 0 L 0 496` 
+            : `M 0 0 L 0 496 L ${-dx} 496`;
 
           return (
           <div key={index} className="relative flex flex-col items-center">
