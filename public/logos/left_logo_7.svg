@@ -1,0 +1,21 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Top Arrow -->
+  <path d="M 45 15 A 35 35 0 0 1 82 40 L 72 43 L 88 52 L 91 34 L 81 37 A 45 45 0 0 0 45 5 Z" fill="#1a5653" />
+  <!-- Bottom Arrow -->
+  <path d="M 55 85 A 35 35 0 0 1 18 60 L 28 57 L 12 48 L 9 66 L 19 63 A 45 45 0 0 0 55 95 Z" fill="#1a5653" />
+  
+  <!-- Gear Base -->
+  <circle cx="50" cy="50" r="14" fill="#5e9d9b" />
+  <!-- Gear Teeth -->
+  <rect x="46" y="32" width="8" height="36" rx="2" fill="#5e9d9b" />
+  <rect x="46" y="32" width="8" height="36" rx="2" fill="#5e9d9b" transform="rotate(45 50 50)" />
+  <rect x="46" y="32" width="8" height="36" rx="2" fill="#5e9d9b" transform="rotate(90 50 50)" />
+  <rect x="46" y="32" width="8" height="36" rx="2" fill="#5e9d9b" transform="rotate(135 50 50)" />
+  <!-- Gear Center Hole -->
+  <circle cx="50" cy="50" r="6" fill="white" />
+  
+  <!-- Orange Clock -->
+  <circle cx="75" cy="75" r="15" fill="#e99f38" />
+  <circle cx="75" cy="75" r="10" fill="none" stroke="#603b0d" strokeWidth="3" />
+  <polyline points="75,70 75,75 80,79" stroke="#603b0d" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+</svg>

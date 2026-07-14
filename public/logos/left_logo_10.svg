@@ -1,0 +1,25 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Top Box -->
+  <rect x="33" y="15" width="34" height="34" rx="6" fill="#1a5653" />
+  <rect x="47" y="15" width="6" height="12" fill="#84b8b2" />
+  
+  <!-- Bottom Left Box -->
+  <rect x="15" y="51" width="34" height="34" rx="6" fill="#1a5653" />
+  <rect x="29" y="51" width="6" height="12" fill="#84b8b2" />
+  
+  <!-- Bottom Right Box -->
+  <rect x="51" y="51" width="34" height="34" rx="6" fill="#5e9d9b" />
+  <rect x="65" y="51" width="6" height="12" fill="#b1d2cd" />
+  
+  <!-- Orange Circle with List -->
+  <circle cx="76" cy="74" r="16" fill="#e99f38" />
+  <!-- List Bullets -->
+  <circle cx="70" cy="68" r="2.5" fill="#603b0d" />
+  <rect x="76" y="66" width="10" height="4" rx="2" fill="#603b0d" />
+  
+  <circle cx="70" cy="74" r="2.5" fill="#603b0d" />
+  <rect x="76" y="72" width="10" height="4" rx="2" fill="#603b0d" />
+  
+  <circle cx="70" cy="80" r="2.5" fill="#603b0d" />
+  <rect x="76" y="78" width="10" height="4" rx="2" fill="#603b0d" />
+</svg>

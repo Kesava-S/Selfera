@@ -7,6 +7,50 @@ interface HeroProps {
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
+const AI_LOGOS = [
+  { src: '/logos/logo_1.png', alt: 'OpenAI', className: 'invert brightness-[3.0] opacity-90' },
+  { src: '/logos/logo_2.png', alt: 'Gemini Outline', className: '' },
+  { src: '/logos/logo_3.png', alt: 'Claude', className: '' },
+  { src: '/logos/logo_4.png', alt: 'Replicate', className: '' },
+  { src: '/logos/logo_5.png', alt: 'Gemini Colorful', className: '' },
+];
+
+const CHANNEL_LOGOS = [
+  { src: '/logos/chan_1.png', alt: 'TikTok', x: 50, y: 12 },
+  { src: '/logos/chan_2.png', alt: 'WhatsApp', x: 80, y: 26 },
+  { src: '/logos/chan_3.png', alt: 'Instagram', x: 87, y: 58 },
+  { src: '/logos/chan_4.png', alt: 'Google Ads', x: 66, y: 84 },
+  { src: '/logos/chan_5.png', alt: 'Meta Ads', x: 34, y: 84 },
+  { src: '/logos/chan_6_square.svg', alt: 'LinkedIn', x: 13, y: 58, className: 'rounded-[5px]' },
+  { src: '/logos/chan_7_new.svg', alt: 'Facebook', x: 20, y: 26 },
+];
+
+const BOTTOM_LEFT_LOGOS = [
+  { src: '/logos/left_logo_1.svg', alt: 'Search', x: 50, y: 15 },
+  { src: '/logos/left_logo_2.svg', alt: 'History', x: 85, y: 50 },
+  { src: '/logos/left_logo_3.svg', alt: 'Invoice', x: 50, y: 85 },
+  { src: '/logos/left_logo_4.svg', alt: 'Payroll', x: 15, y: 50 },
+];
+
+const THIRD_LEFT_LOGOS = [
+  { src: '/logos/left_logo_5.svg', alt: 'Alert', x: 50, y: 12 },
+  { src: '/logos/left_logo_6.svg', alt: 'Security', x: 83, y: 31 },
+  { src: '/logos/left_logo_7.svg', alt: 'Sync', x: 83, y: 69 },
+  { src: '/logos/left_logo_8.svg', alt: 'Cart', x: 50, y: 88 },
+  { src: '/logos/left_logo_9.svg', alt: 'Calendar', x: 17, y: 69 },
+  { src: '/logos/left_logo_10.svg', alt: 'Boxes', x: 17, y: 31 },
+];
+
+const FOURTH_LEFT_LOGOS = [
+  { src: '/logos/left_logo_11.svg', alt: 'Google Analytics' },
+  { src: '/logos/left_logo_12.svg', alt: 'Power BI' },
+];
+
+const RIGHT_LOGOS = [
+  { src: '/logos/right_logo_1.svg', alt: 'Supabase', x: 50, y: 25 },
+  { src: '/logos/right_logo_2.svg', alt: 'Integration', x: 50, y: 75 },
+];
+
 /* ---------- Word-by-word headline ---------- */
 
 interface HeadlineWord {
@@ -65,8 +109,12 @@ export default function Hero({ show }: HeroProps) {
   const WORDS = ['Marketing', 'Management', 'Finance', 'Data Management', 'Analytics & Reporting'];
   const [wordIndex, setWordIndex] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
 
   useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    
     let timeoutId: any;
 
     const tick = () => {
@@ -99,8 +147,12 @@ export default function Hero({ show }: HeroProps) {
     return () => {
       clearTimeout(timeoutId);
       observer.disconnect();
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  const containerWidth = Math.min(windowWidth, 1200);
+  const cx = containerWidth / 2;
 
   return (
     <section
@@ -108,12 +160,357 @@ export default function Hero({ show }: HeroProps) {
       className="relative z-10 flex min-h-[100vh] flex-col items-center justify-center px-5 pt-24 pb-16 bg-[#002b22] text-white overflow-hidden"
       style={{ backgroundImage: 'linear-gradient(180deg, #002b22 0%, #001e18 100%)' }}
     >
+      {/* Central Layout Wrapper */}
+      <div className="relative w-full max-w-[1200px] flex flex-col items-center mx-auto">
+        
+        {/* Top Left Social Channels Cluster */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={show ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.4, ease: EASE }}
+          className="absolute -left-12 lg:-left-4 top-[-90px] sm:top-[-60px] w-32 h-32 z-10 pointer-events-none hidden md:block"
+        >
+          <svg className="absolute inset-0 w-full h-full overflow-visible pointer-events-none z-0">
+            <defs>
+              <linearGradient id="channelLineGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stopColor="rgba(0, 245, 192, 0.4)" />
+                <stop offset="100%" stopColor="rgba(0, 245, 192, 0)" />
+              </linearGradient>
+            </defs>
+            <path id="marketingTextPath" d="M 13 13 A 72 72 0 0 1 115 13" fill="none" />
+            <text fill="rgba(0, 245, 192, 0.7)" fontSize="9" fontWeight="bold" letterSpacing="1.5" className="font-mono">
+              <textPath href="#marketingTextPath" startOffset="50%" textAnchor="middle">
+                MARKETING
+              </textPath>
+            </text>
+            {CHANNEL_LOGOS.map((logo, index) => (
+              <g key={`chan-line-${index}`}>
+                <line x1={`${logo.x}%`} y1={`${logo.y}%`} x2="50%" y2="50%" stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" />
+                <motion.line
+                  x1={`${logo.x}%`} y1={`${logo.y}%`} x2="50%" y2="50%"
+                  stroke="rgba(0, 245, 192, 0.4)" strokeWidth="1.5"
+                  strokeDasharray="15, 60"
+                  initial={{ strokeDashoffset: 75 }}
+                  animate={{ strokeDashoffset: 0 }}
+                  transition={{ duration: 1.5, delay: index * 0.15, repeat: Infinity, ease: 'linear' }}
+                />
+              </g>
+            ))}
+            {/* Output line drops to y=580 (absolute 520), turns right to center */}
+            <g>
+              <path d={`M 64 64 L 296 64 L 296 580 L ${cx + 16} 580`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
+              <motion.path 
+                d={`M 64 64 L 296 64 L 296 580 L ${cx + 16} 580`} 
+                stroke="url(#channelLineGrad)" strokeWidth="1.5" fill="none"
+                strokeDasharray="100, 300"
+                initial={{ strokeDashoffset: 400 }}
+                animate={{ strokeDashoffset: 0 }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
+              />
+            </g>
+          </svg>
+          {CHANNEL_LOGOS.map((logo, index) => (
+            <img
+              key={index}
+              src={logo.src}
+              alt={logo.alt}
+              style={{ top: `${logo.y}%`, left: `${logo.x}%` }}
+              className={`absolute h-8 w-8 sm:h-9 sm:w-9 object-contain opacity-75 hover:opacity-100 transition-all duration-300 hover:scale-110 pointer-events-auto cursor-pointer -translate-x-1/2 -translate-y-1/2 z-10 ${logo.className || ''}`}
+            />
+          ))}
+        </motion.div>
+
+        {/* Bottom Left Features Cluster */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={show ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.45, ease: EASE }}
+          className="absolute -left-4 lg:left-4 top-[90px] sm:top-[130px] w-16 h-16 z-10 pointer-events-none hidden md:block"
+        >
+          <svg className="absolute inset-0 w-full h-full overflow-visible pointer-events-none z-0">
+            <defs>
+              <linearGradient id="bottomLeftLineGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stopColor="rgba(0, 245, 192, 0.4)" />
+                <stop offset="100%" stopColor="rgba(0, 245, 192, 0)" />
+              </linearGradient>
+            </defs>
+            <path id="financeTextPath" d="M 5 5 A 38 38 0 0 1 59 5" fill="none" />
+            <text fill="rgba(0, 245, 192, 0.7)" fontSize="8" fontWeight="bold" letterSpacing="1.2" className="font-mono">
+              <textPath href="#financeTextPath" startOffset="50%" textAnchor="middle">
+                FINANCE
+              </textPath>
+            </text>
+            {BOTTOM_LEFT_LOGOS.map((logo, index) => (
+              <g key={`feat-line-${index}`}>
+                <line x1={`${logo.x}%`} y1={`${logo.y}%`} x2="50%" y2="50%" stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" />
+                <motion.line
+                  x1={`${logo.x}%`} y1={`${logo.y}%`} x2="50%" y2="50%"
+                  stroke="rgba(0, 245, 192, 0.4)" strokeWidth="1.5"
+                  strokeDasharray="15, 60"
+                  initial={{ strokeDashoffset: 75 }}
+                  animate={{ strokeDashoffset: 0 }}
+                  transition={{ duration: 1.5, delay: index * 0.15, repeat: Infinity, ease: 'linear' }}
+                />
+              </g>
+            ))}
+            {/* Output line drops to y=390 (absolute 520), turns right to center */}
+            <g>
+              <path d={`M 32 32 L 224 32 L 224 390 L ${cx - 16} 390`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
+              <motion.path 
+                d={`M 32 32 L 224 32 L 224 390 L ${cx - 16} 390`} 
+                stroke="url(#bottomLeftLineGrad)" strokeWidth="1.5" fill="none"
+                strokeDasharray="100, 300"
+                initial={{ strokeDashoffset: 400 }}
+                animate={{ strokeDashoffset: 0 }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
+              />
+            </g>
+          </svg>
+          {BOTTOM_LEFT_LOGOS.map((logo, index) => (
+            <img
+              key={index}
+              src={logo.src}
+              alt={logo.alt}
+              style={{ top: `${logo.y}%`, left: `${logo.x}%` }}
+              className={`absolute h-5 w-5 sm:h-6 sm:w-6 object-contain opacity-75 hover:opacity-100 transition-all duration-300 hover:scale-110 pointer-events-auto cursor-pointer -translate-x-1/2 -translate-y-1/2 z-10`}
+            />
+          ))}
+        </motion.div>
+
+        {/* Third Left Features Cluster */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={show ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.5, ease: EASE }}
+          className="absolute -left-8 lg:left-0 top-[230px] sm:top-[280px] w-24 h-24 z-10 pointer-events-none hidden md:block"
+        >
+          <svg className="absolute inset-0 w-full h-full overflow-visible pointer-events-none z-0">
+            <defs>
+              <linearGradient id="thirdLeftLineGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stopColor="rgba(0, 245, 192, 0.4)" />
+                <stop offset="100%" stopColor="rgba(0, 245, 192, 0)" />
+              </linearGradient>
+            </defs>
+            <path id="managementTextPath" d="M 10 10 A 54 54 0 0 1 86 10" fill="none" />
+            <text fill="rgba(0, 245, 192, 0.7)" fontSize="8" fontWeight="bold" letterSpacing="1.2" className="font-mono">
+              <textPath href="#managementTextPath" startOffset="50%" textAnchor="middle">
+                MANAGEMENT
+              </textPath>
+            </text>
+            {THIRD_LEFT_LOGOS.map((logo, index) => (
+              <g key={`third-line-${index}`}>
+                <line x1={`${logo.x}%`} y1={`${logo.y}%`} x2="50%" y2="50%" stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" />
+                <motion.line
+                  x1={`${logo.x}%`} y1={`${logo.y}%`} x2="50%" y2="50%"
+                  stroke="rgba(0, 245, 192, 0.4)" strokeWidth="1.5"
+                  strokeDasharray="15, 60"
+                  initial={{ strokeDashoffset: 75 }}
+                  animate={{ strokeDashoffset: 0 }}
+                  transition={{ duration: 1.5, delay: index * 0.15, repeat: Infinity, ease: 'linear' }}
+                />
+              </g>
+            ))}
+            {/* Output line drops to y=240 (absolute 520), turns right to center */}
+            <g>
+              <path d={`M 48 48 L 200 48 L 200 240 L ${cx} 240`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
+              <motion.path 
+                d={`M 48 48 L 200 48 L 200 240 L ${cx} 240`} 
+                stroke="url(#thirdLeftLineGrad)" strokeWidth="1.5" fill="none"
+                strokeDasharray="100, 300"
+                initial={{ strokeDashoffset: 400 }}
+                animate={{ strokeDashoffset: 0 }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
+              />
+            </g>
+          </svg>
+          {THIRD_LEFT_LOGOS.map((logo, index) => (
+            <img
+              key={index}
+              src={logo.src}
+              alt={logo.alt}
+              style={{ top: `${logo.y}%`, left: `${logo.x}%` }}
+              className={`absolute h-7 w-7 sm:h-8 sm:w-8 object-contain opacity-75 hover:opacity-100 transition-all duration-300 hover:scale-110 pointer-events-auto cursor-pointer -translate-x-1/2 -translate-y-1/2 z-10`}
+            />
+          ))}
+        </motion.div>
+
+        {/* Fourth Left Capsule Cluster */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={show ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.55, ease: EASE }}
+          className="absolute -left-12 lg:-left-4 top-[370px] sm:top-[430px] w-32 h-20 z-10 pointer-events-none hidden md:block flex flex-col justify-end pb-1 items-center"
+        >
+          <svg className="absolute inset-0 w-full h-full overflow-visible pointer-events-none z-0">
+            <defs>
+              <linearGradient id="fourthLeftLineGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stopColor="rgba(0, 245, 192, 0.4)" />
+                <stop offset="100%" stopColor="rgba(0, 245, 192, 0)" />
+              </linearGradient>
+            </defs>
+            <path id="reportingTextPath" d="M 24 16 A 56 56 0 0 1 104 16" fill="none" />
+            <text fill="rgba(0, 245, 192, 0.7)" fontSize="9" fontWeight="bold" letterSpacing="1.5" className="font-mono">
+              <textPath href="#reportingTextPath" startOffset="50%" textAnchor="middle">
+                REPORTING
+              </textPath>
+            </text>
+            {/* Output line goes right to 320, drops to absolute 520 (y=90), and turns right to center */}
+            <g>
+              <path d={`M 64 40 L 336 40 L 336 90 L ${cx + 16} 90`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
+              <motion.path 
+                d={`M 64 40 L 336 40 L 336 90 L ${cx + 16} 90`} 
+                stroke="url(#fourthLeftLineGrad)" strokeWidth="1.5" fill="none"
+                strokeDasharray="100, 300"
+                initial={{ strokeDashoffset: 400 }}
+                animate={{ strokeDashoffset: 0 }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
+              />
+            </g>
+          </svg>
+          <div className="flex flex-row justify-center gap-6 items-center translate-y-2">
+            {FOURTH_LEFT_LOGOS.map((logo, index) => (
+              <img
+                key={index}
+                src={logo.src}
+                alt={logo.alt}
+                className="h-8 w-8 object-contain opacity-75 hover:opacity-100 transition-all duration-300 hover:scale-110 pointer-events-auto cursor-pointer z-10"
+              />
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Right Integrations Vertical Column */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={show ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.5, ease: EASE }}
+          className="absolute right-0 lg:right-8 top-[50px] sm:top-[110px] w-32 h-64 z-10 pointer-events-none hidden md:block"
+        >
+          <svg className="absolute inset-0 w-full h-full overflow-visible pointer-events-none z-0">
+            <defs>
+              <linearGradient id="rightLineGrad" x1="1" y1="0" x2="0" y2="0">
+                <stop offset="0%" stopColor="rgba(0, 245, 192, 0.4)" />
+                <stop offset="100%" stopColor="rgba(0, 245, 192, 0)" />
+              </linearGradient>
+            </defs>
+            <path id="databaseTextPath" d="M 13 13 A 72 72 0 0 1 115 13" fill="none" />
+            <text fill="rgba(0, 245, 192, 0.7)" fontSize="9" fontWeight="bold" letterSpacing="1.5" className="font-mono">
+              <textPath href="#databaseTextPath" startOffset="50%" textAnchor="middle">
+                DATABASE
+              </textPath>
+            </text>
+            {RIGHT_LOGOS.map((logo, index) => {
+              const startY = logo.y === 25 ? 64 : 192;
+              const pathD = `M 64 ${startY} L 0 ${startY} L 0 128`;
+              return (
+                <g key={`right-line-${index}`}>
+                  <path d={pathD} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
+                  <motion.path
+                    d={pathD}
+                    stroke="rgba(0, 245, 192, 0.4)" strokeWidth="1.5" fill="none"
+                    strokeDasharray="15, 60"
+                    initial={{ strokeDashoffset: 75 }}
+                    animate={{ strokeDashoffset: 0 }}
+                    transition={{ duration: 1.5, delay: index * 0.15, repeat: Infinity, ease: 'linear' }}
+                  />
+                </g>
+              );
+            })}
+            {/* Output line drops to y=410 (absolute 520), turns left to center */}
+            <g>
+              <path d={`M 0 128 L -160 128 L -160 410 L ${160 - cx} 410`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
+              <motion.path 
+                d={`M 0 128 L -160 128 L -160 410 L ${160 - cx} 410`} 
+                stroke="url(#rightLineGrad)" strokeWidth="1.5" fill="none"
+                strokeDasharray="100, 300"
+                initial={{ strokeDashoffset: 400 }}
+                animate={{ strokeDashoffset: 0 }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
+              />
+            </g>
+          </svg>
+          {RIGHT_LOGOS.map((logo, index) => (
+            <img
+              key={index}
+              src={logo.src}
+              alt={logo.alt}
+              style={{ top: `${logo.y}%`, left: `${logo.x}%` }}
+              className="absolute h-10 w-10 sm:h-12 sm:w-12 object-contain opacity-75 hover:opacity-100 transition-all duration-300 hover:scale-110 pointer-events-auto cursor-pointer -translate-x-1/2 -translate-y-1/2 z-10"
+            />
+          ))}
+        </motion.div>
+
+        {/* AI Logos Row */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={show ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, delay: 0.05, ease: EASE }}
+        className="relative z-10 -mt-10 sm:-mt-16 mb-16 sm:mb-20 flex items-center justify-center gap-6 sm:gap-8 flex-wrap"
+      >
+        <span className="absolute top-[-24px] sm:top-[-32px] left-1/2 -translate-x-1/2 text-[10px] font-bold tracking-[2px] font-mono text-[#00f5c0]/70 uppercase select-none">
+          AI Brains
+        </span>
+        {AI_LOGOS.map((logo, index) => {
+          // Lines drop straight down to absolute 650 to join the bus
+          const dx = (2 - index) * 75; // -150, -75, 0, 75, 150
+          const pathD = dx === 0 
+            ? `M 0 0 L 0 520` 
+            : `M 0 0 L 0 520 L ${-dx} 520`;
+
+          return (
+          <div key={index} className="relative flex flex-col items-center">
+            {/* The Logo Image */}
+            <img
+              src={logo.src}
+              alt={logo.alt}
+              className={`h-7 sm:h-8 w-auto object-contain opacity-75 hover:opacity-100 transition-all duration-300 hover:-translate-y-1 hover:scale-105 cursor-pointer z-10 ${logo.className}`}
+            />
+            
+            {/* Vertical Connection Line and Flowing Pulse */}
+            <div className="absolute top-[100%] left-1/2 pointer-events-none z-0">
+              <svg className="absolute inset-0 overflow-visible" width="1" height="1">
+                <defs>
+                  <linearGradient id={`fade-${index}`} x1="0" y1="0" x2="0" y2="1" gradientUnits="userSpaceOnUse" gradientTransform="scale(1, 650)">
+                    <stop offset="0%" stopColor="white" stopOpacity="1" />
+                    <stop offset="70%" stopColor="white" stopOpacity="0.45" />
+                    <stop offset="100%" stopColor="white" stopOpacity="0.3" />
+                  </linearGradient>
+                  <mask id={`mask-${index}`}>
+                    <rect x="-300" y="0" width="600" height="1000" fill={`url(#fade-${index})`} />
+                  </mask>
+                </defs>
+                <g mask={`url(#mask-${index})`}>
+                  {/* Base Track */}
+                  <path d={pathD} stroke="rgba(255, 255, 255, 0.07)" strokeWidth="1.5" fill="none" />
+                  {/* Flowing Pulse */}
+                  <motion.path
+                    d={pathD}
+                    stroke="rgba(0, 245, 192, 0.5)"
+                    strokeWidth="1.5"
+                    fill="none"
+                    strokeDasharray="40, 300"
+                    initial={{ strokeDashoffset: 340 }}
+                    animate={{ strokeDashoffset: 0 }}
+                    transition={{
+                      duration: 3 + (index % 3) * 0.5,
+                      delay: index * 0.25,
+                      repeat: Infinity,
+                      ease: 'linear',
+                    }}
+                  />
+                </g>
+              </svg>
+            </div>
+          </div>
+        )})}
+      </motion.div>
+
       {/* Welcome Banner */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={show ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.7, delay: 0.05, ease: EASE }}
-        className="relative z-10 mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-4 py-1.5 text-center text-[11px] sm:text-xs font-semibold tracking-wide max-w-[92vw]"
+        transition={{ duration: 0.7, delay: 0.2, ease: EASE }}
+        className="relative z-20 mb-8 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-4 py-1.5 text-center text-[11px] sm:text-xs font-semibold tracking-wide max-w-[92vw]"
       >
         <span className="shimmer-text-emerald bg-clip-text text-transparent">
           Empowering SME Owners with Simple and Effective AI Automations
@@ -121,7 +518,7 @@ export default function Hero({ show }: HeroProps) {
       </motion.div>
 
       {/* Headline */}
-      <div className="relative w-full max-w-4xl px-4 sm:px-0">
+      <div className="relative w-full max-w-4xl px-4 sm:px-0 z-20">
         <Headline show={show} />
       </div>
 
@@ -130,7 +527,7 @@ export default function Hero({ show }: HeroProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={show ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, delay: 0.95, ease: EASE }}
-        className="relative z-10 mt-6 max-w-2xl text-center text-base sm:text-lg md:text-xl leading-relaxed text-emerald-100/80 font-medium flex flex-col items-center gap-1"
+        className="relative z-20 mt-6 max-w-2xl text-center text-base sm:text-lg md:text-xl leading-relaxed text-emerald-100/80 font-medium flex flex-col items-center gap-1"
       >
         <span>One Agentic Solution for all your</span>
         <span className="inline-grid grid-cols-1 grid-rows-1 justify-items-center h-[1.25em] align-middle overflow-hidden relative min-w-[160px] sm:min-w-[200px] whitespace-nowrap text-[#00f5c0] font-bold drop-shadow-[0_0_12px_rgba(0,245,192,0.3)]">
@@ -159,7 +556,7 @@ export default function Hero({ show }: HeroProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={show ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, delay: 1.1, ease: EASE }}
-        className="relative z-10 mt-8 flex flex-wrap items-center justify-center gap-4"
+        className="relative z-20 mt-8 flex flex-wrap items-center justify-center gap-4"
       >
         <a
           href="#how-it-works"
@@ -174,6 +571,10 @@ export default function Hero({ show }: HeroProps) {
           Book Strategy Call
         </a>
       </motion.div>
+
+
+
+      </div>
     </section>
   );
 }

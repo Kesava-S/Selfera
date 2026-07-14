@@ -61,8 +61,7 @@ export default function Industries() {
             ))}
           </div>
 
-          {/* Right Side: Founder Avatar (5 cols on lg) */}
-          <div className="lg:col-span-5 w-full flex justify-center mt-8 lg:mt-0">
+          <div className="lg:col-span-5 w-full flex justify-center mt-8 lg:mt-0 overflow-hidden">
             <HeroAvatar
               show={isInView}
               className="pointer-events-none relative w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[350px] mx-auto flex justify-center items-center"

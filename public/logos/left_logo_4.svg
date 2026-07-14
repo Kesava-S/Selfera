@@ -1,0 +1,21 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Banknote Base -->
+  <rect x="12" y="30" width="76" height="42" rx="6" fill="#1a5653" />
+  
+  <!-- Dotted border -->
+  <rect x="18" y="36" width="64" height="30" rx="3" fill="none" stroke="#84b8b2" strokeWidth="2.5" strokeDasharray="6, 6" />
+  
+  <!-- Center circle with £ -->
+  <circle cx="50" cy="51" r="13" fill="#5e9d9b" />
+  <text x="50" y="58" fill="white" fontSize="18" fontWeight="bold" fontFamily="sans-serif" textAnchor="middle">£</text>
+  
+  <!-- Side dots -->
+  <circle cx="28" cy="51" r="4" fill="#84b8b2" />
+  <circle cx="72" cy="51" r="4" fill="#84b8b2" />
+  
+  <!-- Orange Circle with User -->
+  <circle cx="75" cy="72" r="16" fill="#e99f38" />
+  <!-- User icon -->
+  <circle cx="75" cy="66" r="5" fill="#603b0d" />
+  <path d="M 66 80 a 9 9 0 0 1 18 0 z" fill="#603b0d" />
+</svg>

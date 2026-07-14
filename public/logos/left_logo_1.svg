@@ -1,0 +1,21 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Clipboard Body -->
+  <rect x="20" y="20" width="56" height="66" rx="6" fill="#1a5653" />
+  <!-- White Paper -->
+  <rect x="26" y="26" width="44" height="54" rx="2" fill="white" />
+  <!-- Clip at top -->
+  <rect x="38" y="14" width="20" height="12" rx="3" fill="#144340" />
+  <rect x="41" y="11" width="14" height="6" rx="2" fill="#1a5653" />
+  <!-- Text lines -->
+  <rect x="32" y="32" width="26" height="4" rx="2" fill="#1a5653" />
+  <rect x="32" y="39" width="18" height="4" rx="2" fill="#a1c6c0" />
+  <!-- Bar chart -->
+  <rect x="32" y="58" width="7" height="17" rx="1.5" fill="#84b8b2" />
+  <rect x="43" y="49" width="7" height="26" rx="1.5" fill="#5e9d9b" />
+  <rect x="54" y="40" width="7" height="35" rx="1.5" fill="#1a5653" />
+  
+  <!-- Orange Circle overlay -->
+  <circle cx="75" cy="75" r="16" fill="#e99f38" />
+  <!-- Brown pie/moon (looks like a clock wedge or moon) -->
+  <path d="M 75 75 L 75 62 A 13 13 0 1 0 88 75 Z" fill="#603b0d" />
+</svg>

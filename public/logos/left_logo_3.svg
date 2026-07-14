@@ -1,0 +1,20 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Document body -->
+  <path d="M 22 15 h 40 l 16 16 v 54 a 4 4 0 0 1 -4 4 h -48 a 4 4 0 0 1 -4 -4 z" fill="#1a5653" />
+  <!-- Folded corner -->
+  <polygon points="62,15 62,31 78,31" fill="#5e9d9b" />
+  
+  <!-- Circle with £ -->
+  <circle cx="42" cy="38" r="11" fill="#5e9d9b" />
+  <text x="42" y="44" fill="white" fontSize="18" fontWeight="bold" fontFamily="sans-serif" textAnchor="middle">£</text>
+  
+  <!-- Text Lines -->
+  <rect x="30" y="55" width="38" height="4" rx="2" fill="white" />
+  <rect x="30" y="63" width="32" height="4" rx="2" fill="#84b8b2" />
+  <rect x="30" y="71" width="28" height="4" rx="2" fill="#84b8b2" />
+  <rect x="30" y="79" width="22" height="4" rx="2" fill="#84b8b2" />
+  
+  <!-- Orange Circle with Checkmark -->
+  <circle cx="75" cy="75" r="16" fill="#e99f38" />
+  <polyline points="67,75 73,81 83,67" stroke="#603b0d" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+</svg>

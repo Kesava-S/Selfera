@@ -1,0 +1,17 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Cart Frame -->
+  <path d="M 15 20 h 10 l 12 40 h 38 l 10 -30 h -52" stroke="#1a5653" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+  <!-- Cart Basket Fill -->
+  <path d="M 39 33 h 42 l -8 24 h -30 z" fill="#5e9d9b" />
+  <!-- Basket Slots -->
+  <rect x="44" y="40" width="5" height="12" rx="2.5" fill="white" />
+  <rect x="54" y="40" width="5" height="12" rx="2.5" fill="white" />
+  <rect x="64" y="40" width="5" height="12" rx="2.5" fill="white" />
+  <!-- Wheels -->
+  <circle cx="44" cy="72" r="7" fill="#1a5653" />
+  <circle cx="68" cy="72" r="7" fill="#1a5653" />
+  
+  <!-- Orange Circle with £ -->
+  <circle cx="75" cy="75" r="15" fill="#e99f38" />
+  <text x="75" y="82" fill="#603b0d" fontSize="22" fontWeight="bold" fontFamily="sans-serif" textAnchor="middle">£</text>
+</svg>

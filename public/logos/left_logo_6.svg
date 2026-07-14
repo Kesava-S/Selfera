@@ -1,0 +1,12 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Shield Back -->
+  <path d="M 20 20 L 50 10 L 80 20 V 45 C 80 65 50 85 50 85 C 50 85 20 65 20 45 Z" fill="#1a5653" />
+  <!-- Shield Front -->
+  <path d="M 28 26 L 50 18 L 72 26 V 45 C 72 60 50 75 50 75 C 50 75 28 60 28 45 Z" fill="#5e9d9b" />
+  <!-- Checkmark -->
+  <polyline points="38,48 46,56 62,38" stroke="white" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+  <!-- Ribbon in Orange Circle -->
+  <circle cx="75" cy="75" r="15" fill="#e99f38" />
+  <path d="M 68 78 l -2 12 l 6 -4 l 6 4 l -2 -12 z" fill="#603b0d" />
+  <circle cx="72" cy="72" r="7" fill="#603b0d" />
+</svg>

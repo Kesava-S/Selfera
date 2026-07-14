@@ -1,0 +1,14 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark Green Tab on the Left -->
+  <rect x="8" y="26" width="18" height="48" rx="9" fill="#0c8b54" />
+  
+  <!-- Green Base Card -->
+  <rect x="15" y="20" width="77" height="60" rx="16" fill="#1cb85c" />
+  
+  <!-- Blue Overlapping Sheet -->
+  <rect x="15.5" y="26.5" width="46" height="47" rx="8" fill="#58bcee" opacity="0.9" />
+  
+  <!-- White Plus Sign -->
+  <rect x="70" y="38" width="6" height="36" rx="3" fill="#ffffff" />
+  <rect x="40" y="59" width="45" height="6" rx="3" fill="#ffffff" />
+</svg>
