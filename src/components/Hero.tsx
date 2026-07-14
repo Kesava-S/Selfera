@@ -153,6 +153,7 @@ export default function Hero({ show }: HeroProps) {
 
   const containerWidth = Math.min(windowWidth, 1200);
   const cx = containerWidth / 2;
+  const isMobile = windowWidth < 768;
 
   return (
     <section
@@ -168,7 +169,7 @@ export default function Hero({ show }: HeroProps) {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={show ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.4, ease: EASE }}
-          className="absolute -left-12 lg:-left-4 top-[-90px] sm:top-[-60px] w-32 h-32 z-10 pointer-events-none hidden md:block"
+          className="absolute left-1 md:-left-12 lg:-left-4 top-[-90px] sm:top-[-60px] w-16 h-16 md:w-32 md:h-32 z-10 pointer-events-none block"
         >
           <svg className="absolute inset-0 w-full h-full overflow-visible pointer-events-none z-0">
             <defs>
@@ -177,8 +178,12 @@ export default function Hero({ show }: HeroProps) {
                 <stop offset="100%" stopColor="rgba(0, 245, 192, 0)" />
               </linearGradient>
             </defs>
-            <path id="marketingTextPath" d="M 13 13 A 72 72 0 0 1 115 13" fill="none" />
-            <text fill="rgba(0, 245, 192, 0.7)" fontSize="9" fontWeight="bold" letterSpacing="1.5" className="font-mono">
+            <path 
+              id="marketingTextPath" 
+              d={isMobile ? "M 6 6 A 36 36 0 0 1 58 6" : "M 13 13 A 72 72 0 0 1 115 13"} 
+              fill="none" 
+            />
+            <text fill="rgba(0, 245, 192, 0.7)" fontSize={isMobile ? "6" : "9"} fontWeight="bold" letterSpacing="1.5" className="font-mono">
               <textPath href="#marketingTextPath" startOffset="50%" textAnchor="middle">
                 MARKETING
               </textPath>
@@ -196,11 +201,10 @@ export default function Hero({ show }: HeroProps) {
                 />
               </g>
             ))}
-            {/* Output line drops to y=580 (absolute 520), turns right to center */}
             <g>
-              <path d={`M 64 64 L 296 64 L 296 580 L ${cx + 16} 580`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
+              <path d={isMobile ? `M 32 32 L 76 32 L 76 580 L ${cx - 4} 580` : `M 64 64 L 296 64 L 296 580 L ${cx + 16} 580`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
               <motion.path 
-                d={`M 64 64 L 296 64 L 296 580 L ${cx + 16} 580`} 
+                d={isMobile ? `M 32 32 L 76 32 L 76 580 L ${cx - 4} 580` : `M 64 64 L 296 64 L 296 580 L ${cx + 16} 580`} 
                 stroke="url(#channelLineGrad)" strokeWidth="1.5" fill="none"
                 strokeDasharray="100, 300"
                 initial={{ strokeDashoffset: 400 }}
@@ -214,8 +218,11 @@ export default function Hero({ show }: HeroProps) {
               key={index}
               src={logo.src}
               alt={logo.alt}
-              style={{ top: `${logo.y}%`, left: `${logo.x}%` }}
-              className={`absolute h-8 w-8 sm:h-9 sm:w-9 object-contain opacity-75 hover:opacity-100 transition-all duration-300 hover:scale-110 pointer-events-auto cursor-pointer -translate-x-1/2 -translate-y-1/2 z-10 ${logo.className || ''}`}
+              className={`absolute h-4 md:h-8 w-auto object-contain opacity-75 hover:opacity-100 transition-all duration-300 hover:scale-110 pointer-events-auto cursor-pointer -translate-x-1/2 -translate-y-1/2 z-10 ${logo.className || ''}`}
+              style={{
+                left: `${logo.x}%`,
+                top: `${logo.y}%`,
+              }}
             />
           ))}
         </motion.div>
@@ -225,7 +232,7 @@ export default function Hero({ show }: HeroProps) {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={show ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.45, ease: EASE }}
-          className="absolute -left-4 lg:left-4 top-[90px] sm:top-[130px] w-16 h-16 z-10 pointer-events-none hidden md:block"
+          className="absolute left-4 md:-left-4 lg:left-4 top-[90px] sm:top-[130px] w-12 h-12 md:w-16 md:h-16 z-10 pointer-events-none block"
         >
           <svg className="absolute inset-0 w-full h-full overflow-visible pointer-events-none z-0">
             <defs>
@@ -234,8 +241,12 @@ export default function Hero({ show }: HeroProps) {
                 <stop offset="100%" stopColor="rgba(0, 245, 192, 0)" />
               </linearGradient>
             </defs>
-            <path id="financeTextPath" d="M 5 5 A 38 38 0 0 1 59 5" fill="none" />
-            <text fill="rgba(0, 245, 192, 0.7)" fontSize="8" fontWeight="bold" letterSpacing="1.2" className="font-mono">
+            <path 
+              id="financeTextPath" 
+              d={isMobile ? "M 4 4 A 26 26 0 0 1 44 4" : "M 6 6 A 36 36 0 0 1 58 6"} 
+              fill="none" 
+            />
+            <text fill="rgba(0, 245, 192, 0.7)" fontSize={isMobile ? "5" : "7"} fontWeight="bold" letterSpacing="1.5" className="font-mono">
               <textPath href="#financeTextPath" startOffset="50%" textAnchor="middle">
                 FINANCE
               </textPath>
@@ -253,11 +264,10 @@ export default function Hero({ show }: HeroProps) {
                 />
               </g>
             ))}
-            {/* Output line drops to y=390 (absolute 520), turns right to center */}
             <g>
-              <path d={`M 32 32 L 224 32 L 224 390 L ${cx - 16} 390`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
+              <path d={isMobile ? `M 24 24 L 48 24 L 48 390 L ${cx - 16} 390` : `M 32 32 L 224 32 L 224 390 L ${cx - 16} 390`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
               <motion.path 
-                d={`M 32 32 L 224 32 L 224 390 L ${cx - 16} 390`} 
+                d={isMobile ? `M 24 24 L 48 24 L 48 390 L ${cx - 16} 390` : `M 32 32 L 224 32 L 224 390 L ${cx - 16} 390`} 
                 stroke="url(#bottomLeftLineGrad)" strokeWidth="1.5" fill="none"
                 strokeDasharray="100, 300"
                 initial={{ strokeDashoffset: 400 }}
@@ -271,8 +281,11 @@ export default function Hero({ show }: HeroProps) {
               key={index}
               src={logo.src}
               alt={logo.alt}
-              style={{ top: `${logo.y}%`, left: `${logo.x}%` }}
-              className={`absolute h-5 w-5 sm:h-6 sm:w-6 object-contain opacity-75 hover:opacity-100 transition-all duration-300 hover:scale-110 pointer-events-auto cursor-pointer -translate-x-1/2 -translate-y-1/2 z-10`}
+              className="absolute h-3.5 md:h-6 w-auto object-contain opacity-75 hover:opacity-100 transition-all duration-300 hover:scale-110 pointer-events-auto cursor-pointer -translate-x-1/2 -translate-y-1/2 z-10"
+              style={{
+                left: `${logo.x}%`,
+                top: `${logo.y}%`,
+              }}
             />
           ))}
         </motion.div>
@@ -282,7 +295,7 @@ export default function Hero({ show }: HeroProps) {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={show ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.5, ease: EASE }}
-          className="absolute -left-8 lg:left-0 top-[230px] sm:top-[280px] w-24 h-24 z-10 pointer-events-none hidden md:block"
+          className="absolute left-2 md:-left-8 lg:left-0 top-[200px] sm:top-[280px] w-16 h-16 md:w-24 md:h-24 z-10 pointer-events-none block"
         >
           <svg className="absolute inset-0 w-full h-full overflow-visible pointer-events-none z-0">
             <defs>
@@ -291,13 +304,17 @@ export default function Hero({ show }: HeroProps) {
                 <stop offset="100%" stopColor="rgba(0, 245, 192, 0)" />
               </linearGradient>
             </defs>
-            <path id="managementTextPath" d="M 10 10 A 54 54 0 0 1 86 10" fill="none" />
-            <text fill="rgba(0, 245, 192, 0.7)" fontSize="8" fontWeight="bold" letterSpacing="1.2" className="font-mono">
+            <path 
+              id="managementTextPath" 
+              d={isMobile ? "M 6 6 A 36 36 0 0 1 58 6" : "M 10 10 A 54 54 0 0 1 86 10"} 
+              fill="none" 
+            />
+            <text fill="rgba(0, 245, 192, 0.7)" fontSize={isMobile ? "6" : "8"} fontWeight="bold" letterSpacing="1.5" className="font-mono">
               <textPath href="#managementTextPath" startOffset="50%" textAnchor="middle">
                 MANAGEMENT
               </textPath>
             </text>
-            {THIRD_LEFT_LOGOS.map((logo, index) => (
+            {THREE_LEFT_LOGOS.map((logo, index) => (
               <g key={`third-line-${index}`}>
                 <line x1={`${logo.x}%`} y1={`${logo.y}%`} x2="50%" y2="50%" stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" />
                 <motion.line
@@ -310,11 +327,10 @@ export default function Hero({ show }: HeroProps) {
                 />
               </g>
             ))}
-            {/* Output line drops to y=240 (absolute 520), turns right to center */}
             <g>
-              <path d={`M 48 48 L 200 48 L 200 240 L ${cx} 240`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
+              <path d={isMobile ? `M 32 32 L 44 32 L 44 240 L ${cx - 4} 240` : `M 48 48 L 200 48 L 200 240 L ${cx} 240`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
               <motion.path 
-                d={`M 48 48 L 200 48 L 200 240 L ${cx} 240`} 
+                d={isMobile ? `M 32 32 L 44 32 L 44 240 L ${cx - 4} 240` : `M 48 48 L 200 48 L 200 240 L ${cx} 240`} 
                 stroke="url(#thirdLeftLineGrad)" strokeWidth="1.5" fill="none"
                 strokeDasharray="100, 300"
                 initial={{ strokeDashoffset: 400 }}
@@ -323,13 +339,16 @@ export default function Hero({ show }: HeroProps) {
               />
             </g>
           </svg>
-          {THIRD_LEFT_LOGOS.map((logo, index) => (
+          {THREE_LEFT_LOGOS.map((logo, index) => (
             <img
               key={index}
               src={logo.src}
               alt={logo.alt}
-              style={{ top: `${logo.y}%`, left: `${logo.x}%` }}
-              className={`absolute h-7 w-7 sm:h-8 sm:w-8 object-contain opacity-75 hover:opacity-100 transition-all duration-300 hover:scale-110 pointer-events-auto cursor-pointer -translate-x-1/2 -translate-y-1/2 z-10`}
+              className="absolute h-3.5 md:h-6 w-auto object-contain opacity-75 hover:opacity-100 transition-all duration-300 hover:scale-110 pointer-events-auto cursor-pointer -translate-x-1/2 -translate-y-1/2 z-10"
+              style={{
+                left: `${logo.x}%`,
+                top: `${logo.y}%`,
+              }}
             />
           ))}
         </motion.div>
@@ -339,7 +358,7 @@ export default function Hero({ show }: HeroProps) {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={show ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.55, ease: EASE }}
-          className="absolute -left-12 lg:-left-4 top-[370px] sm:top-[430px] w-32 h-20 z-10 pointer-events-none hidden md:block flex flex-col justify-end pb-1 items-center"
+          className="absolute left-1 md:-left-12 lg:-left-4 top-[310px] sm:top-[430px] w-20 h-16 md:w-32 md:h-20 z-10 pointer-events-none block flex flex-col justify-end pb-1 items-center"
         >
           <svg className="absolute inset-0 w-full h-full overflow-visible pointer-events-none z-0">
             <defs>
@@ -348,17 +367,20 @@ export default function Hero({ show }: HeroProps) {
                 <stop offset="100%" stopColor="rgba(0, 245, 192, 0)" />
               </linearGradient>
             </defs>
-            <path id="reportingTextPath" d="M 24 16 A 56 56 0 0 1 104 16" fill="none" />
-            <text fill="rgba(0, 245, 192, 0.7)" fontSize="9" fontWeight="bold" letterSpacing="1.5" className="font-mono">
+            <path 
+              id="reportingTextPath" 
+              d={isMobile ? "M 12 10 A 38 38 0 0 1 68 10" : "M 24 16 A 56 56 0 0 1 104 16"} 
+              fill="none" 
+            />
+            <text fill="rgba(0, 245, 192, 0.7)" fontSize={isMobile ? "6" : "9"} fontWeight="bold" letterSpacing="1.5" className="font-mono">
               <textPath href="#reportingTextPath" startOffset="50%" textAnchor="middle">
                 REPORTING
               </textPath>
             </text>
-            {/* Output line goes right to 320, drops to absolute 520 (y=90), and turns right to center */}
             <g>
-              <path d={`M 64 40 L 336 40 L 336 90 L ${cx + 16} 90`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
+              <path d={isMobile ? `M 40 24 L 92 24 L 92 90 L ${cx - 4} 90` : `M 64 40 L 336 40 L 336 90 L ${cx + 16} 90`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
               <motion.path 
-                d={`M 64 40 L 336 40 L 336 90 L ${cx + 16} 90`} 
+                d={isMobile ? `M 40 24 L 92 24 L 92 90 L ${cx - 4} 90` : `M 64 40 L 336 40 L 336 90 L ${cx + 16} 90`} 
                 stroke="url(#fourthLeftLineGrad)" strokeWidth="1.5" fill="none"
                 strokeDasharray="100, 300"
                 initial={{ strokeDashoffset: 400 }}
@@ -373,7 +395,7 @@ export default function Hero({ show }: HeroProps) {
                 key={index}
                 src={logo.src}
                 alt={logo.alt}
-                className="h-8 w-8 object-contain opacity-75 hover:opacity-100 transition-all duration-300 hover:scale-110 pointer-events-auto cursor-pointer z-10"
+                className="h-4 md:h-8 w-auto object-contain opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-105 pointer-events-auto cursor-pointer z-10"
               />
             ))}
           </div>
@@ -384,24 +406,28 @@ export default function Hero({ show }: HeroProps) {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={show ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.5, ease: EASE }}
-          className="absolute right-0 lg:right-8 top-[50px] sm:top-[110px] w-32 h-64 z-10 pointer-events-none hidden md:block"
+          className="absolute right-1 md:right-0 lg:right-8 top-[100px] sm:top-[110px] w-16 h-40 md:w-32 md:h-64 z-10 pointer-events-none block"
         >
           <svg className="absolute inset-0 w-full h-full overflow-visible pointer-events-none z-0">
             <defs>
-              <linearGradient id="rightLineGrad" x1="1" y1="0" x2="0" y2="0">
+              <linearGradient id="rightLineGrad" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="rgba(0, 245, 192, 0.4)" />
                 <stop offset="100%" stopColor="rgba(0, 245, 192, 0)" />
               </linearGradient>
             </defs>
-            <path id="databaseTextPath" d="M 13 13 A 72 72 0 0 1 115 13" fill="none" />
-            <text fill="rgba(0, 245, 192, 0.7)" fontSize="9" fontWeight="bold" letterSpacing="1.5" className="font-mono">
+            <path 
+              id="databaseTextPath" 
+              d={isMobile ? "M 12 10 A 30 30 0 0 1 52 10" : "M 24 16 A 56 56 0 0 1 104 16"} 
+              fill="none" 
+            />
+            <text fill="rgba(0, 245, 192, 0.7)" fontSize={isMobile ? "6" : "9"} fontWeight="bold" letterSpacing="1.5" className="font-mono">
               <textPath href="#databaseTextPath" startOffset="50%" textAnchor="middle">
                 DATABASE
               </textPath>
             </text>
             {RIGHT_LOGOS.map((logo, index) => {
-              const startY = logo.y === 25 ? 64 : 192;
-              const pathD = `M 64 ${startY} L 0 ${startY} L 0 128`;
+              const startY = logo.y === 25 ? (isMobile ? 32 : 64) : (isMobile ? 96 : 192);
+              const pathD = isMobile ? `M 32 ${startY} L 0 ${startY} L 0 64` : `M 64 ${startY} L 0 ${startY} L 0 128`;
               return (
                 <g key={`right-line-${index}`}>
                   <path d={pathD} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
@@ -416,11 +442,10 @@ export default function Hero({ show }: HeroProps) {
                 </g>
               );
             })}
-            {/* Output line drops to y=410 (absolute 520), turns left to center */}
             <g>
-              <path d={`M 0 128 L -160 128 L -160 410 L ${160 - cx} 410`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
+              <path d={isMobile ? `M 0 64 L -40 64 L -40 410 L ${68 - cx} 410` : `M 0 128 L -160 128 L -160 410 L ${160 - cx} 410`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
               <motion.path 
-                d={`M 0 128 L -160 128 L -160 410 L ${160 - cx} 410`} 
+                d={isMobile ? `M 0 64 L -40 64 L -40 410 L ${68 - cx} 410` : `M 0 128 L -160 128 L -160 410 L ${160 - cx} 410`} 
                 stroke="url(#rightLineGrad)" strokeWidth="1.5" fill="none"
                 strokeDasharray="100, 300"
                 initial={{ strokeDashoffset: 400 }}
@@ -434,8 +459,11 @@ export default function Hero({ show }: HeroProps) {
               key={index}
               src={logo.src}
               alt={logo.alt}
-              style={{ top: `${logo.y}%`, left: `${logo.x}%` }}
-              className="absolute h-10 w-10 sm:h-12 sm:w-12 object-contain opacity-75 hover:opacity-100 transition-all duration-300 hover:scale-110 pointer-events-auto cursor-pointer -translate-x-1/2 -translate-y-1/2 z-10"
+              className="absolute h-4 md:h-8 w-auto object-contain opacity-75 hover:opacity-100 transition-all duration-300 hover:-translate-y-1 hover:scale-105 cursor-pointer z-10"
+              style={{
+                left: `${logo.x}%`,
+                top: `${logo.y}%`,
+              }}
             />
           ))}
         </motion.div>
@@ -452,10 +480,11 @@ export default function Hero({ show }: HeroProps) {
         </span>
         {AI_LOGOS.map((logo, index) => {
           // Lines drop straight down to absolute 650 to join the bus
-          const dx = (2 - index) * 75; // -150, -75, 0, 75, 150
+          const dx = (2 - index) * (isMobile ? 48 : 75); // -150, -75, 0, 75, 150
+          const targetY = isMobile ? 520 : 496;
           const pathD = dx === 0 
-            ? `M 0 0 L 0 496` 
-            : `M 0 0 L 0 496 L ${-dx} 496`;
+            ? `M 0 0 L 0 ${targetY}` 
+            : `M 0 0 L 0 ${targetY} L ${-dx} ${targetY}`;
 
           return (
           <div key={index} className="relative flex flex-col items-center">
@@ -510,7 +539,7 @@ export default function Hero({ show }: HeroProps) {
         initial={{ opacity: 0, y: 16 }}
         animate={show ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7, delay: 0.2, ease: EASE }}
-        className="relative z-20 mb-8 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-4 py-1.5 text-center text-[11px] sm:text-xs font-semibold tracking-wide max-w-[92vw]"
+        className="relative z-20 mb-8 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-4 py-1.5 text-center text-[10px] sm:text-xs font-semibold tracking-wide max-w-[52vw] md:max-w-none"
       >
         <span className="shimmer-text-emerald bg-clip-text text-transparent">
           Empowering SME Owners with Simple and Effective AI Automations
@@ -518,7 +547,7 @@ export default function Hero({ show }: HeroProps) {
       </motion.div>
 
       {/* Headline */}
-      <div className="relative w-full max-w-4xl px-4 sm:px-0 z-20">
+      <div className="relative w-full max-w-4xl px-[84px] md:px-0 z-20">
         <Headline show={show} />
       </div>
 
@@ -527,7 +556,7 @@ export default function Hero({ show }: HeroProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={show ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, delay: 0.95, ease: EASE }}
-        className="relative z-20 mt-6 max-w-2xl text-center text-base sm:text-lg md:text-xl leading-relaxed text-emerald-100/80 font-medium flex flex-col items-center gap-1"
+        className="relative z-20 mt-6 max-w-2xl text-center text-sm sm:text-lg md:text-xl leading-relaxed text-emerald-100/80 font-medium flex flex-col items-center gap-1 px-[84px] md:px-0"
       >
         <span>One Agentic Solution for all your</span>
         <span className="inline-grid grid-cols-1 grid-rows-1 justify-items-center h-[1.25em] align-middle overflow-hidden relative min-w-[160px] sm:min-w-[200px] whitespace-nowrap text-[#00f5c0] font-bold drop-shadow-[0_0_12px_rgba(0,245,192,0.3)]">
