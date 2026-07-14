@@ -78,3 +78,31 @@ body {
 .animate-marquee-left-to-right:hover {
   animation-play-state: paused;
 }
+
+/* Text Shimmer/Shine Effect (Fast sweep, 10s cycle delay) */
+@keyframes text-shine {
+  0% {
+    background-position: 150% 0;
+  }
+  15% {
+    background-position: -50% 0;
+  }
+  100% {
+    background-position: -50% 0;
+  }
+}
+
+.shimmer-text {
+  background-color: #005fc0; /* base text color */
+  background-image: linear-gradient(
+    to right,
+    transparent 35%,
+    #42a1ff 45%,
+    #ffffff 50%,
+    #42a1ff 55%,
+    transparent 65%
+  );
+  background-size: 300% 100%;
+  background-repeat: no-repeat;
+  animation: text-shine 10s linear infinite;
+}

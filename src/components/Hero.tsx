@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import HeroAvatar from './HeroAvatar';
 
@@ -63,24 +63,58 @@ function Headline({ show }: { show: boolean }) {
 export default function Hero({ show }: HeroProps) {
   const WORDS = ['Bookings', 'Follow-Ups', 'Data Management', 'Finance', 'Reporting'];
   const [wordIndex, setWordIndex] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setWordIndex((prev) => (prev + 1) % WORDS.length);
-    }, 2800);
-    return () => clearInterval(interval);
+    let timeoutId: any;
+
+    const tick = () => {
+      setWordIndex((prevIndex) => {
+        const nextIndex = (prevIndex + 1) % WORDS.length;
+        // 2.5 seconds stay for Bookings (index 0) to allow for the elastic pop, 1.5 seconds for others
+        const nextDelay = nextIndex === 0 ? 2500 : 1500;
+        timeoutId = setTimeout(tick, nextDelay);
+        return nextIndex;
+      });
+    };
+
+    // Initialize the first timer
+    timeoutId = setTimeout(tick, 2500);
+
+    // Reset loop back to Bookings (index 0) whenever the user scrolls back to the homepage Hero
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setWordIndex(0);
+          clearTimeout(timeoutId);
+          timeoutId = setTimeout(tick, 2500);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      clearTimeout(timeoutId);
+      observer.disconnect();
+    };
   }, []);
 
   return (
-    <section className="relative z-10 flex min-h-[100vh] flex-col items-center justify-center px-5 pt-24 pb-16">
+    <section ref={sectionRef} className="relative z-10 flex min-h-[100vh] flex-col items-center justify-center px-5 pt-24 pb-16">
       {/* Welcome Banner */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={show ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7, delay: 0.05, ease: EASE }}
-        className="relative z-10 mb-6 inline-flex items-center gap-2 rounded-full border border-brand-blue/15 bg-brand-blue/5 px-4 py-1.5 text-center text-[11px] sm:text-xs font-semibold tracking-wide text-brand-deep max-w-[92vw]"
+        className="relative z-10 mb-6 inline-flex items-center gap-2 rounded-full border border-brand-blue/15 bg-brand-blue/5 px-4 py-1.5 text-center text-[11px] sm:text-xs font-semibold tracking-wide max-w-[92vw]"
       >
-        Welcome to Selfera! Empowering SME Owners with Simple and Effective AI Automations
+        <span className="shimmer-text bg-clip-text text-transparent">
+          Empowering SME Owners with Simple and Effective AI Automations
+        </span>
       </motion.div>
 
       {/* Headline with the avatar parked slightly behind its right end */}
@@ -93,24 +127,44 @@ export default function Hero({ show }: HeroProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={show ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, delay: 0.95, ease: EASE }}
-        className="relative z-10 mt-6 max-w-2xl text-center text-base sm:text-lg md:text-xl leading-relaxed text-ink-secondary font-medium"
+        className="relative z-10 mt-6 max-w-2xl text-center text-base sm:text-lg md:text-xl leading-relaxed text-ink-secondary font-medium flex flex-col items-center gap-1"
       >
-        The agentic dashboard for{' '}
-        <span className="inline-grid grid-cols-1 grid-rows-1 justify-items-center h-[1.5em] align-middle overflow-hidden relative min-w-[170px] sm:min-w-[210px] text-brand-blue font-bold">
+        <span>One Agentic Solution for all your</span>
+        <span className="inline-grid grid-cols-1 grid-rows-1 justify-items-center h-[1.25em] align-middle overflow-hidden relative min-w-[150px] sm:min-w-[185px] text-brand-blue font-bold">
           <AnimatePresence mode="wait">
             <motion.span
               key={WORDS[wordIndex]}
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -20, opacity: 0 }}
-              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              initial={
+                wordIndex === 0
+                  ? { y: 24, scale: 0.8, opacity: 0 }
+                  : { y: 24, scale: 0.9, opacity: 0 }
+              }
+              animate={
+                wordIndex === 0
+                  ? {
+                      y: 0,
+                      scale: [1, 1.08, 0.96, 1.03, 1], // elastic spring-like bounce on pop
+                      opacity: 1,
+                    }
+                  : { y: 0, scale: 1, opacity: 1 }
+              }
+              exit={{ y: -24, scale: 0.85, opacity: 0 }}
+              transition={
+                wordIndex === 0
+                  ? {
+                      y: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
+                      scale: { duration: 0.65, ease: 'easeInOut' },
+                      opacity: { duration: 0.25 },
+                    }
+                  : { duration: 0.22, ease: [0.34, 1.56, 0.64, 1] }
+              }
               className="[grid-area:1/1]"
             >
-              ({WORDS[wordIndex]})
+              {WORDS[wordIndex]}
             </motion.span>
           </AnimatePresence>
-        </span>{' '}
-        built for you.
+        </span>
+        <span>built for you</span>
       </motion.p>
 
       <motion.div
@@ -120,10 +174,10 @@ export default function Hero({ show }: HeroProps) {
         className="relative z-10 mt-8 flex flex-wrap items-center justify-center gap-4"
       >
         <a
-          href="#roi"
+          href="#how-it-works"
           className="rounded-full bg-brand-blue px-7 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-deep hover:scale-[1.04] hover:shadow-lg hover:shadow-brand-blue/30 active:scale-95"
         >
-          Calculate Savings
+          See How It Works
         </a>
         <a
           href="#booking"
