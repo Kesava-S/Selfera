@@ -201,10 +201,11 @@ export default function Hero({ show }: HeroProps) {
                 />
               </g>
             ))}
+            {/* Output line drops to y=580 (absolute 520), turns right to center */}
             <g>
-              <path d={isMobile ? `M 32 32 L 76 32 L 76 580 L ${cx - 4} 580` : `M 64 64 L 296 64 L 296 580 L ${cx + 16} 580`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
+              <path d={isMobile ? `M 32 32 L 76 32 L 76 610 L ${cx - 4} 610` : `M 64 64 L 296 64 L 296 580 L ${cx + 16} 580`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
               <motion.path 
-                d={isMobile ? `M 32 32 L 76 32 L 76 580 L ${cx - 4} 580` : `M 64 64 L 296 64 L 296 580 L ${cx + 16} 580`} 
+                d={isMobile ? `M 32 32 L 76 32 L 76 610 L ${cx - 4} 610` : `M 64 64 L 296 64 L 296 580 L ${cx + 16} 580`} 
                 stroke="url(#channelLineGrad)" strokeWidth="1.5" fill="none"
                 strokeDasharray="100, 300"
                 initial={{ strokeDashoffset: 400 }}
@@ -264,10 +265,11 @@ export default function Hero({ show }: HeroProps) {
                 />
               </g>
             ))}
+            {/* Output line drops to y=390 (absolute 520), turns right to center */}
             <g>
-              <path d={isMobile ? `M 24 24 L 48 24 L 48 390 L ${cx - 16} 390` : `M 32 32 L 224 32 L 224 390 L ${cx - 16} 390`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
+              <path d={isMobile ? `M 24 24 L 48 24 L 48 430 L ${cx - 16} 430` : `M 32 32 L 224 32 L 224 390 L ${cx - 16} 390`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
               <motion.path 
-                d={isMobile ? `M 24 24 L 48 24 L 48 390 L ${cx - 16} 390` : `M 32 32 L 224 32 L 224 390 L ${cx - 16} 390`} 
+                d={isMobile ? `M 24 24 L 48 24 L 48 430 L ${cx - 16} 430` : `M 32 32 L 224 32 L 224 390 L ${cx - 16} 390`} 
                 stroke="url(#bottomLeftLineGrad)" strokeWidth="1.5" fill="none"
                 strokeDasharray="100, 300"
                 initial={{ strokeDashoffset: 400 }}
@@ -333,10 +335,11 @@ export default function Hero({ show }: HeroProps) {
                 />
               </g>
             ))}
+            {/* Output line drops to y=240 (absolute 520), turns right to center */}
             <g>
-              <path d={isMobile ? `M 32 32 L 44 32 L 44 240 L ${cx - 4} 240` : `M 48 48 L 200 48 L 200 240 L ${cx} 240`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
+              <path d={isMobile ? `M 32 32 L 44 32 L 44 290 L ${cx - 4} 290` : `M 48 48 L 200 48 L 200 240 L ${cx} 240`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
               <motion.path 
-                d={isMobile ? `M 32 32 L 44 32 L 44 240 L ${cx - 4} 240` : `M 48 48 L 200 48 L 200 240 L ${cx} 240`} 
+                d={isMobile ? `M 32 32 L 44 32 L 44 290 L ${cx - 4} 290` : `M 48 48 L 200 48 L 200 240 L ${cx} 240`} 
                 stroke="url(#thirdLeftLineGrad)" strokeWidth="1.5" fill="none"
                 strokeDasharray="100, 300"
                 initial={{ strokeDashoffset: 400 }}
@@ -418,7 +421,7 @@ export default function Hero({ show }: HeroProps) {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={show ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.5, ease: EASE }}
-          className="absolute right-1 md:right-0 lg:right-8 top-[100px] sm:top-[110px] w-16 h-40 md:w-32 md:h-64 z-10 pointer-events-none block"
+          className="absolute right-1 md:right-0 lg:right-8 top-[100px] sm:top-[110px] w-16 h-32 md:w-32 md:h-64 z-10 pointer-events-none block"
         >
           <svg className="absolute inset-0 w-full h-full overflow-visible pointer-events-none z-0">
             <defs>
@@ -454,10 +457,11 @@ export default function Hero({ show }: HeroProps) {
                 </g>
               );
             })}
+            {/* Output line drops to y=410 (absolute 520), turns left to center */}
             <g>
-              <path d={isMobile ? `M 0 64 L -40 64 L -40 410 L ${68 - cx} 410` : `M 0 128 L -160 128 L -160 410 L ${160 - cx} 410`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
+              <path d={isMobile ? `M 0 64 L -40 64 L -40 420 L ${68 - cx} 420` : `M 0 128 L -160 128 L -160 410 L ${160 - cx} 410`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
               <motion.path 
-                d={isMobile ? `M 0 64 L -40 64 L -40 410 L ${68 - cx} 410` : `M 0 128 L -160 128 L -160 410 L ${160 - cx} 410`} 
+                d={isMobile ? `M 0 64 L -40 64 L -40 420 L ${68 - cx} 420` : `M 0 128 L -160 128 L -160 410 L ${160 - cx} 410`} 
                 stroke="url(#rightLineGrad)" strokeWidth="1.5" fill="none"
                 strokeDasharray="100, 300"
                 initial={{ strokeDashoffset: 400 }}
@@ -493,7 +497,7 @@ export default function Hero({ show }: HeroProps) {
         {AI_LOGOS.map((logo, index) => {
           // Lines drop straight down to absolute 650 to join the bus
           const dx = (2 - index) * (isMobile ? 48 : 75); // -150, -75, 0, 75, 150
-          const targetY = isMobile ? 520 : 496;
+          const targetY = isMobile ? 504 : 496;
           const pathD = dx === 0 
             ? `M 0 0 L 0 ${targetY}` 
             : `M 0 0 L 0 ${targetY} L ${-dx} ${targetY}`;
