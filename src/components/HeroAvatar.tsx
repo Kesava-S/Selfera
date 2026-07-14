@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 
 interface HeroAvatarProps {
   show: boolean;
+  className?: string;
 }
 
 /**
@@ -25,7 +26,7 @@ const PLAY_DELAY_MS = 950;
 const frameSrc = (i: number) =>
   `/assets/avatar_seq60/f_${String(i + 1).padStart(4, '0')}.webp`;
 
-export default function HeroAvatar({ show }: HeroAvatarProps) {
+export default function HeroAvatar({ show, className }: HeroAvatarProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const framesRef = useRef<HTMLImageElement[]>([]);
   const [loaded, setLoaded] = useState(false);
@@ -116,7 +117,7 @@ export default function HeroAvatar({ show }: HeroAvatarProps) {
   return (
     /* outer div owns the static placement; inner motion.div owns the slide */
     <div
-      className="pointer-events-none relative w-[55%] -mr-10 -ml-16 flex justify-center items-center sm:absolute sm:mr-0 sm:ml-0 sm:w-[230px] sm:-right-[4.5rem] sm:top-1/2 sm:-translate-y-[54%] md:-right-[6.5rem] md:w-[300px] lg:-right-[9rem] lg:w-[350px]"
+      className={className || "pointer-events-none relative w-[55%] -mr-10 -ml-16 flex justify-center items-center sm:absolute sm:mr-0 sm:ml-0 sm:w-[230px] sm:-right-[4.5rem] sm:top-1/2 sm:-translate-y-[54%] md:-right-[6.5rem] md:w-[300px] lg:-right-[9rem] lg:w-[350px]"}
       aria-hidden="true"
     >
       <motion.div

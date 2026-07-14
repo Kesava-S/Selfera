@@ -25,10 +25,10 @@ export default function ConfidenceText() {
           style={{ opacity, scale, filter: blur }}
           className="flex flex-col items-center gap-3 text-center px-6"
         >
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-ink">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-white">
             Here's how Selfera helps your business every day.
           </h2>
-          <p className="text-sm sm:text-base md:text-lg font-medium text-ink-secondary max-w-xl leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg font-medium text-emerald-100/80 max-w-xl leading-relaxed">
             Now it's time to make it clear about what we do
           </p>
         </motion.div>

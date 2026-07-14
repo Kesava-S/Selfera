@@ -17,7 +17,7 @@ export default function MagicText() {
   return (
     <section
       ref={containerRef}
-      className="relative z-20 h-[24vh] -mt-16 sm:-mt-24 flex items-center justify-center overflow-hidden"
+      className="relative z-20 h-[16vh] flex items-center justify-center overflow-hidden"
     >
       <motion.div
         style={{ opacity, scale, filter: blur }}

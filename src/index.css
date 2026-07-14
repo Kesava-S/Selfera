@@ -106,3 +106,18 @@ body {
   background-repeat: no-repeat;
   animation: text-shine 10s linear infinite;
 }
+
+.shimmer-text-emerald {
+  background-color: #34d399; /* light emerald/mint base text color */
+  background-image: linear-gradient(
+    to right,
+    transparent 35%,
+    #a7f3d0 45%,
+    #ffffff 50%,
+    #a7f3d0 55%,
+    transparent 65%
+  );
+  background-size: 300% 100%;
+  background-repeat: no-repeat;
+  animation: text-shine 10s linear infinite;
+}
