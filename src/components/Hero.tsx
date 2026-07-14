@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import HeroAvatar from './HeroAvatar';
 
 interface HeroProps {
@@ -60,6 +61,16 @@ function Headline({ show }: { show: boolean }) {
 /* ---------- Hero ---------- */
 
 export default function Hero({ show }: HeroProps) {
+  const WORDS = ['Bookings', 'Follow-Ups', 'Data Management', 'Finance', 'Reporting'];
+  const [wordIndex, setWordIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % WORDS.length);
+    }, 2800);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative z-10 flex min-h-[100vh] flex-col items-center justify-center px-5 pt-24 pb-16">
       {/* Welcome Banner */}
@@ -82,9 +93,24 @@ export default function Hero({ show }: HeroProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={show ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, delay: 0.95, ease: EASE }}
-        className="relative z-10 mt-6 max-w-2xl text-center text-base sm:text-lg leading-relaxed text-ink-secondary"
+        className="relative z-10 mt-6 max-w-2xl text-center text-base sm:text-lg md:text-xl leading-relaxed text-ink-secondary font-medium"
       >
-        Sounds complicated? Not at all, we do all the setup customised for you.<br className="hidden sm:inline" /> It all starts with a simple consultation.
+        The agentic dashboard for{' '}
+        <span className="inline-grid grid-cols-1 grid-rows-1 justify-items-center h-[1.5em] align-middle overflow-hidden relative min-w-[170px] sm:min-w-[210px] text-brand-blue font-bold">
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={WORDS[wordIndex]}
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -20, opacity: 0 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="[grid-area:1/1]"
+            >
+              ({WORDS[wordIndex]})
+            </motion.span>
+          </AnimatePresence>
+        </span>{' '}
+        built for you.
       </motion.p>
 
       <motion.div
