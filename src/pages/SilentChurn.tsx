@@ -155,7 +155,7 @@ export default function SilentChurn() {
       <section className="relative z-10 py-24 pl-4 sm:pl-8 md:pl-10 pr-6 sm:pr-12 md:pr-24 bg-white text-ink border-t border-ink/5">
         <div className="mr-auto max-w-7xl w-full">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tightest text-ink text-center w-full max-w-5xl mx-auto leading-tight md:whitespace-nowrap">
-            Set it up once. Selfera Monitors for you
+            Set it up once. SilentChurn Monitors for you
           </h2>
 
           {/* Steps Grid */}
