@@ -15,6 +15,7 @@ import Footer from './components/Footer';
 const Orchestration = lazy(() => import('./components/Orchestration'));
 const MicroAutomation = lazy(() => import('./pages/MicroAutomation'));
 const SilentChurn = lazy(() => import('./pages/SilentChurn'));
+const NoShowRecovery = lazy(() => import('./pages/NoShowRecovery'));
 
 export default function App() {
   // During build-time prerendering (no window) the intro is skipped so the
@@ -50,6 +51,7 @@ export default function App() {
     currentHash === '#solutions-end-to-end' || 
     currentHash === '#solutions-custom';
   const isSilentChurn = currentHash === '#solutions-silentchurn';
+  const isNoShowRecovery = currentHash === '#solutions-noshow';
 
   return (
     <div className="relative min-h-screen">
@@ -66,6 +68,10 @@ export default function App() {
         ) : isSilentChurn ? (
           <Suspense fallback={null}>
             <SilentChurn />
+          </Suspense>
+        ) : isNoShowRecovery ? (
+          <Suspense fallback={null}>
+            <NoShowRecovery />
           </Suspense>
         ) : (
           <>
