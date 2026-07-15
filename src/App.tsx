@@ -44,7 +44,11 @@ export default function App() {
     );
   }
 
-  const isMicroAutomation = currentHash === '#solutions-micro';
+  const isMicroAutomation = 
+    currentHash === '#solutions-micro' || 
+    currentHash === '#solutions' || 
+    currentHash === '#solutions-end-to-end' || 
+    currentHash === '#solutions-custom';
   const isSilentChurn = currentHash === '#solutions-silentchurn';
 
   return (
