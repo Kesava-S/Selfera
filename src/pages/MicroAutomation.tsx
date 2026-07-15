@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, ArrowRight, CalendarCheck, ShieldCheck } from 'lucide-react';
+import { MessageSquare, ArrowRight, CalendarCheck, ShieldCheck, Heart } from 'lucide-react';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -210,17 +210,22 @@ export default function MicroAutomation() {
 
                 {/* Subtitle */}
                 <span className="text-[10px] font-bold tracking-wider uppercase text-brand-blue">
-                  AI ALLERGEN MANAGEMENT
+                  AI MENU COMPLIANCE
                 </span>
 
-                {/* Title */}
-                <h3 className="text-2xl font-extrabold text-ink mt-1 tracking-tightest">
-                  Allergen Compliance Checker
-                </h3>
+                {/* Title & Price */}
+                <div className="flex items-baseline justify-between mt-1">
+                  <h3 className="text-2xl font-extrabold text-ink tracking-tightest">
+                    Allergen Compliance Checker
+                  </h3>
+                  <span className="text-xs font-bold text-[#008f6b] bg-[#34d399]/10 rounded-full px-2.5 py-0.5 whitespace-nowrap">
+                    £49/Month
+                  </span>
+                </div>
 
                 {/* Description */}
                 <p className="text-sm text-ink-secondary mt-4 leading-relaxed font-medium">
-                  Automatically checks every menu item against the 14 major allergens, detects compliance issues instantly, and helps keep your business Natasha’s Law compliant.
+                  Automatically verifies every menu item against the 14 major allergens and flags compliance issues before they become a legal risk.
                 </p>
 
                 <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-brand-blue group-hover:text-brand-blue/80 transition-colors duration-200">
@@ -234,7 +239,61 @@ export default function MicroAutomation() {
                   Perfect For
                 </span>
                 <div className="flex flex-wrap gap-1.5">
-                  {['Restaurants', 'Cafés', 'Takeaways', 'Bakeries', 'Hotels', 'Catering Businesses', 'Food Businesses'].map((tag) => (
+                  {['Restaurants', 'Cafés', 'Takeaways', 'Bakeries', 'Hotels', 'Catering', 'Food Businesses'].map((tag) => (
+                    <span 
+                      key={tag}
+                      className="rounded-full bg-ink/5 px-2 py-0.5 text-[10px] font-semibold text-ink-secondary whitespace-nowrap animate-fade-in"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </a>
+
+            {/* Post-Visit Loyalty & Feedback Loop Card */}
+            <a 
+              href="#solutions-loyalty" 
+              className="group flex flex-col justify-between p-6 sm:p-8 rounded-[24px] border border-ink/5 bg-[#fbfbfd] hover:border-brand-blue/20 hover:bg-white transition-all duration-300 hover:shadow-[0_16px_40px_-16px_rgba(0,113,227,0.12)] cursor-pointer decoration-none"
+            >
+              <div>
+                {/* Heart Icon */}
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-blue/10 text-brand-blue border border-brand-blue/10 mb-6 group-hover:bg-brand-blue group-hover:text-white transition-all duration-300 animate-fade-in">
+                  <Heart size={20} />
+                </div>
+
+                {/* Subtitle */}
+                <span className="text-[10px] font-bold tracking-wider uppercase text-brand-blue">
+                  AI CUSTOMER LOYALTY
+                </span>
+
+                {/* Title & Price */}
+                <div className="flex items-baseline justify-between mt-1">
+                  <h3 className="text-2xl font-extrabold text-ink tracking-tightest">
+                    Post-Visit Loyalty & Feedback Loop
+                  </h3>
+                  <span className="text-xs font-bold text-[#008f6b] bg-[#34d399]/10 rounded-full px-2.5 py-0.5 whitespace-nowrap">
+                    £49/Month
+                  </span>
+                </div>
+
+                {/* Description */}
+                <p className="text-sm text-ink-secondary mt-4 leading-relaxed font-medium">
+                  Automatically collects customer feedback, boosts Google Reviews, and encourages repeat visits after every meal.
+                </p>
+
+                <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-brand-blue group-hover:text-brand-blue/80 transition-colors duration-200">
+                  Explore Post-Visit Loyalty & Feedback Loop <ArrowRight size={14} />
+                </span>
+              </div>
+
+              {/* Perfect For */}
+              <div className="mt-6 border-t border-ink/5 pt-4">
+                <span className="text-[10px] font-bold text-ink-muted uppercase tracking-wider block mb-2">
+                  Perfect For
+                </span>
+                <div className="flex flex-wrap gap-1.5">
+                  {['Restaurants', 'Cafés', 'Takeaways', 'Hotels', 'Shisha Lounges', 'Bars', 'Food Businesses'].map((tag) => (
                     <span 
                       key={tag}
                       className="rounded-full bg-ink/5 px-2 py-0.5 text-[10px] font-semibold text-ink-secondary whitespace-nowrap animate-fade-in"

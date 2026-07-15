@@ -16,6 +16,8 @@ const Orchestration = lazy(() => import('./components/Orchestration'));
 const MicroAutomation = lazy(() => import('./pages/MicroAutomation'));
 const SilentChurn = lazy(() => import('./pages/SilentChurn'));
 const NoShowRecovery = lazy(() => import('./pages/NoShowRecovery'));
+const AllergenChecker = lazy(() => import('./pages/AllergenChecker'));
+const LoyaltyLoop = lazy(() => import('./pages/LoyaltyLoop'));
 
 export default function App() {
   // During build-time prerendering (no window) the intro is skipped so the
@@ -52,6 +54,8 @@ export default function App() {
     currentHash === '#solutions-custom';
   const isSilentChurn = currentHash === '#solutions-silentchurn';
   const isNoShowRecovery = currentHash === '#solutions-noshow';
+  const isAllergenChecker = currentHash === '#solutions-allergen';
+  const isLoyaltyLoop = currentHash === '#solutions-loyalty';
 
   return (
     <div className="relative min-h-screen">
@@ -72,6 +76,14 @@ export default function App() {
         ) : isNoShowRecovery ? (
           <Suspense fallback={null}>
             <NoShowRecovery />
+          </Suspense>
+        ) : isAllergenChecker ? (
+          <Suspense fallback={null}>
+            <AllergenChecker />
+          </Suspense>
+        ) : isLoyaltyLoop ? (
+          <Suspense fallback={null}>
+            <LoyaltyLoop />
           </Suspense>
         ) : (
           <>
