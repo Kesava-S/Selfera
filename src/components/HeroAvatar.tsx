@@ -18,8 +18,8 @@ interface HeroAvatarProps {
  */
 
 const FRAME_COUNT = 139; // optical-flow interpolated to a true 60fps timeline
-const FRAME_W = 640;
-const FRAME_H = 566;
+const FRAME_W = 560;
+const FRAME_H = 495;
 const PLAY_DURATION_MS = 2317; // 139 frames / 60fps — matches the slide settling in
 const PLAY_DELAY_MS = 950;
 
@@ -31,29 +31,39 @@ export default function HeroAvatar({ show, className }: HeroAvatarProps) {
   const framesRef = useRef<HTMLImageElement[]>([]);
   const [loaded, setLoaded] = useState(false);
 
-  // Preload and decode every frame up front (2.1 MB total, overlaps the intro).
-  // img.decode() decodes the image asynchronously on background threads,
-  // preventing main-thread layout blocks when we draw them for the first time.
+  // Preload and decode the frame sequence (~2.4 MB) WITHOUT competing with
+  // the critical path: wait for the window load event (or start immediately
+  // if it already fired), tag every request as low priority, and decode off
+  // the main thread via img.decode(). The animation only begins once frames
+  // are ready, so deferring costs nothing visually — the intro covers it.
   useEffect(() => {
     let cancelled = false;
-    const images = Array.from({ length: FRAME_COUNT }, (_, i) => {
-      const img = new Image();
-      img.src = frameSrc(i);
-      return img;
-    });
-    framesRef.current = images;
-    Promise.all(
-      images.map(
-        (img) =>
-          img.decode()
-            .then(() => {})
-            .catch(() => {}) // fallback if decode fails or is not supported
-      )
-    ).then(() => {
-      if (!cancelled) setLoaded(true);
-    });
+
+    const preload = () => {
+      if (cancelled) return;
+      const images = Array.from({ length: FRAME_COUNT }, (_, i) => {
+        const img = new Image();
+        img.fetchPriority = 'low';
+        img.decoding = 'async';
+        img.src = frameSrc(i);
+        return img;
+      });
+      framesRef.current = images;
+      Promise.all(
+        images.map((img) => img.decode().then(() => {}).catch(() => {}))
+      ).then(() => {
+        if (!cancelled) setLoaded(true);
+      });
+    };
+
+    if (document.readyState === 'complete') {
+      preload();
+    } else {
+      window.addEventListener('load', preload, { once: true });
+    }
     return () => {
       cancelled = true;
+      window.removeEventListener('load', preload);
     };
   }, []);
 

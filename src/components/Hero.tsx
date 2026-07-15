@@ -8,19 +8,19 @@ interface HeroProps {
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const AI_LOGOS = [
-  { src: '/logos/logo_1.png', alt: 'OpenAI', className: 'invert brightness-[3.0] opacity-90' },
-  { src: '/logos/logo_2.png', alt: 'Gemini Outline', className: '' },
-  { src: '/logos/logo_3.png', alt: 'Claude', className: '' },
-  { src: '/logos/logo_4.png', alt: 'Replicate', className: '' },
-  { src: '/logos/logo_5.png', alt: 'Gemini Colorful', className: '' },
+  { src: '/logos/logo_1.webp', alt: 'OpenAI', className: 'invert brightness-[3.0] opacity-90' },
+  { src: '/logos/logo_2.webp', alt: 'Gemini Outline', className: '' },
+  { src: '/logos/logo_3.webp', alt: 'Claude', className: '' },
+  { src: '/logos/logo_4.webp', alt: 'Replicate', className: '' },
+  { src: '/logos/logo_5.webp', alt: 'Gemini Colorful', className: '' },
 ];
 
 const CHANNEL_LOGOS = [
-  { src: '/logos/chan_1.png', alt: 'TikTok', x: 50, y: 12 },
-  { src: '/logos/chan_2.png', alt: 'WhatsApp', x: 80, y: 26 },
-  { src: '/logos/chan_3.png', alt: 'Instagram', x: 87, y: 58 },
-  { src: '/logos/chan_4.png', alt: 'Google Ads', x: 66, y: 84 },
-  { src: '/logos/chan_5.png', alt: 'Meta Ads', x: 34, y: 84 },
+  { src: '/logos/chan_1.webp', alt: 'TikTok', x: 50, y: 12 },
+  { src: '/logos/chan_2.webp', alt: 'WhatsApp', x: 80, y: 26 },
+  { src: '/logos/chan_3.webp', alt: 'Instagram', x: 87, y: 58 },
+  { src: '/logos/chan_4.webp', alt: 'Google Ads', x: 66, y: 84 },
+  { src: '/logos/chan_5.webp', alt: 'Meta Ads', x: 34, y: 84 },
   { src: '/logos/chan_6_square.svg', alt: 'LinkedIn', x: 13, y: 58, className: 'rounded-[5px]' },
   { src: '/logos/chan_7_new.svg', alt: 'Facebook', x: 20, y: 26 },
 ];
@@ -516,9 +516,6 @@ export default function Hero({ show }: HeroProps) {
         transition={{ duration: 0.8, delay: 0.05, ease: EASE }}
         className="relative z-10 -mt-4 sm:-mt-10 mb-16 sm:mb-20 flex items-center justify-center gap-6 sm:gap-8 flex-wrap"
       >
-        <span className="absolute top-[-24px] sm:top-[-32px] left-1/2 -translate-x-1/2 text-[10px] font-bold tracking-[2px] font-mono text-[#00f5c0]/70 uppercase select-none">
-          AI Brains
-        </span>
         {AI_LOGOS.map((logo, index) => {
           // Lines drop straight down to absolute junctionY to join the bus
           const dx = (2 - index) * (isMobile ? 48 : 75); // -150, -75, 0, 75, 150
