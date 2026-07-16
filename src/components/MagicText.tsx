@@ -8,16 +8,16 @@ export default function MagicText() {
     offset: ['start end', 'end start'],
   });
 
-  // Map progress to opacity, scale, and lens blur (tighter scroll intervals)
-  const opacity = useTransform(scrollYProgress, [0.2, 0.45, 0.55, 0.8], [0, 1, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0.2, 0.45, 0.55, 0.8], [0.92, 1, 1, 0.92]);
-  const blurValue = useTransform(scrollYProgress, [0.2, 0.45, 0.55, 0.8], [12, 0, 0, 12]);
+  // Map progress to opacity, scale, and lens blur (wider scroll intervals for longer visibility)
+  const opacity = useTransform(scrollYProgress, [0.1, 0.3, 0.7, 0.9], [0, 1, 1, 0]);
+  const scale = useTransform(scrollYProgress, [0.1, 0.3, 0.7, 0.9], [0.92, 1, 1, 0.92]);
+  const blurValue = useTransform(scrollYProgress, [0.1, 0.3, 0.7, 0.9], [12, 0, 0, 12]);
   const blur = useTransform(blurValue, (v) => `blur(${v}px)`);
 
   return (
     <section
       ref={containerRef}
-      className="relative z-20 h-[16vh] flex items-center justify-center overflow-hidden"
+      className="relative z-20 h-[60vh] md:h-[65vh] flex items-center justify-center overflow-hidden"
     >
       <motion.div
         style={{ opacity, scale, filter: blur }}
