@@ -20,6 +20,7 @@ const AllergenChecker = lazy(() => import('./pages/AllergenChecker'));
 const LoyaltyLoop = lazy(() => import('./pages/LoyaltyLoop'));
 const EndToEnd = lazy(() => import('./pages/EndToEnd'));
 const About = lazy(() => import('./pages/About'));
+const CustomSolutions = lazy(() => import('./pages/CustomSolutions'));
 
 export default function App() {
   // During build-time prerendering (no window) the intro is skipped so the
@@ -51,9 +52,10 @@ export default function App() {
 
   const isMicroAutomation = 
     currentHash === '#solutions-micro' || 
-    currentHash === '#solutions' || 
-    currentHash === '#solutions-custom' ||
     currentHash === '#products';
+  const isCustomSolutions = 
+    currentHash === '#solutions' || 
+    currentHash === '#solutions-custom';
   const isSilentChurn = currentHash === '#solutions-silentchurn';
   const isNoShowRecovery = currentHash === '#solutions-noshow';
   const isAllergenChecker = currentHash === '#solutions-allergen';
@@ -92,6 +94,10 @@ export default function App() {
         ) : isEndToEnd ? (
           <Suspense fallback={null}>
             <EndToEnd />
+          </Suspense>
+        ) : isCustomSolutions ? (
+          <Suspense fallback={null}>
+            <CustomSolutions />
           </Suspense>
         ) : isAbout ? (
           <Suspense fallback={null}>
