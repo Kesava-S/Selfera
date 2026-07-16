@@ -8,28 +8,27 @@ interface NavbarProps {
 
 const LINKS = [
   { label: 'Solutions', href: '#solutions' },
+  { label: 'Products', href: '#products' },
   { label: 'How it Works', href: '#how-it-works' },
   { label: 'Case Studies', href: '#case-studies' },
-  { label: 'Pricing', href: '#pricing' },
   { label: 'About', href: '#about' },
 ];
 
-const SOLUTIONS = [
+const PRODUCTS = [
   { label: 'Micro Automation Systems', href: '#solutions-micro' },
   { label: 'End to End Systems', href: '#solutions-end-to-end' },
-  { label: 'Customise Your Solution', href: '#solutions-custom', badge: 'Most Popular' },
 ];
 
 export default function Navbar({ show }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
-  const [isMobileSolutionsOpen, setIsMobileSolutionsOpen] = useState(false);
+  const [isProductsOpen, setIsProductsOpen] = useState(false);
+  const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsSolutionsOpen(false);
+        setIsProductsOpen(false);
       }
     }
     document.addEventListener('mousedown', handleClickOutside);
@@ -63,21 +62,21 @@ export default function Navbar({ show }: NavbarProps) {
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-1">
-          {/* Solutions Dropdown Menu */}
+          {/* Products Dropdown Menu */}
           <div
             ref={dropdownRef}
             className="relative"
           >
             <button
-              onClick={() => setIsSolutionsOpen(!isSolutionsOpen)}
+              onClick={() => setIsProductsOpen(!isProductsOpen)}
               className="relative group flex items-center gap-1 rounded-full px-4 py-1.5 text-[15px] font-semibold text-ink-secondary transition-colors duration-200 hover:text-ink cursor-pointer focus:outline-none"
             >
               <span className="relative py-0.5">
-                Solutions
-                <span className={`absolute bottom-0 left-0 right-0 h-0.5 bg-brand-blue transition-transform origin-center duration-200 ${isSolutionsOpen ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
+                Products
+                <span className={`absolute bottom-0 left-0 right-0 h-0.5 bg-brand-blue transition-transform origin-center duration-200 ${isProductsOpen ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
               </span>
               <motion.span
-                animate={{ rotate: isSolutionsOpen ? 180 : 0 }}
+                animate={{ rotate: isProductsOpen ? 180 : 0 }}
                 transition={{ duration: 0.2 }}
                 className="inline-block"
               >
@@ -86,7 +85,7 @@ export default function Navbar({ show }: NavbarProps) {
             </button>
 
             <AnimatePresence>
-              {isSolutionsOpen && (
+              {isProductsOpen && (
                 <motion.div
                   initial={{ opacity: 0, y: 10, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -94,21 +93,14 @@ export default function Navbar({ show }: NavbarProps) {
                   transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
                   className="absolute left-0 mt-1 w-64 rounded-2xl border border-ink/5 bg-white p-2.5 shadow-xl shadow-ink/5 backdrop-blur-lg z-50"
                 >
-                  {SOLUTIONS.map((item) => (
+                  {PRODUCTS.map((item) => (
                     <a
                       key={item.href}
                       href={item.href}
-                      onClick={() => setIsSolutionsOpen(false)}
+                      onClick={() => setIsProductsOpen(false)}
                       className="block rounded-lg px-4 py-2.5 text-sm font-semibold text-ink-secondary hover:bg-ink/5 hover:text-ink transition-all duration-200"
                     >
-                      <div className="flex items-center justify-between gap-3">
-                        <span>{item.label}</span>
-                        {item.badge && (
-                          <span className="rounded-full bg-brand-blue/10 px-2 py-0.5 text-[9px] font-bold text-brand-blue uppercase tracking-wider whitespace-nowrap">
-                            {item.badge}
-                          </span>
-                        )}
-                      </div>
+                      <span>{item.label}</span>
                     </a>
                   ))}
                 </motion.div>
@@ -116,7 +108,7 @@ export default function Navbar({ show }: NavbarProps) {
             </AnimatePresence>
           </div>
 
-          {LINKS.filter((l) => l.label !== 'Solutions').map((link) => (
+          {LINKS.filter((l) => l.label !== 'Products').map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -157,15 +149,15 @@ export default function Navbar({ show }: NavbarProps) {
             className="md:hidden absolute top-full left-0 right-0 border-b border-ink/5 bg-white overflow-hidden shadow-lg"
           >
             <div className="flex flex-col gap-4 px-6 py-8">
-              {/* Solutions mobile menu */}
+              {/* Products mobile menu */}
               <div className="flex flex-col">
                 <button
-                  onClick={() => setIsMobileSolutionsOpen(!isMobileSolutionsOpen)}
+                  onClick={() => setIsMobileProductsOpen(!isMobileProductsOpen)}
                   className="flex items-center justify-between w-full text-[17px] font-bold text-ink-secondary hover:text-brand-blue transition-colors duration-200 py-1 cursor-pointer focus:outline-none"
                 >
-                  Solutions
+                  Products
                   <motion.span
-                    animate={{ rotate: isMobileSolutionsOpen ? 180 : 0 }}
+                    animate={{ rotate: isMobileProductsOpen ? 180 : 0 }}
                     transition={{ duration: 0.2 }}
                   >
                     <ChevronDown size={18} />
@@ -173,7 +165,7 @@ export default function Navbar({ show }: NavbarProps) {
                 </button>
 
                 <AnimatePresence initial={false}>
-                  {isMobileSolutionsOpen && (
+                  {isMobileProductsOpen && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
@@ -181,22 +173,17 @@ export default function Navbar({ show }: NavbarProps) {
                       transition={{ duration: 0.2, ease: 'easeInOut' }}
                       className="overflow-hidden pl-4 flex flex-col gap-2.5 mt-2 border-l border-ink/5 ml-2"
                     >
-                      {SOLUTIONS.map((item) => (
+                      {PRODUCTS.map((item) => (
                         <a
                           key={item.href}
                           href={item.href}
                           onClick={() => {
                             setIsOpen(false);
-                            setIsMobileSolutionsOpen(false);
+                            setIsMobileProductsOpen(false);
                           }}
                           className="flex items-center justify-between gap-3 text-sm font-semibold text-ink-secondary hover:text-brand-blue transition-colors duration-200 py-1"
                         >
                           <span>{item.label}</span>
-                          {item.badge && (
-                            <span className="rounded-full bg-brand-blue/10 px-2 py-0.5 text-[9px] font-bold text-brand-blue uppercase tracking-wider whitespace-nowrap">
-                              {item.badge}
-                            </span>
-                          )}
                         </a>
                       ))}
                     </motion.div>
@@ -204,7 +191,7 @@ export default function Navbar({ show }: NavbarProps) {
                 </AnimatePresence>
               </div>
 
-              {LINKS.filter((l) => l.label !== 'Solutions').map((link) => (
+              {LINKS.filter((l) => l.label !== 'Products').map((link) => (
                 <a
                   key={link.href}
                   href={link.href}

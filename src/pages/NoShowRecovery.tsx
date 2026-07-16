@@ -302,7 +302,7 @@ export default function NoShowRecovery() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[300px] w-[300px] rounded-full bg-emerald-500/10 blur-[100px] pointer-events-none" />
 
         <div className="mx-auto max-w-4xl w-full flex flex-col items-center justify-center z-20 relative">
-          <p className="text-base sm:text-lg font-bold text-[#00f5c0] mb-6">
+          <p className="text-base sm:text-lg font-bold text-[#00f5c0] mb-6 leading-relaxed">
             One recovered booking can cover the cost of No-Show Recovery Bot.
           </p>
 
