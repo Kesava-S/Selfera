@@ -19,7 +19,7 @@ export default function ConfidenceText() {
       {/* Magic sentence section */}
       <section
         ref={containerRef}
-        className="h-[75vh] md:h-[80vh] flex items-center justify-center overflow-hidden"
+        className="h-[35vh] md:h-[40vh] flex items-center justify-center overflow-hidden"
       >
         <motion.div
           style={{ opacity, scale, filter: blur }}
