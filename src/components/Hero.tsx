@@ -437,7 +437,7 @@ export default function Hero({ show }: HeroProps) {
           className="absolute w-32 h-16 md:w-64 md:h-32 z-10 pointer-events-none block"
           style={{
             top: `${junctionY + (isMobile ? 24 : 50)}px`,
-            left: `${cx - (isMobile ? 64 : 128)}px`
+            left: `${cx - (isMobile ? 84 : 128)}px`
           }}
         >
           <svg className="absolute inset-0 w-full h-full overflow-visible pointer-events-none z-0">
