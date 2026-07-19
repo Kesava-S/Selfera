@@ -79,7 +79,7 @@ function Headline({ show }: { show: boolean }) {
       {HEADLINE.map((word, i) => (
         <span
           key={i}
-          className="inline-block overflow-hidden pb-1 align-bottom"
+          className="inline-block overflow-hidden pb-4 -mb-4 align-bottom"
           style={{
             filter: 'drop-shadow(0 4px 16px rgba(0,0,0,0.45))',
           }}
@@ -579,7 +579,7 @@ export default function Hero({ show }: HeroProps) {
       </motion.div>
 
       {/* Headline */}
-      <div className="relative w-full max-w-4xl px-6 md:px-0 z-20 mt-8 sm:mt-0">
+      <div className="relative w-full max-w-4xl px-6 md:px-0 z-20 mt-4 sm:mt-0">
         <Headline show={show} />
       </div>
 
