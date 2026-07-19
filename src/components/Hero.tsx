@@ -386,7 +386,7 @@ export default function Hero({ show }: HeroProps) {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={show ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.55, ease: EASE }}
-          className="absolute left-[-16px] md:-left-12 lg:-left-4 top-[300px] sm:top-[318px] w-20 h-16 md:w-32 md:h-20 z-10 pointer-events-none block flex flex-col justify-end pb-1 items-center"
+          className="absolute left-[-16px] md:-left-12 lg:-left-4 top-[308px] sm:top-[318px] w-20 h-12 md:w-32 md:h-20 z-10 pointer-events-none block flex flex-col justify-end pb-1 items-center"
         >
           <svg className="absolute inset-0 w-full h-full overflow-visible pointer-events-none z-0">
             <defs>
@@ -406,9 +406,9 @@ export default function Hero({ show }: HeroProps) {
               </textPath>
             </text>
             <g>
-              <path d={isMobile ? `M 40 24 L 108 24 L 108 ${junctionY - 300} L ${cx - 16} ${junctionY - 300}` : `M 64 40 L 336 40 L 336 ${junctionY - 318} L ${cx - 16} ${junctionY - 318}`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
+              <path d={isMobile ? `M 40 24 L 108 24 L 108 ${junctionY - 308} L ${cx - 16} ${junctionY - 308}` : `M 64 40 L 336 40 L 336 ${junctionY - 318} L ${cx - 16} ${junctionY - 318}`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
               <motion.path 
-                d={isMobile ? `M 40 24 L 108 24 L 108 ${junctionY - 300} L ${cx - 16} ${junctionY - 300}` : `M 64 40 L 336 40 L 336 ${junctionY - 318} L ${cx - 16} ${junctionY - 318}`} 
+                d={isMobile ? `M 40 24 L 108 24 L 108 ${junctionY - 308} L ${cx - 16} ${junctionY - 308}` : `M 64 40 L 336 40 L 336 ${junctionY - 318} L ${cx - 16} ${junctionY - 318}`} 
                 stroke="url(#fourthLeftLineGrad)" strokeWidth="1.5" fill="none"
                 strokeDasharray="100, 300"
                 initial={{ strokeDashoffset: 400 }}
@@ -417,7 +417,7 @@ export default function Hero({ show }: HeroProps) {
               />
             </g>
           </svg>
-          <div className="flex flex-row justify-center gap-6 items-center translate-y-2">
+          <div className="flex flex-row justify-center gap-6 items-center sm:translate-y-2 translate-y-0">
             {FOURTH_LEFT_LOGOS.map((logo, index) => (
               <img
                 key={index}
