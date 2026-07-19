@@ -194,7 +194,7 @@ export default function Hero({ show }: HeroProps) {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={show ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.4, ease: EASE }}
-          className="absolute left-[-16px] md:-left-12 lg:-left-4 top-[110px] sm:top-[130px] w-16 h-16 md:w-32 md:h-32 z-10 pointer-events-none block"
+          className="absolute left-[-16px] md:-left-12 lg:-left-4 top-[95px] sm:top-[130px] w-16 h-16 md:w-32 md:h-32 z-10 pointer-events-none block"
         >
           <svg className="absolute inset-0 w-full h-full overflow-visible pointer-events-none z-0">
             <defs>
@@ -228,9 +228,9 @@ export default function Hero({ show }: HeroProps) {
             ))}
             {/* Output line drops to absolute junctionY, turns right to center */}
             <g>
-              <path d={isMobile ? `M 32 32 L 92 32 L 92 ${junctionY - 110} L ${cx - 16} ${junctionY - 110}` : `M 64 64 L 296 64 L 296 ${junctionY - 130} L ${cx - 16} ${junctionY - 130}`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
+              <path d={isMobile ? `M 32 32 L 92 32 L 92 ${junctionY - 95} L ${cx - 16} ${junctionY - 95}` : `M 64 64 L 296 64 L 296 ${junctionY - 130} L ${cx - 16} ${junctionY - 130}`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
               <motion.path 
-                d={isMobile ? `M 32 32 L 92 32 L 92 ${junctionY - 110} L ${cx - 16} ${junctionY - 110}` : `M 64 64 L 296 64 L 296 ${junctionY - 130} L ${cx - 16} ${junctionY - 130}`} 
+                d={isMobile ? `M 32 32 L 92 32 L 92 ${junctionY - 95} L ${cx - 16} ${junctionY - 95}` : `M 64 64 L 296 64 L 296 ${junctionY - 130} L ${cx - 16} ${junctionY - 130}`} 
                 stroke="url(#channelLineGrad)" strokeWidth="1.5" fill="none"
                 strokeDasharray="100, 300"
                 initial={{ strokeDashoffset: 400 }}
@@ -258,7 +258,7 @@ export default function Hero({ show }: HeroProps) {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={show ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.45, ease: EASE }}
-          className="absolute right-[-12px] md:-right-4 lg:right-4 top-[118px] sm:top-[162px] w-12 h-12 md:w-16 md:h-16 z-10 pointer-events-none block"
+          className="absolute right-[-12px] md:-right-4 lg:right-4 top-[103px] sm:top-[162px] w-12 h-12 md:w-16 md:h-16 z-10 pointer-events-none block"
         >
           <svg className="absolute inset-0 w-full h-full overflow-visible pointer-events-none z-0">
             <defs>
@@ -292,9 +292,9 @@ export default function Hero({ show }: HeroProps) {
             ))}
             {/* Output line drops to absolute junctionY, turns left to center */}
             <g>
-              <path d={isMobile ? `M 24 24 L -60 24 L -60 ${junctionY - 118} L ${48 - cx} ${junctionY - 118}` : `M 32 32 L -224 32 L -224 ${junctionY - 162} L ${96 - cx} ${junctionY - 162}`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
+              <path d={isMobile ? `M 24 24 L -60 24 L -60 ${junctionY - 103} L ${48 - cx} ${junctionY - 103}` : `M 32 32 L -224 32 L -224 ${junctionY - 162} L ${96 - cx} ${junctionY - 162}`} stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1.5" fill="none" />
               <motion.path 
-                d={isMobile ? `M 24 24 L -60 24 L -60 ${junctionY - 118} L ${48 - cx} ${junctionY - 118}` : `M 32 32 L -224 32 L -224 ${junctionY - 162} L ${96 - cx} ${junctionY - 162}`} 
+                d={isMobile ? `M 24 24 L -60 24 L -60 ${junctionY - 103} L ${48 - cx} ${junctionY - 103}` : `M 32 32 L -224 32 L -224 ${junctionY - 162} L ${96 - cx} ${junctionY - 162}`} 
                 stroke="url(#bottomRightLineGrad)" strokeWidth="1.5" fill="none"
                 strokeDasharray="100, 300"
                 initial={{ strokeDashoffset: 400 }}
