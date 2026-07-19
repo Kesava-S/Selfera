@@ -24,7 +24,7 @@ export default function Industries() {
   const isInView = useInView(containerRef, { once: true, margin: '-10%' });
 
   return (
-    <section className="relative z-20 pb-32 px-6">
+    <section className="relative z-20 pt-16 pb-16 md:pt-24 md:pb-24 px-6">
       <div ref={containerRef} className="max-w-6xl mx-auto">
         {/* Section Heading */}
         <motion.h2

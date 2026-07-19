@@ -92,7 +92,7 @@ function DeckCard({ card }: { card: ConcernCard }) {
 
 export default function ConcernCards() {
   return (
-    <section id="concerns" className="relative z-10 py-12 px-6 sm:px-8 max-w-6xl mx-auto">
+    <section id="concerns" className="relative z-10 pt-0 pb-16 md:pb-24 px-6 sm:px-8 max-w-6xl mx-auto">
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {CARDS.map((card) => (
           <div key={card.title} className="w-full h-full">
