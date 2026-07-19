@@ -48,7 +48,7 @@ export default function EndToEnd() {
       </section>
 
       {/* Services Grid Section */}
-      <section className="relative z-10 py-24 pl-4 sm:pl-8 md:pl-10 pr-6 sm:pr-12 md:pr-24 bg-white text-ink border-t border-ink/5">
+      <section className="relative z-10 py-16 md:py-24 pl-4 sm:pl-8 md:pl-10 pr-6 sm:pr-12 md:pr-24 bg-white text-ink border-t border-ink/5">
         <div className="mx-auto max-w-7xl w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             
@@ -260,7 +260,7 @@ export default function EndToEnd() {
       </section>
 
       {/* What to Expect Section */}
-      <section className="relative z-10 py-24 pl-4 sm:pl-8 md:pl-10 pr-6 sm:pr-12 md:pr-24 bg-[#002b22] text-white border-t border-emerald-500/10 overflow-hidden">
+      <section className="relative z-10 py-16 md:py-24 pl-4 sm:pl-8 md:pl-10 pr-6 sm:pr-12 md:pr-24 bg-[#002b22] text-white border-t border-emerald-500/10 overflow-hidden">
         {/* Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[300px] w-[300px] rounded-full bg-emerald-500/5 blur-[100px] pointer-events-none" />
 

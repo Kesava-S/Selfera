@@ -275,7 +275,7 @@ export default function CustomSolutions() {
 
 
       {/* How it Works Section */}
-      <section className="relative z-10 py-24 pl-4 sm:pl-8 md:pl-10 pr-6 sm:pr-12 md:pr-24 bg-white text-ink border-t border-ink/5">
+      <section className="relative z-10 py-16 md:py-24 pl-4 sm:pl-8 md:pl-10 pr-6 sm:pr-12 md:pr-24 bg-white text-ink border-t border-ink/5">
         <div className="mx-auto max-w-7xl w-full">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tightest text-ink text-center mb-16">
             How It Works
@@ -341,7 +341,7 @@ export default function CustomSolutions() {
       </section>
 
       {/* Business Areas Section */}
-      <section className="relative z-10 py-24 pl-4 sm:pl-8 md:pl-10 pr-6 sm:pr-12 md:pr-24 bg-[#002b22] text-white border-t border-emerald-500/10">
+      <section className="relative z-10 py-16 md:py-24 pl-4 sm:pl-8 md:pl-10 pr-6 sm:pr-12 md:pr-24 bg-[#002b22] text-white border-t border-emerald-500/10">
         <div className="mx-auto max-w-7xl w-full">
           <div className="text-center mb-10">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tightest text-white mb-4">
@@ -867,7 +867,7 @@ export default function CustomSolutions() {
       </section>
 
       {/* Example Solutions Section */}
-      <section className="relative z-10 py-24 pl-4 sm:pl-8 md:pl-10 pr-6 sm:pr-12 md:pr-24 bg-white text-ink border-t border-ink/5">
+      <section className="relative z-10 py-16 md:py-24 pl-4 sm:pl-8 md:pl-10 pr-6 sm:pr-12 md:pr-24 bg-white text-ink border-t border-ink/5">
         <div className="mx-auto max-w-7xl w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-4">
@@ -934,12 +934,12 @@ export default function CustomSolutions() {
       </section>
 
       {/* Who it is For Section */}
-      <section className="relative z-10 py-24 pl-4 sm:pl-8 md:pl-10 pr-6 sm:pr-12 md:pr-24 bg-[#001e18] text-white border-t border-emerald-500/10">
+      <section className="relative z-10 py-16 md:py-24 pl-4 sm:pl-8 md:pl-10 pr-6 sm:pr-12 md:pr-24 bg-[#001e18] text-white border-t border-emerald-500/10">
         <div className="mx-auto max-w-7xl w-full text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tightest text-white mb-12">
             Who It's For
           </h2>
-
+ 
           <div className="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
             {['Restaurants', 'Salons', 'Clinics', 'Retail', 'Professional Services'].map((item) => (
               <span 
@@ -952,9 +952,9 @@ export default function CustomSolutions() {
           </div>
         </div>
       </section>
-
+ 
       {/* CTA Section */}
-      <section className="relative z-10 py-24 px-6 bg-[#002b22] text-white text-center overflow-hidden border-t border-emerald-500/10">
+      <section className="relative z-10 py-16 md:py-24 px-6 bg-[#002b22] text-white text-center overflow-hidden border-t border-emerald-500/10">
         <div className="absolute inset-0 bg-gradient-to-b from-[#001e18] to-[#002b22] opacity-50" />
         
         {/* Glow */}

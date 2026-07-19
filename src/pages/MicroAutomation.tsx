@@ -82,7 +82,7 @@ export default function MicroAutomation() {
       </section>
 
       {/* Quick Start Solutions Section */}
-      <section className="relative z-10 py-20 pl-4 sm:pl-8 md:pl-10 pr-6 sm:pr-12 md:pr-24 bg-white text-ink border-t border-ink/5">
+      <section className="relative z-10 py-16 md:py-24 pl-4 sm:pl-8 md:pl-10 pr-6 sm:pr-12 md:pr-24 bg-white text-ink border-t border-ink/5">
         <div className="mr-auto max-w-7xl w-full">
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tightest text-ink">
             Quick Start Solutions

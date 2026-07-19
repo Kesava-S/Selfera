@@ -113,7 +113,7 @@ export default function About() {
       </section>
 
       {/* Mission Vision Values Section */}
-      <section className="relative z-10 py-24 pl-4 sm:pl-8 md:pl-10 pr-6 sm:pr-12 md:pr-24 bg-white text-ink border-t border-ink/5">
+      <section className="relative z-10 py-16 md:py-24 pl-4 sm:pl-8 md:pl-10 pr-6 sm:pr-12 md:pr-24 bg-white text-ink border-t border-ink/5">
         <div className="mx-auto max-w-7xl w-full">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tightest text-ink mb-12">
             Mission, Vision and Values

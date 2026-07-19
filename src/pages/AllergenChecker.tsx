@@ -151,7 +151,7 @@ export default function AllergenChecker() {
       </section>
 
       {/* Set It Up Once Section */}
-      <section className="relative z-10 py-24 pl-4 sm:pl-8 md:pl-10 pr-6 sm:pr-12 md:pr-24 bg-white text-ink border-t border-ink/5">
+      <section className="relative z-10 py-16 md:py-24 pl-4 sm:pl-8 md:pl-10 pr-6 sm:pr-12 md:pr-24 bg-white text-ink border-t border-ink/5">
         <div className="mr-auto max-w-7xl w-full">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tightest text-ink text-center w-full max-w-5xl mx-auto leading-tight md:whitespace-nowrap">
             Set it up once. Allergen Compliance Checker monitors for you.
@@ -282,7 +282,7 @@ export default function AllergenChecker() {
       </section>
 
       {/* Pricing Section */}
-      <section className="relative z-10 py-24 px-6 bg-[#002b22] text-white text-center overflow-hidden">
+      <section className="relative z-10 py-16 md:py-24 px-6 bg-[#002b22] text-white text-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#001e18] to-[#002b22] opacity-50" />
         
         {/* Glow */}
