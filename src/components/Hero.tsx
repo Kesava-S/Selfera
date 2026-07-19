@@ -183,7 +183,7 @@ export default function Hero({ show }: HeroProps) {
   return (
     <section
       ref={sectionRef}
-      className="relative z-10 flex min-h-[100vh] flex-col items-center justify-start px-5 pt-32 md:pt-40 pb-96 md:pb-[340px] bg-[#002b22] text-white overflow-hidden"
+      className="relative z-10 flex min-h-[100vh] flex-col items-center justify-start px-5 pt-32 md:pt-40 pb-48 md:pb-[340px] bg-[#002b22] text-white overflow-hidden"
       style={{ backgroundImage: 'linear-gradient(180deg, #002b22 0%, #001e18 100%)' }}
     >
       {/* Central Layout Wrapper */}
