@@ -579,7 +579,7 @@ export default function Hero({ show }: HeroProps) {
       </motion.div>
 
       {/* Headline */}
-      <div className="relative w-full max-w-4xl px-6 md:px-0 z-20">
+      <div className="relative w-full max-w-4xl px-6 md:px-0 z-20 mt-8 sm:mt-0">
         <Headline show={show} />
       </div>
 
