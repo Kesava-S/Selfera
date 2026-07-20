@@ -30,13 +30,23 @@ export default function App() {
   // browser this is always false and the intro plays as normal.
   const [introDone, setIntroDone] = useState(() => typeof window === 'undefined');
   const [currentHash, setCurrentHash] = useState(() => typeof window !== 'undefined' ? window.location.hash : '#');
+  const [showBookingModal, setShowBookingModal] = useState(false);
 
   useEffect(() => {
     const handleHashChange = () => {
-      setCurrentHash(window.location.hash);
+      const hash = window.location.hash;
+      if (hash === '#booking') {
+        setShowBookingModal(true);
+      } else {
+        setCurrentHash(hash);
+      }
       window.scrollTo({ top: 0, behavior: 'instant' });
     };
     window.addEventListener('hashchange', handleHashChange);
+    // Initial check
+    if (typeof window !== 'undefined' && window.location.hash === '#booking') {
+      setShowBookingModal(true);
+    }
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
@@ -128,9 +138,15 @@ export default function App() {
             <Industries />
           </>
         )}
-        {/* Further sections (ROI calculator, case studies, booking, tech engine)
-            live on separate pages — built one at a time on approval. */}
-        <BookingForm />
+        <BookingForm 
+          isOpen={showBookingModal} 
+          onClose={() => {
+            setShowBookingModal(false);
+            if (typeof window !== 'undefined' && window.location.hash === '#booking') {
+              window.location.hash = '';
+            }
+          }} 
+        />
       </main>
       <Footer />
     </div>

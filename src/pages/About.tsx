@@ -66,7 +66,7 @@ export default function About() {
                   10h+
                 </span>
                 <span className="text-sm sm:text-base font-semibold text-emerald-100/80 leading-snug">
-                  saved every single week per manager
+                  saved every single week per operation.
                 </span>
               </div>
               
