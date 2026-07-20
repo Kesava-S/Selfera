@@ -225,14 +225,6 @@ export default function CustomSolutions() {
         <div className="absolute bottom-0 left-0 h-[400px] w-[400px] rounded-full bg-[#0071e3]/5 blur-[100px] pointer-events-none" />
 
         <div className="mx-auto max-w-7xl w-full z-20 text-center">
-          <motion.span 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-xs sm:text-sm font-bold text-[#00f5c0] uppercase tracking-widest"
-          >
-            Bespoke Business Systems
-          </motion.span>
           <h1 
             className="mt-4 text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.08] tracking-tightest text-white"
             style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)' }}
@@ -243,7 +235,7 @@ export default function CustomSolutions() {
               transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
               className="block"
             >
-              Custom AI Solutions
+              Custom AI Agents
             </motion.span>
             <motion.span
               initial={{ y: 24, opacity: 0, filter: 'blur(8px)' }}
@@ -251,90 +243,83 @@ export default function CustomSolutions() {
               transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
               className="inline-block bg-gradient-to-r from-[#00f5c0] to-[#0284c7] bg-clip-text text-transparent"
             >
-              Personnel for your Business
+              For Your Business
             </motion.span>
           </h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.35, ease: EASE }}
-            className="mt-6 mx-auto max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed text-emerald-100/80 font-medium"
+            className="mt-6 mx-auto max-w-3xl text-base sm:text-lg md:text-xl leading-relaxed text-emerald-100/80 font-medium"
           >
-            "Built around your business, not off-the-shelf software."
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.45, ease: EASE }}
-            className="mt-4 mx-auto max-w-xl text-xs sm:text-sm text-emerald-100/50 leading-relaxed font-semibold uppercase tracking-wider"
-          >
-            Fully bespoke AI systems designed around your business's unique workflow.
+            AI Automations built around your marketing, Operations, and Finance to empower your team and drive sustainable growth.
           </motion.p>
         </div>
       </section>
 
 
-      {/* How it Works Section */}
+      {/* Example Solutions Section */}
       <section className="relative z-10 py-16 md:py-24 pl-4 sm:pl-8 md:pl-10 pr-6 sm:pr-12 md:pr-24 bg-white text-ink border-t border-ink/5">
         <div className="mx-auto max-w-7xl w-full">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tightest text-ink text-center mb-16">
-            How It Works
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6 relative">
-            {/* Step 1 */}
-            <div className="p-6 rounded-[24px] bg-[#fbfbfd] border border-ink/5 flex flex-col items-center text-center relative group hover:border-brand-blue/15 hover:shadow-[0_12px_32px_-12px_rgba(0,113,227,0.08)] transition-all duration-300">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue font-black text-lg">
-                1
-              </div>
-              <h3 className="text-lg font-bold mt-4 text-ink">Discover</h3>
-              <p className="text-xs text-ink-secondary mt-2 leading-relaxed font-semibold">
-                We sit down to understand your business flow and bottlenecks.
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <div className="lg:col-span-4">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tightest text-ink leading-[1.1] mb-6">
+                Example Solutions We Build
+              </h2>
+              <p className="text-sm text-ink-secondary leading-relaxed font-medium">
+                SMEs have highly specialized requirements depending on their industries. Here are some of the fully custom systems we construct.
               </p>
             </div>
 
-            {/* Step 2 */}
-            <div className="p-6 rounded-[24px] bg-[#fbfbfd] border border-ink/5 flex flex-col items-center text-center relative group hover:border-brand-blue/15 hover:shadow-[0_12px_32px_-12px_rgba(0,113,227,0.08)] transition-all duration-300">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue font-black text-lg">
-                2
+            <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="p-6 rounded-[20px] bg-[#fbfbfd] border border-ink/5">
+                <h4 className="font-bold text-ink text-base">AI Receptionist</h4>
+                <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
+                  Voice and chat agents capable of answering menus, checking slot tables, and booking clients.
+                </p>
               </div>
-              <h3 className="text-lg font-bold mt-4 text-ink">Design</h3>
-              <p className="text-xs text-ink-secondary mt-2 leading-relaxed font-semibold">
-                Our architect creates a custom automation flowchart tailored to you.
-              </p>
-            </div>
 
-            {/* Step 3 */}
-            <div className="p-6 rounded-[24px] bg-[#fbfbfd] border border-ink/5 flex flex-col items-center text-center relative group hover:border-brand-blue/15 hover:shadow-[0_12px_32px_-12px_rgba(0,113,227,0.08)] transition-all duration-300">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue font-black text-lg">
-                3
+              <div className="p-6 rounded-[20px] bg-[#fbfbfd] border border-ink/5">
+                <h4 className="font-bold text-ink text-base">Lead Management System</h4>
+                <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
+                  Automatic capturing, classification, data-sync to CRM, and instant 60s reply pipelines.
+                </p>
               </div>
-              <h3 className="text-lg font-bold mt-4 text-ink">Build</h3>
-              <p className="text-xs text-ink-secondary mt-2 leading-relaxed font-semibold">
-                We construct the AI systems, bots, pipelines, and direct database connects.
-              </p>
-            </div>
 
-            {/* Step 4 */}
-            <div className="p-6 rounded-[24px] bg-[#fbfbfd] border border-ink/5 flex flex-col items-center text-center relative group hover:border-brand-blue/15 hover:shadow-[0_12px_32px_-12px_rgba(0,113,227,0.08)] transition-all duration-300">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue font-black text-lg">
-                4
+              <div className="p-6 rounded-[20px] bg-[#fbfbfd] border border-ink/5">
+                <h4 className="font-bold text-ink text-base">Staff & Task Management</h4>
+                <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
+                  Intelligent task queueing, automated notifications to shift managers, and calendar synchronization.
+                </p>
               </div>
-              <h3 className="text-lg font-bold mt-4 text-ink">Deploy</h3>
-              <p className="text-xs text-ink-secondary mt-2 leading-relaxed font-semibold">
-                We safely launch the workflows into your existing daily channels.
-              </p>
-            </div>
 
-            {/* Step 5 */}
-            <div className="p-6 rounded-[24px] bg-[#fbfbfd] border border-ink/5 flex flex-col items-center text-center relative group hover:border-brand-blue/15 hover:shadow-[0_12px_32px_-12px_rgba(0,113,227,0.08)] transition-all duration-300">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue font-black text-lg">
-                5
+              <div className="p-6 rounded-[20px] bg-[#fbfbfd] border border-ink/5">
+                <h4 className="font-bold text-ink text-base">Inventory Automation</h4>
+                <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
+                  Connecting suppliers to recipes, alerting teams when stock is low, and predicting volume ordering.
+                </p>
               </div>
-              <h3 className="text-lg font-bold mt-4 text-ink">Support</h3>
-              <p className="text-xs text-ink-secondary mt-2 leading-relaxed font-semibold">
-                Continuous monitoring, data-refinements, and custom associate audits.
-              </p>
+
+              <div className="p-6 rounded-[20px] bg-[#fbfbfd] border border-ink/5">
+                <h4 className="font-bold text-ink text-base">Multi-branch Dashboard</h4>
+                <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
+                  Aggregation of sales, review counts, waitlists, and compliance flags across all physical locations.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-[20px] bg-[#fbfbfd] border border-ink/5">
+                <h4 className="font-bold text-ink text-base">Customer Retention Engine</h4>
+                <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
+                  Automatically flags inactive regulars, invites feedback, and triggers personalized retention campaigns.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-[20px] bg-[#fbfbfd] border border-ink/5 md:col-span-2">
+                <h4 className="font-bold text-ink text-base">Custom AI Agents</h4>
+                <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
+                  Multi-agent orchestration systems built around your complex, specific internal proprietary company data.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -866,93 +851,73 @@ export default function CustomSolutions() {
         </div>
       </section>
 
-      {/* Example Solutions Section */}
+      {/* How it Works Section */}
       <section className="relative z-10 py-16 md:py-24 pl-4 sm:pl-8 md:pl-10 pr-6 sm:pr-12 md:pr-24 bg-white text-ink border-t border-ink/5">
         <div className="mx-auto max-w-7xl w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-4">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tightest text-ink leading-[1.1] mb-6">
-                Example Solutions We Build
-              </h2>
-              <p className="text-sm text-ink-secondary leading-relaxed font-medium">
-                SMEs have highly specialized requirements depending on their industries. Here are some of the fully custom systems we construct.
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tightest text-ink text-center mb-16">
+            How It Works
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6 relative">
+            {/* Step 1 */}
+            <div className="p-6 rounded-[24px] bg-[#fbfbfd] border border-ink/5 flex flex-col items-center text-center relative group hover:border-brand-blue/15 hover:shadow-[0_12px_32px_-12px_rgba(0,113,227,0.08)] transition-all duration-300">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue font-black text-lg">
+                1
+              </div>
+              <h3 className="text-lg font-bold mt-4 text-ink">Discover</h3>
+              <p className="text-xs text-ink-secondary mt-2 leading-relaxed font-semibold">
+                We sit down to understand your business flow and bottlenecks.
               </p>
             </div>
 
-            <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-6 rounded-[20px] bg-[#fbfbfd] border border-ink/5">
-                <h4 className="font-bold text-ink text-base">AI Receptionist</h4>
-                <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
-                  Voice and chat agents capable of answering menus, checking slot tables, and booking clients.
-                </p>
+            {/* Step 2 */}
+            <div className="p-6 rounded-[24px] bg-[#fbfbfd] border border-ink/5 flex flex-col items-center text-center relative group hover:border-brand-blue/15 hover:shadow-[0_12px_32px_-12px_rgba(0,113,227,0.08)] transition-all duration-300">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue font-black text-lg">
+                2
               </div>
+              <h3 className="text-lg font-bold mt-4 text-ink">Design</h3>
+              <p className="text-xs text-ink-secondary mt-2 leading-relaxed font-semibold">
+                Our architect creates a custom automation flowchart tailored to you.
+              </p>
+            </div>
 
-              <div className="p-6 rounded-[20px] bg-[#fbfbfd] border border-ink/5">
-                <h4 className="font-bold text-ink text-base">Lead Management System</h4>
-                <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
-                  Automatic capturing, classification, data-sync to CRM, and instant 60s reply pipelines.
-                </p>
+            {/* Step 3 */}
+            <div className="p-6 rounded-[24px] bg-[#fbfbfd] border border-ink/5 flex flex-col items-center text-center relative group hover:border-brand-blue/15 hover:shadow-[0_12px_32px_-12px_rgba(0,113,227,0.08)] transition-all duration-300">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue font-black text-lg">
+                3
               </div>
+              <h3 className="text-lg font-bold mt-4 text-ink">Build</h3>
+              <p className="text-xs text-ink-secondary mt-2 leading-relaxed font-semibold">
+                We construct the AI systems, bots, pipelines, and direct database connects.
+              </p>
+            </div>
 
-              <div className="p-6 rounded-[20px] bg-[#fbfbfd] border border-ink/5">
-                <h4 className="font-bold text-ink text-base">Staff & Task Management</h4>
-                <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
-                  Intelligent task queueing, automated notifications to shift managers, and calendar synchronization.
-                </p>
+            {/* Step 4 */}
+            <div className="p-6 rounded-[24px] bg-[#fbfbfd] border border-ink/5 flex flex-col items-center text-center relative group hover:border-brand-blue/15 hover:shadow-[0_12px_32px_-12px_rgba(0,113,227,0.08)] transition-all duration-300">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue font-black text-lg">
+                4
               </div>
+              <h3 className="text-lg font-bold mt-4 text-ink">Deploy</h3>
+              <p className="text-xs text-ink-secondary mt-2 leading-relaxed font-semibold">
+                We safely launch the workflows into your existing daily channels.
+              </p>
+            </div>
 
-              <div className="p-6 rounded-[20px] bg-[#fbfbfd] border border-ink/5">
-                <h4 className="font-bold text-ink text-base">Inventory Automation</h4>
-                <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
-                  Connecting suppliers to recipes, alerting teams when stock is low, and predicting volume ordering.
-                </p>
+            {/* Step 5 */}
+            <div className="p-6 rounded-[24px] bg-[#fbfbfd] border border-ink/5 flex flex-col items-center text-center relative group hover:border-brand-blue/15 hover:shadow-[0_12px_32px_-12px_rgba(0,113,227,0.08)] transition-all duration-300">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue font-black text-lg">
+                5
               </div>
-
-              <div className="p-6 rounded-[20px] bg-[#fbfbfd] border border-ink/5">
-                <h4 className="font-bold text-ink text-base">Multi-branch Dashboard</h4>
-                <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
-                  Aggregation of sales, review counts, waitlists, and compliance flags across all physical locations.
-                </p>
-              </div>
-
-              <div className="p-6 rounded-[20px] bg-[#fbfbfd] border border-ink/5">
-                <h4 className="font-bold text-ink text-base">Customer Retention Engine</h4>
-                <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
-                  Automatically flags inactive regulars, invites feedback, and triggers personalized retention campaigns.
-                </p>
-              </div>
-
-              <div className="p-6 rounded-[20px] bg-[#fbfbfd] border border-ink/5 md:col-span-2">
-                <h4 className="font-bold text-ink text-base">Custom AI Agents</h4>
-                <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
-                  Multi-agent orchestration systems built around your complex, specific internal proprietary company data.
-                </p>
-              </div>
+              <h3 className="text-lg font-bold mt-4 text-ink">Support</h3>
+              <p className="text-xs text-ink-secondary mt-2 leading-relaxed font-semibold">
+                Continuous monitoring, data-refinements, and custom associate audits.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Who it is For Section */}
-      <section className="relative z-10 py-16 md:py-24 pl-4 sm:pl-8 md:pl-10 pr-6 sm:pr-12 md:pr-24 bg-[#001e18] text-white border-t border-emerald-500/10">
-        <div className="mx-auto max-w-7xl w-full text-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tightest text-white mb-12">
-            Who It's For
-          </h2>
- 
-          <div className="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
-            {['Restaurants', 'Salons', 'Clinics', 'Retail', 'Professional Services'].map((item) => (
-              <span 
-                key={item}
-                className="px-6 py-3 rounded-full bg-white/[0.03] border border-white/10 text-sm font-semibold tracking-wide text-emerald-100/90"
-              >
-                {item}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
- 
+
       {/* CTA Section */}
       <section className="relative z-10 py-16 md:py-24 px-6 bg-[#002b22] text-white text-center overflow-hidden border-t border-emerald-500/10">
         <div className="absolute inset-0 bg-gradient-to-b from-[#001e18] to-[#002b22] opacity-50" />
@@ -977,7 +942,7 @@ export default function CustomSolutions() {
             href="#booking"
             className="inline-flex rounded-full bg-brand-blue px-8 py-3 text-base font-bold text-white transition-all duration-200 hover:bg-brand-deep hover:scale-[1.04] hover:shadow-lg hover:shadow-brand-blue/25 active:scale-95 cursor-pointer"
           >
-            Schedule Strategy Call
+            Book Your Consultation
           </a>
         </div>
       </section>

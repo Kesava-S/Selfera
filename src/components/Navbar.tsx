@@ -125,7 +125,7 @@ export default function Navbar({ show }: NavbarProps) {
             href="#booking"
             className="hidden md:inline-flex rounded-full bg-brand-blue px-5 py-2 text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-deep hover:scale-[1.04] hover:shadow-lg hover:shadow-brand-blue/25 active:scale-95"
           >
-            Book Call
+            Book Your Consultation
           </a>
 
           <button
@@ -206,7 +206,7 @@ export default function Navbar({ show }: NavbarProps) {
                 onClick={() => setIsOpen(false)}
                 className="mt-2 rounded-full bg-brand-blue px-5 py-3 text-center text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-deep active:scale-95"
               >
-                Book Call
+                Book Your Consultation
               </a>
             </div>
           </motion.div>

@@ -628,9 +628,9 @@ export default function Hero({ show }: HeroProps) {
         </a>
         <a
           href="#booking"
-          className="rounded-full border border-white/20 bg-white/5 px-7 py-3 text-sm font-semibold text-white transition-all duration-200 hover:border-white/40 hover:bg-white/10 hover:scale-[1.04] active:scale-95"
+          className="rounded-full bg-brand-blue px-7 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-deep hover:scale-[1.04] hover:shadow-lg hover:shadow-brand-blue/25 active:scale-95"
         >
-          Book Strategy Call
+          Book Your Consultation
         </a>
       </motion.div>
 

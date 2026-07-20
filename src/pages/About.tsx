@@ -48,7 +48,7 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.35, ease: EASE }}
               className="mt-6 max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed text-emerald-100/80 font-medium"
             >
-              We help SME owners and managers with simple and effective automations that saves at least 10+ hours a week and helps them to make data backed decisions.
+              We help SMEs (owners, managers and staffs) with simple and effective automations that saves at least 10+ hours a week and help you to make data backed decisions and increase productivity.
             </motion.p>
           </div>
 
@@ -127,7 +127,7 @@ export default function About() {
               </div>
               <h3 className="text-xl font-bold text-ink tracking-tight">Mission</h3>
               <p className="text-sm text-ink-secondary leading-relaxed font-medium">
-                Our mission is to empower owner led SMEs to compete with larger companies through personalised business management and marketing automation services, helping business owners save time and stay in control of their business through real-time insights and dedicated human AI assistant for the business.
+                To empower SMEs with effective AI Automations and compete with larger corporates through personalised business operations, finance and marketing automation services.
               </p>
             </div>
 
@@ -148,11 +148,9 @@ export default function About() {
                 <Shield size={20} />
               </div>
               <h3 className="text-xl font-bold text-ink tracking-tight">Values</h3>
-              <ul className="text-sm text-ink-secondary leading-relaxed font-medium space-y-2">
-                <li>• <strong>Simplicity first:</strong> No complex setups, zero learning curve for business owners.</li>
-                <li>• <strong>Data-backed results:</strong> Delivering clear reports and transparent attribution tracking.</li>
-                <li>• <strong>Human-centric partnership:</strong> We build, monitor, and optimize so you focus on growth.</li>
-              </ul>
+              <p className="text-sm text-ink-secondary leading-relaxed font-medium">
+                Every role across our company is empowered to take ownership and accountability, put customers first, and uphold the highest standards of security and privacy.
+              </p>
             </div>
           </div>
         </div>
