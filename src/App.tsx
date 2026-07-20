@@ -22,6 +22,7 @@ const LoyaltyLoop = lazy(() => import('./pages/LoyaltyLoop'));
 const EndToEnd = lazy(() => import('./pages/EndToEnd'));
 const About = lazy(() => import('./pages/About'));
 const CustomSolutions = lazy(() => import('./pages/CustomSolutions'));
+const CaseStudies = lazy(() => import('./pages/CaseStudies'));
 
 export default function App() {
   // During build-time prerendering (no window) the intro is skipped so the
@@ -63,6 +64,10 @@ export default function App() {
   const isLoyaltyLoop = currentHash === '#solutions-loyalty';
   const isEndToEnd = currentHash === '#solutions-end-to-end';
   const isAbout = currentHash === '#about';
+  const isCaseStudies =
+    currentHash === '#case-studies' ||
+    currentHash === '#case-studies-ranna' ||
+    currentHash === '#case-study-ranna';
 
   return (
     <div className="relative min-h-screen">
@@ -103,6 +108,10 @@ export default function App() {
         ) : isAbout ? (
           <Suspense fallback={null}>
             <About />
+          </Suspense>
+        ) : isCaseStudies ? (
+          <Suspense fallback={null}>
+            <CaseStudies />
           </Suspense>
         ) : (
           <>
