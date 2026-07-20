@@ -63,9 +63,12 @@ export default function CaseStudies() {
             
             {/* Header / Title */}
             <header className="mb-12">
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tightest text-ink mb-4 leading-tight">
-                From Paper and Excel to One Connected System: How Selfera Rebuilt Financial and Operational Control for Ranna, a Five-Branch London Restaurant Group
+              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tightest text-ink mb-2 leading-tight">
+                From Paper and Excel to One Connected System: How Selfera Rebuilt Financial and Operational Control for Ranna, a Five-Branch London Restaurant Group, London
               </h2>
+              <p className="text-xs sm:text-sm font-bold text-brand-blue uppercase tracking-widest mt-1">
+                (No extra tools and subscriptions)
+              </p>
               <div className="flex flex-wrap gap-3 items-center text-xs text-ink-secondary font-bold uppercase mt-6 tracking-wider">
                 <span className="bg-ink/5 px-3 py-1.5 rounded-full">Industry: Hospitality</span>
                 <span className="bg-ink/5 px-3 py-1.5 rounded-full">Branches: 5 Sites</span>
@@ -100,20 +103,20 @@ export default function CaseStudies() {
                 <p className="mb-4">
                   Three problems sat underneath everything:
                 </p>
-                <ul className="list-disc pl-5 flex flex-col gap-2 mb-6">
+                 <ul className="list-disc pl-5 flex flex-col gap-2 mb-6">
                   <li><strong>Nobody knew the real commission rates:</strong> Working out actual revenue meant estimating platform commissions, VAT, and ad spend by hand. The rates being used were assumptions, not facts.</li>
-                  <li><strong>Small costs were invisible:</strong> Petty cash purchases and daily expenses were not tracked at all. Money left the till with no record.</li>
-                  <li><strong>The paperwork did not match the business:</strong> Five physical branches were being billed by platforms under seven different account names, which made reconciliation close to impossible for anyone working from invoices alone.</li>
+                  <li><strong>Small costs were hidden:</strong> Petty cash purchases and daily expenses were not tracked at all. Money left the till with no record.</li>
+                  <li><strong>The paperwork did not match the business:</strong> Five physical branches were being billed by platforms under seven different account names, which made balancing the numbers close to impossible for anyone working from invoices alone.</li>
                 </ul>
 
                 <div className="my-6 p-6 rounded-[24px] bg-[#fbfbfd] border border-ink/5 border-l-4 border-l-brand-blue">
                   <p className="text-sm font-bold text-ink italic leading-relaxed">
-                    "Bow and Dalston branches in particular were losing around 3 hours a day just manually working out petty expenses, commission percentages, and VAT. Across all five branches, that added up to over 10 hours a week spent on reconciliation instead of running the business."
+                    "Bow and Dalston branches in particular were losing around 3 hours a day just manually working out petty expenses, commission percentages, and VAT. Across all five branches, that added up to over 10 hours a week spent on checking the figures instead of running the business."
                   </p>
                 </div>
 
                 <p className="mb-4 mt-6">
-                  Reconciliation was only the entry point. The full engagement covered every layer of the operation:
+                  Sorting out the numbers was only the start. The full project covered every layer of the business:
                 </p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm mt-4">
@@ -171,7 +174,7 @@ export default function CaseStudies() {
                   </div>
 
                   <div>
-                    <h4 className="font-bold text-ink text-base">2. Forensic commission audit, before writing a line of dashboard logic</h4>
+                    <h4 className="font-bold text-ink text-base">2. Detailed commission check, before writing a line of dashboard logic</h4>
                     <p className="mt-1 text-sm mb-2">
                       Instead of configuring the dashboard with assumed rates, we audited Ranna's actual platform invoices line by line. What we found changed the build:
                     </p>
@@ -193,7 +196,7 @@ export default function CaseStudies() {
                     <ul className="list-disc pl-5 flex flex-col gap-1 text-sm">
                       <li>A fixed till float per branch, with daily till difference tracked against it and against the previous day</li>
                       <li>Cash-in-bag calculation at close</li>
-                      <li>Loss tracking with reasons, so shrinkage is visible instead of silent</li>
+                      <li>Loss tracking with reasons, so missing cash is spotted instead of staying hidden</li>
                     </ul>
                   </div>
 
@@ -247,12 +250,12 @@ export default function CaseStudies() {
               <div>
                 <h3 className="text-xl sm:text-2xl font-bold text-ink mb-4">What the Audit Found (and Saved)</h3>
                 <p className="mb-4">
-                  The invoice audit did more than fix configuration. It surfaced decisions worth real money:
+                  The invoice audit did more than fix configuration. It showed choices worth real money:
                 </p>
                 <ul className="list-disc pl-5 flex flex-col gap-2">
                   <li><strong>Advertising with negative return:</strong> One platform account was spending more on ads each month than it received in total payouts. The spend was provably losing money on every order, and nobody could see it because ad costs only appeared as a line buried in a monthly statement.</li>
                   <li><strong>Identical shops on very different deals:</strong> Branches doing comparable volumes were paying meaningfully different commission rates for the same service, giving the owner a factual basis to renegotiate the expensive contracts using the better ones as leverage.</li>
-                  <li><strong>A permanent fix, not a one-off:</strong> Variable platform deductions (ad spend, refunds, promotional vouchers, bag fees, weekly placement fees) are now reconciled monthly by admin inside the dashboard, so costs can never drift invisible again.</li>
+                  <li><strong>A permanent fix, not a one-off:</strong> Variable platform deductions (ad spend, refunds, promotional vouchers, bag fees, weekly placement fees) are now checked and sorted monthly by admin inside the dashboard, so costs can never stay hidden again.</li>
                 </ul>
               </div>
 
@@ -269,7 +272,7 @@ export default function CaseStudies() {
                     </p>
                   </div>
                   <div className="p-6 rounded-[20px] bg-brand-blue/[0.03] border border-brand-blue/10">
-                    <span className="text-3xl font-extrabold text-[#0071e3] block mb-1">100% Invisible Costs</span>
+                    <span className="text-3xl font-extrabold text-[#0071e3] block mb-1">100% Hidden Costs</span>
                     <h4 className="font-bold text-ink text-sm">Full Cost Visibility</h4>
                     <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
                       Exact commission, VAT, petty cash, platform fees, and daily expenses are tracked in real-time.
@@ -284,7 +287,7 @@ export default function CaseStudies() {
                   All financial records are stored securely with receipts attached, retained in line with HMRC's 6-year requirement, without anyone having to think about it.
                 </p>
                 <p>
-                  With reliable information in one place, Ranna's focus has shifted from reconciling figures to identifying the most profitable branches, tightening day-to-day control, and planning marketing budgets and future investment with confidence.
+                  With reliable information in one place, Ranna's focus has shifted from sorting out numbers to identifying the most profitable branches, tightening day-to-day control, and planning marketing budgets and future investment with confidence.
                 </p>
               </div>
 
@@ -316,7 +319,7 @@ export default function CaseStudies() {
               <div>
                 <h3 className="text-xl sm:text-2xl font-bold text-ink mb-4">Conclusion</h3>
                 <p>
-                  Selfera did not just digitize Ranna's paperwork. We audited the money first, corrected the numbers the business was running on, then built the websites, financial controls, staffing automation, and marketing layer around how Ranna actually operates. What used to take dozens of hours a month now takes about an hour a week, and every figure the owner sees is real.
+                  Selfera did not just digitise Ranna's paperwork. We audited the money first, corrected the numbers the business was running on, then built the websites, financial controls, staffing automation, and marketing layer around how Ranna actually operates. What used to take dozens of hours a month now takes about an hour a week, and every figure the owner sees is real.
                 </p>
               </div>
 
