@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronDown, X } from 'lucide-react';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -102,6 +103,29 @@ export default function CustomSolutions() {
     analytics: false,
     finance: false,
   });
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({
+    restaurant: true,
+    bakery: false,
+    beauty: false,
+  });
+
+  const [showDashboardModal, setShowDashboardModal] = useState(false);
+  const [dashboardFormData, setDashboardFormData] = useState({
+    name: '',
+    email: '',
+    restaurantName: '',
+    location: '',
+    postCode: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const toggleSection = (key: string) => {
+    setOpenSections(prev => ({
+      ...prev,
+      [key]: !prev[key]
+    }));
+  };
 
   const [activatedCircles, setActivatedCircles] = useState<Record<string, boolean>>({
     marketing: false,
@@ -264,61 +288,145 @@ export default function CustomSolutions() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-4">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tightest text-ink leading-[1.1] mb-6">
-                Example Solutions We Build
+                Example Solutions We Built
               </h2>
               <p className="text-sm text-ink-secondary leading-relaxed font-medium">
                 SMEs have highly specialized requirements depending on their industries. Here are some of the fully custom systems we construct.
               </p>
             </div>
 
-            <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-6 rounded-[20px] bg-[#fbfbfd] border border-ink/5">
-                <h4 className="font-bold text-ink text-base">AI Receptionist</h4>
-                <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
-                  Voice and chat agents capable of answering menus, checking slot tables, and booking clients.
-                </p>
+            <div className="lg:col-span-8 flex flex-col gap-5">
+              {/* Dropdown 1: Restaurant */}
+              <div className="border border-ink/10 rounded-[20px] overflow-hidden bg-white/50 backdrop-blur-sm transition-all duration-300">
+                <button
+                  onClick={() => toggleSection('restaurant')}
+                  className="w-full flex items-center justify-between p-6 text-left font-bold text-ink text-lg md:text-xl hover:bg-ink/[0.02] transition-colors duration-200"
+                >
+                  <span>Restaurant</span>
+                  <motion.div
+                    animate={{ rotate: openSections.restaurant ? 180 : 0 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    className="text-ink-secondary"
+                  >
+                    <ChevronDown size={22} />
+                  </motion.div>
+                </button>
+                <AnimatePresence initial={false}>
+                  {openSections.restaurant && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.35, ease: EASE }}
+                      className="overflow-hidden"
+                    >
+                      <div className="p-6 pt-0 border-t border-ink/5 bg-[#fbfbfd]/30 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="p-6 rounded-[20px] bg-[#fbfbfd] border border-ink/5 flex flex-col justify-between h-full col-span-1 md:col-span-2">
+                          <div>
+                            <h4 className="font-bold text-ink text-base">Self-Learning Restaurant Dashboard (Southwark, London)</h4>
+                            <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
+                              Customised Dashboard with Self Learning Automation for Operations, Finance and Marketing.
+                            </p>
+                          </div>
+                          <button
+                            onClick={() => setShowDashboardModal(true)}
+                            className="mt-4 inline-flex items-center justify-center rounded-full bg-brand-blue px-4 py-1.5 text-xs font-bold text-white transition-all duration-200 hover:bg-brand-deep hover:scale-[1.04] active:scale-95 w-fit cursor-pointer"
+                          >
+                            Try the Dashboard here
+                          </button>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
 
-              <div className="p-6 rounded-[20px] bg-[#fbfbfd] border border-ink/5">
-                <h4 className="font-bold text-ink text-base">Lead Management System</h4>
-                <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
-                  Automatic capturing, classification, data-sync to CRM, and instant 60s reply pipelines.
-                </p>
+              {/* Dropdown 2: Bakery */}
+              <div className="border border-ink/10 rounded-[20px] overflow-hidden bg-white/50 backdrop-blur-sm transition-all duration-300">
+                <button
+                  onClick={() => toggleSection('bakery')}
+                  className="w-full flex items-center justify-between p-6 text-left font-bold text-ink text-lg md:text-xl hover:bg-ink/[0.02] transition-colors duration-200"
+                >
+                  <span>Bakery</span>
+                  <motion.div
+                    animate={{ rotate: openSections.bakery ? 180 : 0 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    className="text-ink-secondary"
+                  >
+                    <ChevronDown size={22} />
+                  </motion.div>
+                </button>
+                <AnimatePresence initial={false}>
+                  {openSections.bakery && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.35, ease: EASE }}
+                      className="overflow-hidden"
+                    >
+                      <div className="p-6 pt-0 border-t border-ink/5 bg-[#fbfbfd]/30 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="p-6 rounded-[20px] bg-[#fbfbfd] border border-ink/5">
+                          <h4 className="font-bold text-ink text-base">Staff & Task Management (Bakery, Hackney, London)</h4>
+                          <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
+                            Intelligent task queueing, automated notifications to shift managers, and calendar synchronization.
+                          </p>
+                        </div>
+
+                        <div className="p-6 rounded-[20px] bg-[#fbfbfd] border border-ink/5">
+                          <h4 className="font-bold text-ink text-base">Inventory Automation (Bakery, Hackney, London)</h4>
+                          <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
+                            Connecting suppliers to recipes, alerting teams when stock is low, and predicting volume ordering.
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
 
-              <div className="p-6 rounded-[20px] bg-[#fbfbfd] border border-ink/5">
-                <h4 className="font-bold text-ink text-base">Staff & Task Management</h4>
-                <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
-                  Intelligent task queueing, automated notifications to shift managers, and calendar synchronization.
-                </p>
-              </div>
+              {/* Dropdown 3: Beauty saloon */}
+              <div className="border border-ink/10 rounded-[20px] overflow-hidden bg-white/50 backdrop-blur-sm transition-all duration-300">
+                <button
+                  onClick={() => toggleSection('beauty')}
+                  className="w-full flex items-center justify-between p-6 text-left font-bold text-ink text-lg md:text-xl hover:bg-ink/[0.02] transition-colors duration-200"
+                >
+                  <span>Beauty saloon</span>
+                  <motion.div
+                    animate={{ rotate: openSections.beauty ? 180 : 0 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    className="text-ink-secondary"
+                  >
+                    <ChevronDown size={22} />
+                  </motion.div>
+                </button>
+                <AnimatePresence initial={false}>
+                  {openSections.beauty && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.35, ease: EASE }}
+                      className="overflow-hidden"
+                    >
+                      <div className="p-6 pt-0 border-t border-ink/5 bg-[#fbfbfd]/30 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="p-6 rounded-[20px] bg-[#fbfbfd] border border-ink/5">
+                          <h4 className="font-bold text-ink text-base">Lead Management System (Beauty Salon, Bloomsbury, London)</h4>
+                          <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
+                            Automatic capturing, classification, data-sync to CRM, and instant 60s reply pipelines.
+                          </p>
+                        </div>
 
-              <div className="p-6 rounded-[20px] bg-[#fbfbfd] border border-ink/5">
-                <h4 className="font-bold text-ink text-base">Inventory Automation</h4>
-                <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
-                  Connecting suppliers to recipes, alerting teams when stock is low, and predicting volume ordering.
-                </p>
-              </div>
-
-              <div className="p-6 rounded-[20px] bg-[#fbfbfd] border border-ink/5">
-                <h4 className="font-bold text-ink text-base">Multi-branch Dashboard</h4>
-                <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
-                  Aggregation of sales, review counts, waitlists, and compliance flags across all physical locations.
-                </p>
-              </div>
-
-              <div className="p-6 rounded-[20px] bg-[#fbfbfd] border border-ink/5">
-                <h4 className="font-bold text-ink text-base">Customer Retention Engine</h4>
-                <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
-                  Automatically flags inactive regulars, invites feedback, and triggers personalized retention campaigns.
-                </p>
-              </div>
-
-              <div className="p-6 rounded-[20px] bg-[#fbfbfd] border border-ink/5 md:col-span-2">
-                <h4 className="font-bold text-ink text-base">Custom AI Agents</h4>
-                <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
-                  Multi-agent orchestration systems built around your complex, specific internal proprietary company data.
-                </p>
+                        <div className="p-6 rounded-[20px] bg-[#fbfbfd] border border-ink/5">
+                          <h4 className="font-bold text-ink text-base">Customer Retention Engine (Beauty Salon, Bloomsbury, London)</h4>
+                          <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
+                            Automatically flags inactive regulars, invites feedback, and triggers personalized retention campaigns.
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </div>
           </div>
@@ -326,7 +434,7 @@ export default function CustomSolutions() {
       </section>
 
       {/* Business Areas Section */}
-      <section className="relative z-10 py-16 md:py-24 pl-4 sm:pl-8 md:pl-10 pr-6 sm:pr-12 md:pr-24 bg-[#002b22] text-white border-t border-emerald-500/10">
+      <section id="builder" className="relative z-10 py-16 md:py-24 pl-4 sm:pl-8 md:pl-10 pr-6 sm:pr-12 md:pr-24 bg-[#002b22] text-white border-t border-emerald-500/10">
         <div className="mx-auto max-w-7xl w-full">
           <div className="text-center mb-10">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tightest text-white mb-4">
@@ -931,7 +1039,7 @@ export default function CustomSolutions() {
           </p>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tightest text-white leading-tight mb-4">
-            Book a Free AI Strategy Call
+            Let us know your expectations
           </h2>
           
           <p className="text-sm sm:text-base text-emerald-100/60 font-semibold mb-8 max-w-md">
@@ -946,6 +1054,173 @@ export default function CustomSolutions() {
           </a>
         </div>
       </section>
+
+      {/* Credentials Modal */}
+      <AnimatePresence>
+        {showDashboardModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => {
+                setShowDashboardModal(false);
+                setIsSubmitted(false);
+              }}
+              className="absolute inset-0 bg-black/60 backdrop-blur-md"
+            />
+
+            {/* Modal Body */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              transition={{ duration: 0.4, ease: EASE }}
+              className="bg-white border border-ink/10 rounded-[28px] max-w-md w-full p-8 relative shadow-2xl z-10"
+            >
+              <button
+                onClick={() => {
+                  setShowDashboardModal(false);
+                  setIsSubmitted(false);
+                }}
+                className="absolute top-6 right-6 text-ink-secondary hover:text-ink transition-colors p-1.5 rounded-full hover:bg-ink/[0.04] cursor-pointer"
+              >
+                <X size={18} />
+              </button>
+
+              {!isSubmitted ? (
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    setIsSubmitting(true);
+                    // Simulate API request
+                    setTimeout(() => {
+                      setIsSubmitting(false);
+                      setIsSubmitted(true);
+                      setDashboardFormData({
+                        name: '',
+                        email: '',
+                        restaurantName: '',
+                        location: '',
+                        postCode: '',
+                      });
+                    }, 1200);
+                  }}
+                  className="flex flex-col gap-4"
+                >
+                  <div>
+                    <h3 className="text-xl font-bold text-ink">Get Dashboard Credentials</h3>
+                    <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
+                      Enter your details below to receive temporary access credentials for the Self-Learning Restaurant Dashboard.
+                    </p>
+                  </div>
+
+                  <div className="mt-2">
+                    <label className="text-[10px] font-bold tracking-wider text-ink-secondary uppercase">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. John Doe"
+                      value={dashboardFormData.name}
+                      onChange={(e) => setDashboardFormData(prev => ({ ...prev, name: e.target.value }))}
+                      className="w-full mt-1.5 px-4 py-3 rounded-xl bg-ink/[0.02] border border-ink/10 focus:border-brand-blue focus:bg-white focus:outline-none text-sm transition-all font-semibold text-ink"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-[10px] font-bold tracking-wider text-ink-secondary uppercase">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="e.g. john@restaurant.com"
+                      value={dashboardFormData.email}
+                      onChange={(e) => setDashboardFormData(prev => ({ ...prev, email: e.target.value }))}
+                      className="w-full mt-1.5 px-4 py-3 rounded-xl bg-ink/[0.02] border border-ink/10 focus:border-brand-blue focus:bg-white focus:outline-none text-sm transition-all font-semibold text-ink"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-[10px] font-bold tracking-wider text-ink-secondary uppercase">
+                      Restaurant Name
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Southwark Bistro"
+                      value={dashboardFormData.restaurantName}
+                      onChange={(e) => setDashboardFormData(prev => ({ ...prev, restaurantName: e.target.value }))}
+                      className="w-full mt-1.5 px-4 py-3 rounded-xl bg-ink/[0.02] border border-ink/10 focus:border-brand-blue focus:bg-white focus:outline-none text-sm transition-all font-semibold text-ink"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-[10px] font-bold tracking-wider text-ink-secondary uppercase">
+                        Location
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="e.g. London"
+                        value={dashboardFormData.location}
+                        onChange={(e) => setDashboardFormData(prev => ({ ...prev, location: e.target.value }))}
+                        className="w-full mt-1.5 px-4 py-3 rounded-xl bg-ink/[0.02] border border-ink/10 focus:border-brand-blue focus:bg-white focus:outline-none text-sm transition-all font-semibold text-ink"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-[10px] font-bold tracking-wider text-ink-secondary uppercase">
+                        Postcode
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="e.g. SE1 0AA"
+                        value={dashboardFormData.postCode}
+                        onChange={(e) => setDashboardFormData(prev => ({ ...prev, postCode: e.target.value }))}
+                        className="w-full mt-1.5 px-4 py-3 rounded-xl bg-ink/[0.02] border border-ink/10 focus:border-brand-blue focus:bg-white focus:outline-none text-sm transition-all font-semibold text-ink"
+                      />
+                    </div>
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full mt-4 py-3.5 rounded-full bg-brand-blue hover:bg-brand-deep disabled:bg-brand-blue/70 text-white font-bold text-sm transition-all duration-200 hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    {isSubmitting ? 'Generating...' : 'Get Credentials'}
+                  </button>
+                </form>
+              ) : (
+                <div className="text-center py-6 flex flex-col items-center gap-4 animate-in fade-in zoom-in duration-300">
+                  <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-600 flex items-center justify-center mb-2">
+                    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold text-ink">Credentials Generated!</h3>
+                  <p className="text-sm text-ink-secondary font-semibold max-w-sm">
+                    We've sent temporary login details and access link for the dashboard to your email inbox. Please check it shortly.
+                  </p>
+                  <button
+                    onClick={() => {
+                      setShowDashboardModal(false);
+                      setIsSubmitted(false);
+                    }}
+                    className="mt-4 px-6 py-2 rounded-full border border-ink/10 hover:bg-ink/[0.02] text-xs font-bold text-ink transition-all cursor-pointer"
+                  >
+                    Close
+                  </button>
+                </div>
+              )}
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

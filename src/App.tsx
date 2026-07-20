@@ -8,6 +8,7 @@ import ConcernCards from './components/ConcernCards';
 import ConfidenceText from './components/ConfidenceText';
 import AboutSelfera from './components/AboutSelfera';
 import Industries from './components/Industries';
+import BookingForm from './components/BookingForm';
 import Footer from './components/Footer';
 
 // Loaded on demand: only the temporary /?orch-preview route renders this, so
@@ -120,6 +121,7 @@ export default function App() {
         )}
         {/* Further sections (ROI calculator, case studies, booking, tech engine)
             live on separate pages — built one at a time on approval. */}
+        <BookingForm />
       </main>
       <Footer />
     </div>
