@@ -64,12 +64,13 @@ export default function CaseStudies() {
             {/* Header / Title */}
             <header className="mb-12">
               <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tightest text-ink mb-4 leading-tight">
-                Transforming Financial Management for Ranna, A Multi-Branch London Restaurant
+                From Paper and Excel to One Connected System: How Selfera Rebuilt Financial and Operational Control for Ranna, a Five-Branch London Restaurant Group
               </h2>
               <div className="flex flex-wrap gap-3 items-center text-xs text-ink-secondary font-bold uppercase mt-6 tracking-wider">
                 <span className="bg-ink/5 px-3 py-1.5 rounded-full">Industry: Hospitality</span>
                 <span className="bg-ink/5 px-3 py-1.5 rounded-full">Branches: 5 Sites</span>
                 <span className="bg-ink/5 px-3 py-1.5 rounded-full">Saved: 10+ Hours/Week</span>
+                <span className="bg-ink/5 px-3 py-1.5 rounded-full">First Release: 3 Weeks</span>
               </div>
             </header>
 
@@ -79,8 +80,14 @@ export default function CaseStudies() {
               {/* Block 1: Overview */}
               <div>
                 <h3 className="text-xl sm:text-2xl font-bold text-ink mb-4">Overview</h3>
+                <p className="mb-4">
+                  Ranna is a growing restaurant group with five branches across London. Revenue was arriving from every direction at once: dine-in, in-house delivery, collection, and three delivery platforms (Uber Eats, Deliveroo, Just Eat), each with its own commission structure, its own VAT treatment, and its own invoice format.
+                </p>
                 <p>
-                  Ranna is a growing restaurant group with five branches across London: Dalston, South Woodford, Walthamstow, Bow, and Old Kent Road. Like a lot of multi-site restaurants, revenue was coming in from several directions at once (dine-in customers plus Uber Eats, Deliveroo, and Just Eat) and the owner didn't have a clear, single view of how the business was actually performing. Selfera stepped in to design and build a centralized financial management dashboard that replaced manual reporting with a proper digital workflow.
+                  The owner had no single view of how the business was actually performing. Records lived in a mix of Excel sheets and handwritten notes, different in every branch.
+                </p>
+                <p className="mt-4">
+                  Selfera designed and built a complete digital operating system for the group: branch websites, a centralized financial dashboard, cash and expense controls, and staffing automation, all connected in one place. This is what we did, in the order we did it.
                 </p>
               </div>
 
@@ -88,47 +95,168 @@ export default function CaseStudies() {
               <div>
                 <h3 className="text-xl sm:text-2xl font-bold text-ink mb-4">The Challenge</h3>
                 <p className="mb-4">
-                  Every branch was still using handwritten paper records to log End of Day (EOD) figures. Sales from Uber Eats, Deliveroo, Just Eat, and in-store orders were all tracked separately, so getting a real picture of overall performance meant piecing things together after the fact.
+                  Every branch closed the day differently. End of Day figures were logged in Excel at some sites and handwritten at others. Platform sales, in-store sales, and cash takings were tracked separately, so understanding real performance meant piecing fragments together days later.
                 </p>
                 <p className="mb-4">
-                  Working out actual revenue meant manually estimating delivery platform commissions, VAT, and ad spend on each platform, and there was no reliable way to know the exact percentages being taken. On top of that, small recurring costs like petty cash purchases and day-to-day expenses weren't being tracked at all, so there were real gaps in the numbers nobody could see.
+                  Three problems sat underneath everything:
                 </p>
+                <ul className="list-disc pl-5 flex flex-col gap-2 mb-6">
+                  <li><strong>Nobody knew the real commission rates:</strong> Working out actual revenue meant estimating platform commissions, VAT, and ad spend by hand. The rates being used were assumptions, not facts.</li>
+                  <li><strong>Small costs were invisible:</strong> Petty cash purchases and daily expenses were not tracked at all. Money left the till with no record.</li>
+                  <li><strong>The paperwork did not match the business:</strong> Five physical branches were being billed by platforms under seven different account names, which made reconciliation close to impossible for anyone working from invoices alone.</li>
+                </ul>
+
                 <div className="my-6 p-6 rounded-[24px] bg-[#fbfbfd] border border-ink/5 border-l-4 border-l-brand-blue">
                   <p className="text-sm font-bold text-ink italic leading-relaxed">
                     "Bow and Dalston branches in particular were losing around 3 hours a day just manually working out petty expenses, commission percentages, and VAT. Across all five branches, that added up to over 10 hours a week spent on reconciliation instead of running the business."
                   </p>
                 </div>
-                <p>
-                  As Ranna kept growing across London, the owner needed something reliable to monitor financial performance and make decisions without leaning on fragmented, inconsistent records.
-                </p>
-              </div>
 
-              {/* Block 3: The Solution */}
-              <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-ink mb-4">The Solution</h3>
-                <p className="mb-4">
-                  Selfera built a centralized financial management dashboard shaped around how Ranna actually operates. Branch managers submit standardized EOD reports through one system, and the owner gets consolidated, real-time visibility across every location.
+                <p className="mb-4 mt-6">
+                  Reconciliation was only the entry point. The full engagement covered every layer of the operation:
                 </p>
                 
-                <h4 className="text-base font-bold text-ink mb-3 uppercase tracking-wider text-xs mt-6">Financial Capabilities:</h4>
-                <ul className="list-disc pl-5 flex flex-col gap-2 mb-6">
-                  <li>Digital End of Day reporting for every branch</li>
-                  <li>Consolidated revenue from Uber Eats, Deliveroo, Just Eat, and in-store sales</li>
-                  <li>Automatic calculation of third-party platform commissions and VAT</li>
-                  <li>Proper tracking of petty cash and small daily expenses that were previously invisible</li>
-                  <li>Centralized financial reporting across all five branches</li>
-                  <li>Real-time visibility into actual revenue after every deduction</li>
-                </ul>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm mt-4">
+                  <div className="p-5 rounded-2xl bg-[#fbfbfd] border border-ink/5 flex flex-col gap-2">
+                    <h4 className="font-bold text-ink text-sm uppercase tracking-wider text-xs text-brand-blue">Money In</h4>
+                    <ul className="list-disc pl-4 flex flex-col gap-1.5 text-xs">
+                      <li>All delivery platform revenue (Uber Eats, Deliveroo, Just Eat) with rates configured per branch and per order type</li>
+                      <li>In-store cash and card, in-house delivery, collection, and online orders</li>
+                      <li>Off-till income: catering, bulk orders, and corporate invoices</li>
+                    </ul>
+                  </div>
 
-                <h4 className="text-base font-bold text-ink mb-3 uppercase tracking-wider text-xs">Staffing & Operations Capabilities:</h4>
+                  <div className="p-5 rounded-2xl bg-[#fbfbfd] border border-ink/5 flex flex-col gap-2">
+                    <h4 className="font-bold text-ink text-sm uppercase tracking-wider text-xs text-brand-blue">Money Out</h4>
+                    <ul className="list-disc pl-4 flex flex-col gap-1.5 text-xs">
+                      <li>Commission percentages audited from real invoices, not assumptions</li>
+                      <li>VAT, including three different treatments across the three platforms</li>
+                      <li>Petty expenses with an approval workflow and receipt uploads</li>
+                      <li>Hidden platform fees: per-order admin fees, paid placement fees, bag fees, refunds, promotional vouchers, ad spend, and chargebacks</li>
+                      <li>Card processing fees across three separate providers: in-store, driver, and online payments</li>
+                    </ul>
+                  </div>
+
+                  <div className="p-5 rounded-2xl bg-[#fbfbfd] border border-ink/5 flex flex-col gap-2">
+                    <h4 className="font-bold text-ink text-sm uppercase tracking-wider text-xs text-brand-blue">Cash Control & Structure</h4>
+                    <ul className="list-disc pl-4 flex flex-col gap-1.5 text-xs">
+                      <li>Till float per branch, daily till differences, cash-in-bag at close, and loss tracking with reasons</li>
+                      <li>Five branches billed as seven entities untangled by matching invoice addresses</li>
+                      <li>Duplicate platform accounts identified</li>
+                      <li>Double-counting between till records and the expense ledger designed out of the system</li>
+                    </ul>
+                  </div>
+
+                  <div className="p-5 rounded-2xl bg-[#fbfbfd] border border-ink/5 flex flex-col gap-2">
+                    <h4 className="font-bold text-ink text-sm uppercase tracking-wider text-xs text-brand-blue">Operations & Marketing</h4>
+                    <ul className="list-disc pl-4 flex flex-col gap-1.5 text-xs">
+                      <li>Wages calculated Sunday to Saturday, sales reported Monday to Sunday</li>
+                      <li>Rota learning, automatic leave reallocation, and WhatsApp notifications to managers</li>
+                      <li>Automated lead capture, instant enquiry replies, daily performance pulls, and weekly reports, already live</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Block 3: What We Built */}
+              <div>
+                <h3 className="text-xl sm:text-2xl font-bold text-ink mb-4">What We Built</h3>
+                
+                <div className="flex flex-col gap-6">
+                  <div>
+                    <h4 className="font-bold text-ink text-base">1. Branch websites, connected to the system</h4>
+                    <p className="mt-1 text-sm">
+                      We designed and built Ranna's websites and integrated them directly with the dashboard, so the web presence and the operations system work as one platform rather than two disconnected products. Online enquiries and orders flow into the same system the owner already checks every day.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-ink text-base">2. Forensic commission audit, before writing a line of dashboard logic</h4>
+                    <p className="mt-1 text-sm mb-2">
+                      Instead of configuring the dashboard with assumed rates, we audited Ranna's actual platform invoices line by line. What we found changed the build:
+                    </p>
+                    <ul className="list-disc pl-5 flex flex-col gap-1 text-sm">
+                      <li>Commission rates were not one number. They varied by platform, by branch, and by order type, ranging from 13% to 36%.</li>
+                      <li>VAT treatment differed by platform. Some platforms add 20% VAT on top of their commission; others handle VAT through reverse charge so it never touches the payout at all. Treating them the same overstates or understates real revenue every single day.</li>
+                      <li>Weekly platform fees existed that nobody was tracking: per-order admin fees, paid visibility placements, bag fees, refund deductions, and advertising spend, all quietly reducing payouts.</li>
+                      <li>The group's five branches were billed as seven entities. Two branches were each running duplicate platform accounts under different trading names. We untangled this by matching registered addresses across every invoice.</li>
+                    </ul>
+                    <p className="mt-2 text-sm">Every rate in the dashboard is now configured per branch, per platform, per order type, from evidence rather than assumption.</p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-ink text-base">3. Digital End of Day reporting with full cash control</h4>
+                    <p className="mt-1 text-sm mb-2">
+                      Branch managers now submit a standardized EOD report through one system. It captures every revenue channel separately: in-store cash and card, in-house delivery, collection, online orders, and each delivery platform, with commission and VAT calculated automatically using the audited rates.
+                    </p>
+                    <p className="text-sm font-semibold text-ink">The EOD is also a cash control system:</p>
+                    <ul className="list-disc pl-5 flex flex-col gap-1 text-sm">
+                      <li>A fixed till float per branch, with daily till difference tracked against it and against the previous day</li>
+                      <li>Cash-in-bag calculation at close</li>
+                      <li>Loss tracking with reasons, so shrinkage is visible instead of silent</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-ink text-base">4. Expense tracking with approval, not just logging</h4>
+                    <p className="mt-1 text-sm">
+                      Staff and managers submit expenses through a dedicated form with receipt upload, category, payment mode, and VAT rate. Nothing enters the books until an admin approves it. The system is deliberately designed so till-side expense records and the approved expense ledger never double-count the same money, a subtle overlap that quietly corrupts most manual systems.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-ink text-base">5. Income log for revenue that never touches the till</h4>
+                    <p className="mt-1 text-sm">
+                      Bulk orders, catering, and corporate bookings paid by invoice or bank transfer are captured in a separate income log with customer records and VAT handling, so off-till revenue finally appears in the same financial picture as daily trade.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-ink text-base">6. Role-based access</h4>
+                    <p className="mt-1 text-sm">
+                      Owner, manager, and staff each see what their role requires. Financial data is visible to the owner only. Managers run their branch. Staff see what they need and nothing more.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-ink text-base">7. Reporting cycles that match how Ranna actually operates</h4>
+                    <p className="mt-1 text-sm">
+                      Wages are calculated Sunday to Saturday. Sales are reported Monday to Sunday. The dashboard follows Ranna's real working rhythm instead of forcing a generic calendar onto the business.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-ink text-base">8. Staffing and operations automation</h4>
+                    <ul className="list-disc pl-5 flex flex-col gap-1 text-sm">
+                      <li>An automated WhatsApp assistant sends report reminders and operations notifications straight to managers, in a channel they already use every day</li>
+                      <li>AI-driven rota learning picks up how each branch schedules its team and helps managers automate future rotas</li>
+                      <li>Automatic leave reallocation covers shifts when staff take unexpected or last-minute leave, without anyone scrambling</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-ink text-base">9. Marketing automation, already running</h4>
+                    <p className="mt-1 text-sm">
+                      Alongside the financial system, Ranna's marketing layer is live: automated lead capture from the websites, instant replies to enquiries, daily performance pulls, and an automated weekly report. The next phase integrates this marketing layer directly into the dashboard, so reviews, campaigns, and enquiries sit beside revenue in one view.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Block 4: What the Audit Found */}
+              <div>
+                <h3 className="text-xl sm:text-2xl font-bold text-ink mb-4">What the Audit Found (and Saved)</h3>
+                <p className="mb-4">
+                  The invoice audit did more than fix configuration. It surfaced decisions worth real money:
+                </p>
                 <ul className="list-disc pl-5 flex flex-col gap-2">
-                  <li>An automated WhatsApp assistant sends report and operations notifications straight to managers, in a channel they already use every day</li>
-                  <li>AI-driven staff rota learning that picks up on how each branch schedules its team and helps managers automate future rotas</li>
-                  <li>Automatic leave reallocation when staff take unexpected or last-minute leave, so shifts get covered without anyone scrambling</li>
+                  <li><strong>Advertising with negative return:</strong> One platform account was spending more on ads each month than it received in total payouts. The spend was provably losing money on every order, and nobody could see it because ad costs only appeared as a line buried in a monthly statement.</li>
+                  <li><strong>Identical shops on very different deals:</strong> Branches doing comparable volumes were paying meaningfully different commission rates for the same service, giving the owner a factual basis to renegotiate the expensive contracts using the better ones as leverage.</li>
+                  <li><strong>A permanent fix, not a one-off:</strong> Variable platform deductions (ad spend, refunds, promotional vouchers, bag fees, weekly placement fees) are now reconciled monthly by admin inside the dashboard, so costs can never drift invisible again.</li>
                 </ul>
               </div>
 
-              {/* Block 4: The Results */}
+              {/* Block 5: The Results */}
               <div>
                 <h3 className="text-xl sm:text-2xl font-bold text-ink mb-4">The Results</h3>
                 
@@ -144,20 +272,23 @@ export default function CaseStudies() {
                     <span className="text-3xl font-extrabold text-[#0071e3] block mb-1">100% Invisible Costs</span>
                     <h4 className="font-bold text-ink text-sm">Full Cost Visibility</h4>
                     <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
-                      Exact commission, VAT, petty cash, and daily expenses are tracked in real-time.
+                      Exact commission, VAT, petty cash, platform fees, and daily expenses are tracked in real-time.
                     </p>
                   </div>
                 </div>
 
                 <p className="mb-4">
-                  <strong>Faster to real value than expected:</strong> The core financial dashboard and staff rota system went live for testing within <strong>3 weeks</strong>. Ranna's broader requirements, including staff training videos and structured onboarding built right into the dashboard, are being rolled out over a longer roadmap, with full development expected to wrap up within <strong>4 months</strong>.
+                  <strong>Faster to real value than expected:</strong> The core financial dashboard and rota system went live for testing within <strong>3 weeks</strong>. Ranna's broader requirements, including staff training videos, kitchen safety checks, policy sign-offs, and structured onboarding built into the same dashboard, are rolling out over a <strong>4-month roadmap</strong>, alongside a finance module that will track weekly cash position, labour cost percentage, and alert the owner before cash reserves run thin.
+                </p>
+                <p className="mb-4">
+                  All financial records are stored securely with receipts attached, retained in line with HMRC's 6-year requirement, without anyone having to think about it.
                 </p>
                 <p>
-                  With reliable financial information all in one place, Ranna's focus has shifted from reconciling figures to identifying the most profitable branches, improving how things run day to day, and planning marketing budgets and future investment with real confidence.
+                  With reliable information in one place, Ranna's focus has shifted from reconciling figures to identifying the most profitable branches, tightening day-to-day control, and planning marketing budgets and future investment with confidence.
                 </p>
               </div>
 
-              {/* Block 5: Action Block */}
+              {/* Block 6: Action Block */}
               <div className="my-8 p-8 rounded-[24px] bg-[#fbfbfd] border border-ink/5 flex flex-col md:flex-row md:items-center justify-between gap-6">
                 <div>
                   <h4 className="font-bold text-ink text-base">See it for yourself</h4>
@@ -185,7 +316,7 @@ export default function CaseStudies() {
               <div>
                 <h3 className="text-xl sm:text-2xl font-bold text-ink mb-4">Conclusion</h3>
                 <p>
-                  By digitizing financial reporting, automating commission and VAT calculations, and extending that same automation into staffing, Selfera turned a fragmented, paper-based process into a system Ranna can actually rely on. What used to take dozens of hours a month now takes about an hour a week, and that's given Ranna a stronger financial foundation to make better decisions, keep tighter control day to day, and grow with confidence across every branch.
+                  Selfera did not just digitize Ranna's paperwork. We audited the money first, corrected the numbers the business was running on, then built the websites, financial controls, staffing automation, and marketing layer around how Ranna actually operates. What used to take dozens of hours a month now takes about an hour a week, and every figure the owner sees is real.
                 </p>
               </div>
 
