@@ -91,7 +91,7 @@ export default function MicroAutomation() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 w-full">
             {/* SilentChurn Card */}
             <a 
-              href="#solutions-silentchurn" 
+              href="/solutions-silentchurn" 
               className="group flex flex-col justify-between p-6 sm:p-8 rounded-[24px] border border-ink/5 bg-[#fbfbfd] hover:border-brand-blue/20 hover:bg-white transition-all duration-300 hover:shadow-[0_16px_40px_-16px_rgba(0,113,227,0.12)] cursor-pointer decoration-none"
             >
               <div>
@@ -145,7 +145,7 @@ export default function MicroAutomation() {
 
             {/* No-Show Recovery Bot Card */}
             <a 
-              href="#solutions-noshow" 
+              href="/solutions-noshow" 
               className="group flex flex-col justify-between p-6 sm:p-8 rounded-[24px] border border-ink/5 bg-[#fbfbfd] hover:border-brand-blue/20 hover:bg-white transition-all duration-300 hover:shadow-[0_16px_40px_-16px_rgba(0,113,227,0.12)] cursor-pointer decoration-none"
             >
               <div>
@@ -199,7 +199,7 @@ export default function MicroAutomation() {
 
             {/* Allergen Compliance Checker Card */}
             <a 
-              href="#solutions-allergen" 
+              href="/solutions-allergen" 
               className="group flex flex-col justify-between p-6 sm:p-8 rounded-[24px] border border-ink/5 bg-[#fbfbfd] hover:border-brand-blue/20 hover:bg-white transition-all duration-300 hover:shadow-[0_16px_40px_-16px_rgba(0,113,227,0.12)] cursor-pointer decoration-none"
             >
               <div>
@@ -253,7 +253,7 @@ export default function MicroAutomation() {
 
             {/* Post-Visit Loyalty & Feedback Loop Card */}
             <a 
-              href="#solutions-loyalty" 
+              href="/solutions-loyalty" 
               className="group flex flex-col justify-between p-6 sm:p-8 rounded-[24px] border border-ink/5 bg-[#fbfbfd] hover:border-brand-blue/20 hover:bg-white transition-all duration-300 hover:shadow-[0_16px_40px_-16px_rgba(0,113,227,0.12)] cursor-pointer decoration-none"
             >
               <div>

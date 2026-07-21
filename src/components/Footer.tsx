@@ -12,19 +12,19 @@ export default function Footer() {
         {/* Right: Policy Links */}
         <div className="flex items-center gap-6">
           <a
-            href="#privacy"
+            href="/privacy-policy"
             className="hover:text-[#00f5c0] transition-colors duration-200"
           >
             Privacy Policy
           </a>
           <a
-            href="#terms"
+            href="/terms-and-conditions"
             className="hover:text-[#00f5c0] transition-colors duration-200"
           >
             Terms of Service
           </a>
           <a
-            href="#refund"
+            href="/refund-policy"
             className="hover:text-[#00f5c0] transition-colors duration-200"
           >
             Refund Policy

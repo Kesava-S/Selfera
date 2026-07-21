@@ -29,25 +29,51 @@ export default function App() {
   // static HTML snapshot contains the full page content for crawlers. In the
   // browser this is always false and the intro plays as normal.
   const [introDone, setIntroDone] = useState(() => typeof window === 'undefined');
-  const [currentHash, setCurrentHash] = useState(() => typeof window !== 'undefined' ? window.location.hash : '#');
+  const [currentPath, setCurrentPath] = useState(() => typeof window !== 'undefined' ? window.location.pathname : '/');
   const [showBookingModal, setShowBookingModal] = useState(false);
 
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash;
-      if (hash === '#booking') {
+    const handleLocationChange = () => {
+      setCurrentPath(window.location.pathname);
+      if (window.location.hash === '#booking') {
         setShowBookingModal(true);
-      } else {
-        setCurrentHash(hash);
       }
       window.scrollTo({ top: 0, behavior: 'instant' });
     };
+
+    const handleHashChange = () => {
+      if (window.location.hash === '#booking') {
+        setShowBookingModal(true);
+      }
+    };
+
+    const handleLinkClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const anchor = target.closest('a');
+      if (anchor) {
+        const href = anchor.getAttribute('href');
+        // Intercept internal paths starting with / but not /# hashes
+        if (href && href.startsWith('/') && !href.startsWith('/#')) {
+          e.preventDefault();
+          window.history.pushState(null, '', href);
+          handleLocationChange();
+        }
+      }
+    };
+
+    window.addEventListener('popstate', handleLocationChange);
     window.addEventListener('hashchange', handleHashChange);
+    window.addEventListener('click', handleLinkClick);
+
     // Initial check
     if (typeof window !== 'undefined' && window.location.hash === '#booking') {
       setShowBookingModal(true);
     }
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('hashchange', handleHashChange);
+      window.removeEventListener('click', handleLinkClick);
+    };
   }, []);
 
   // Temporary sample gallery: open /?orch-preview to review the orchestration
@@ -63,21 +89,28 @@ export default function App() {
   }
 
   const isMicroAutomation = 
-    currentHash === '#solutions-micro' || 
-    currentHash === '#products';
+    currentPath === '/solutions-micro' || 
+    currentPath === '/products' ||
+    (typeof window !== 'undefined' && (window.location.hash === '#solutions-micro' || window.location.hash === '#products'));
   const isCustomSolutions = 
-    currentHash === '#solutions' || 
-    currentHash === '#solutions-custom';
-  const isSilentChurn = currentHash === '#solutions-silentchurn';
-  const isNoShowRecovery = currentHash === '#solutions-noshow';
-  const isAllergenChecker = currentHash === '#solutions-allergen';
-  const isLoyaltyLoop = currentHash === '#solutions-loyalty';
-  const isEndToEnd = currentHash === '#solutions-end-to-end';
-  const isAbout = currentHash === '#about';
+    currentPath === '/solutions' || 
+    currentPath === '/solutions-custom' ||
+    (typeof window !== 'undefined' && (window.location.hash === '#solutions' || window.location.hash === '#solutions-custom'));
+  const isSilentChurn = currentPath === '/solutions-silentchurn' || (typeof window !== 'undefined' && window.location.hash === '#solutions-silentchurn');
+  const isNoShowRecovery = currentPath === '/solutions-noshow' || (typeof window !== 'undefined' && window.location.hash === '#solutions-noshow');
+  const isAllergenChecker = currentPath === '/solutions-allergen' || (typeof window !== 'undefined' && window.location.hash === '#solutions-allergen');
+  const isLoyaltyLoop = currentPath === '/solutions-loyalty' || (typeof window !== 'undefined' && window.location.hash === '#solutions-loyalty');
+  const isEndToEnd = currentPath === '/solutions-end-to-end' || (typeof window !== 'undefined' && window.location.hash === '#solutions-end-to-end');
+  const isAbout = currentPath === '/about' || (typeof window !== 'undefined' && window.location.hash === '#about');
   const isCaseStudies =
-    currentHash === '#case-studies' ||
-    currentHash === '#case-studies-ranna' ||
-    currentHash === '#case-study-ranna';
+    currentPath === '/case-studies' ||
+    currentPath === '/case-studies-ranna' ||
+    currentPath === '/case-study-ranna' ||
+    (typeof window !== 'undefined' && (
+      window.location.hash === '#case-studies' ||
+      window.location.hash === '#case-studies-ranna' ||
+      window.location.hash === '#case-study-ranna'
+    ));
 
   return (
     <div className="relative min-h-screen">

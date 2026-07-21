@@ -379,7 +379,7 @@ export default function CaseStudies() {
                           Try the Live Sandbox
                         </button>
                         <a
-                          href="#booking"
+                          href="/#booking"
                           className="rounded-full border border-ink/10 px-5 py-2.5 text-xs font-bold text-ink hover:bg-ink/[0.02] transition-all flex items-center gap-1 cursor-pointer"
                         >
                           Book Walkthrough <ArrowRight size={12} />
