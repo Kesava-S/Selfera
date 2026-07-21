@@ -244,6 +244,9 @@ export default function Hero({ show }: HeroProps) {
               key={index}
               src={logo.src}
               alt={logo.alt}
+              width={32}
+              height={32}
+              loading="eager"
               className={`absolute h-4 md:h-8 w-auto object-contain opacity-75 hover:opacity-100 transition-all duration-300 hover:scale-110 pointer-events-auto cursor-pointer -translate-x-1/2 -translate-y-1/2 z-10 ${logo.className || ''}`}
               style={{
                 left: `${logo.x}%`,
@@ -308,6 +311,9 @@ export default function Hero({ show }: HeroProps) {
               key={index}
               src={logo.src}
               alt={logo.alt}
+              width={24}
+              height={24}
+              loading="eager"
               className="absolute h-3.5 md:h-6 w-auto object-contain opacity-75 hover:opacity-100 transition-all duration-300 hover:scale-110 pointer-events-auto cursor-pointer -translate-x-1/2 -translate-y-1/2 z-10"
               style={{
                 left: `${logo.x}%`,
@@ -372,6 +378,9 @@ export default function Hero({ show }: HeroProps) {
               key={index}
               src={logo.src}
               alt={logo.alt}
+              width={24}
+              height={24}
+              loading="eager"
               className="absolute h-3.5 md:h-6 w-auto object-contain opacity-75 hover:opacity-100 transition-all duration-300 hover:scale-110 pointer-events-auto cursor-pointer -translate-x-1/2 -translate-y-1/2 z-10"
               style={{
                 left: `${logo.x}%`,
@@ -423,6 +432,9 @@ export default function Hero({ show }: HeroProps) {
                 key={index}
                 src={logo.src}
                 alt={logo.alt}
+                width={32}
+                height={32}
+                loading="eager"
                 className="h-4 md:h-8 w-auto object-contain opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-105 pointer-events-auto cursor-pointer z-10"
               />
             ))}
@@ -494,6 +506,9 @@ export default function Hero({ show }: HeroProps) {
               key={index}
               src={logo.src}
               alt={logo.alt}
+              width={32}
+              height={32}
+              loading="eager"
               className="absolute h-4 md:h-8 w-auto object-contain opacity-75 hover:opacity-100 transition-all duration-300 hover:scale-110 pointer-events-auto cursor-pointer -translate-x-1/2 -translate-y-1/2 z-10"
               style={{
                 left: `${logo.x}%`,
@@ -524,6 +539,9 @@ export default function Hero({ show }: HeroProps) {
             <img
               src={logo.src}
               alt={logo.alt}
+              width={32}
+              height={32}
+              loading="eager"
               className={`h-7 sm:h-8 w-auto object-contain opacity-75 hover:opacity-100 transition-all duration-300 hover:-translate-y-1 hover:scale-105 cursor-pointer z-10 ${logo.className}`}
             />
             
