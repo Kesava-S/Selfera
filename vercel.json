@@ -37,9 +37,11 @@
   ],
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/dashboard/(.*)", "destination": "https://ranna-admin-sandbox.vercel.app/$1", "permanent": false },
+    { "source": "/dashboard", "destination": "https://ranna-admin-sandbox.vercel.app", "permanent": false }
+  ],
   "rewrites": [
-    { "source": "/dashboard/(.*)", "destination": "https://ranna-admin-sandbox.vercel.app/$1" },
-    { "source": "/dashboard", "destination": "https://ranna-admin-sandbox.vercel.app/" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
