@@ -52,7 +52,7 @@ export default function Navbar({ show }: NavbarProps) {
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-8 py-3.5">
         <div className="flex flex-col items-start leading-none">
-          <a href="#" className="text-2xl sm:text-3xl font-bold tracking-tightest text-ink leading-none">
+          <a href="/" className="text-2xl sm:text-3xl font-bold tracking-tightest text-ink leading-none">
             Selfera<span className="text-brand-blue">.</span>
           </a>
           <span className="mt-1 text-[10px] sm:text-xs font-semibold text-brand-blue tracking-wide uppercase">
