@@ -35,19 +35,10 @@ export default function App() {
   useEffect(() => {
     const handleLocationChange = () => {
       setCurrentPath(window.location.pathname);
-      if (window.location.hash === '#booking') {
-        setShowBookingModal(true);
-      } else {
-        setShowBookingModal(false);
-      }
     };
 
     const handleHashChange = () => {
-      if (window.location.hash === '#booking') {
-        setShowBookingModal(true);
-      } else {
-        setShowBookingModal(false);
-      }
+      // Handled internally now
     };
 
     const handleLinkClick = (e: MouseEvent) => {
@@ -55,15 +46,22 @@ export default function App() {
       const anchor = target.closest('a');
       if (anchor) {
         const href = anchor.getAttribute('href');
-        if (href === '#booking') {
+        if (href && href.startsWith('#')) {
           e.preventDefault();
-          window.history.pushState(null, '', window.location.pathname + window.location.search + '#booking');
-          setShowBookingModal(true);
+          if (href === '#booking') {
+            setShowBookingModal(true);
+          } else {
+            const id = href.substring(1);
+            const el = document.getElementById(id);
+            if (el) {
+              el.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
           return;
         }
         
-        // Intercept internal paths starting with / but not /# hashes, and not /dashboard (handled by Vercel rewrite)
-        if (href && href.startsWith('/') && !href.startsWith('/#') && !href.startsWith('/dashboard')) {
+        // Intercept internal paths starting with / but not /dashboard (handled by Vercel rewrite)
+        if (href && href.startsWith('/') && !href.startsWith('/dashboard')) {
           e.preventDefault();
           window.history.replaceState(null, '', href);
           handleLocationChange();
@@ -186,9 +184,6 @@ export default function App() {
           isOpen={showBookingModal} 
           onClose={() => {
             setShowBookingModal(false);
-            if (typeof window !== 'undefined' && window.location.hash === '#booking') {
-              window.history.replaceState(null, '', window.location.pathname + window.location.search);
-            }
           }} 
         />
       </main>
