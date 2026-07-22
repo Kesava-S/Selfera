@@ -122,7 +122,7 @@ export default function Navbar({ show }: NavbarProps) {
         {/* Action Button & Mobile Trigger */}
         <div className="flex items-center gap-2">
           <a
-            href="/#booking"
+            href="#booking"
             className="hidden md:inline-flex rounded-full bg-brand-blue px-5 py-2 text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-deep hover:scale-[1.04] hover:shadow-lg hover:shadow-brand-blue/25 active:scale-95"
           >
             Book Your Consultation
@@ -202,7 +202,7 @@ export default function Navbar({ show }: NavbarProps) {
                 </a>
               ))}
               <a
-                href="/#booking"
+                href="#booking"
                 onClick={() => setIsOpen(false)}
                 className="mt-2 rounded-full bg-brand-blue px-5 py-3 text-center text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-deep active:scale-95"
               >

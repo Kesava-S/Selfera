@@ -1047,7 +1047,7 @@ export default function CustomSolutions() {
           </p>
 
           <a
-            href="/#booking"
+            href="#booking"
             className="inline-flex rounded-full bg-brand-blue px-8 py-3 text-base font-bold text-white transition-all duration-200 hover:bg-brand-deep hover:scale-[1.04] hover:shadow-lg hover:shadow-brand-blue/25 active:scale-95 cursor-pointer"
           >
             Book Your Consultation

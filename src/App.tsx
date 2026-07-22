@@ -38,7 +38,6 @@ export default function App() {
       if (window.location.hash === '#booking') {
         setShowBookingModal(true);
       }
-      window.scrollTo({ top: 0, behavior: 'instant' });
     };
 
     const handleHashChange = () => {
@@ -57,6 +56,7 @@ export default function App() {
           e.preventDefault();
           window.history.pushState(null, '', href);
           handleLocationChange();
+          window.scrollTo({ top: 0, behavior: 'instant' });
         }
       }
     };
@@ -176,7 +176,7 @@ export default function App() {
           onClose={() => {
             setShowBookingModal(false);
             if (typeof window !== 'undefined' && window.location.hash === '#booking') {
-              window.location.hash = '';
+              window.history.replaceState(null, '', window.location.pathname + window.location.search);
             }
           }} 
         />
