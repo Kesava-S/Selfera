@@ -6,16 +6,6 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 export default function CaseStudies() {
   const [isRannaExpanded, setIsRannaExpanded] = useState(false);
-  const [showDashboardModal, setShowDashboardModal] = useState(false);
-  const [dashboardFormData, setDashboardFormData] = useState({
-    name: '',
-    email: '',
-    restaurantName: '',
-    location: '',
-    postCode: '',
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -372,12 +362,12 @@ export default function CaseStudies() {
                         </p>
                       </div>
                       <div className="flex gap-3 flex-wrap">
-                        <button
-                          onClick={() => setShowDashboardModal(true)}
-                          className="rounded-full bg-brand-blue px-5 py-2.5 text-xs font-bold text-white transition-all duration-200 hover:bg-brand-deep hover:scale-[1.04] active:scale-95 cursor-pointer"
+                        <a
+                          href="/dashboard"
+                          className="rounded-full bg-brand-blue px-5 py-2.5 text-xs font-bold text-white transition-all duration-200 hover:bg-brand-deep hover:scale-[1.04] active:scale-95 cursor-pointer inline-flex items-center justify-center"
                         >
                           Try the Live Sandbox
-                        </button>
+                        </a>
                         <a
                           href="#booking"
                           className="rounded-full border border-ink/10 px-5 py-2.5 text-xs font-bold text-ink hover:bg-ink/[0.02] transition-all flex items-center gap-1 cursor-pointer"
@@ -403,172 +393,7 @@ export default function CaseStudies() {
         </div>
       </section>
 
-      {/* Credentials Modal */}
-      <AnimatePresence>
-        {showDashboardModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => {
-                setShowDashboardModal(false);
-                setIsSubmitted(false);
-              }}
-              className="absolute inset-0 bg-black/60 backdrop-blur-md"
-            />
 
-            {/* Modal Body */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 10 }}
-              transition={{ duration: 0.4, ease: EASE }}
-              className="bg-white border border-ink/10 rounded-[28px] max-w-md w-full p-8 relative shadow-2xl z-10"
-            >
-              <button
-                onClick={() => {
-                  setShowDashboardModal(false);
-                  setIsSubmitted(false);
-                }}
-                className="absolute top-6 right-6 text-ink-secondary hover:text-ink transition-colors p-1.5 rounded-full hover:bg-ink/[0.04] cursor-pointer"
-              >
-                <X size={18} />
-              </button>
-
-              {!isSubmitted ? (
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    setIsSubmitting(true);
-                    // Simulate API request
-                    setTimeout(() => {
-                      setIsSubmitting(false);
-                      setIsSubmitted(true);
-                      setDashboardFormData({
-                        name: '',
-                        email: '',
-                        restaurantName: '',
-                        location: '',
-                        postCode: '',
-                      });
-                    }, 1200);
-                  }}
-                  className="flex flex-col gap-4"
-                >
-                  <div>
-                    <h3 className="text-xl font-bold text-ink">Get Sandbox Credentials</h3>
-                    <p className="text-xs text-ink-secondary mt-1 font-semibold leading-relaxed">
-                      Enter your details below to receive temporary access credentials for the Ranna Restaurant Sandbox Dashboard.
-                    </p>
-                  </div>
-
-                  <div className="mt-2">
-                    <label className="text-[10px] font-bold tracking-wider text-ink-secondary uppercase">
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. John Doe"
-                      value={dashboardFormData.name}
-                      onChange={(e) => setDashboardFormData(prev => ({ ...prev, name: e.target.value }))}
-                      className="w-full mt-1.5 px-4 py-3 rounded-xl bg-ink/[0.02] border border-ink/10 focus:border-brand-blue focus:bg-white focus:outline-none text-sm transition-all font-semibold text-ink text-ink-secondary"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-[10px] font-bold tracking-wider text-ink-secondary uppercase">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="e.g. john@restaurant.com"
-                      value={dashboardFormData.email}
-                      onChange={(e) => setDashboardFormData(prev => ({ ...prev, email: e.target.value }))}
-                      className="w-full mt-1.5 px-4 py-3 rounded-xl bg-ink/[0.02] border border-ink/10 focus:border-brand-blue focus:bg-white focus:outline-none text-sm transition-all font-semibold text-ink text-ink-secondary"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-[10px] font-bold tracking-wider text-ink-secondary uppercase">
-                      Restaurant Name
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Southwark Bistro"
-                      value={dashboardFormData.restaurantName}
-                      onChange={(e) => setDashboardFormData(prev => ({ ...prev, restaurantName: e.target.value }))}
-                      className="w-full mt-1.5 px-4 py-3 rounded-xl bg-ink/[0.02] border border-ink/10 focus:border-brand-blue focus:bg-white focus:outline-none text-sm transition-all font-semibold text-ink text-ink-secondary"
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-[10px] font-bold tracking-wider text-ink-secondary uppercase">
-                        Location
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="e.g. London"
-                        value={dashboardFormData.location}
-                        onChange={(e) => setDashboardFormData(prev => ({ ...prev, location: e.target.value }))}
-                        className="w-full mt-1.5 px-4 py-3 rounded-xl bg-ink/[0.02] border border-ink/10 focus:border-brand-blue focus:bg-white focus:outline-none text-sm transition-all font-semibold text-ink text-ink-secondary"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-[10px] font-bold tracking-wider text-ink-secondary uppercase">
-                        Postcode
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="e.g. SE1 0AA"
-                        value={dashboardFormData.postCode}
-                        onChange={(e) => setDashboardFormData(prev => ({ ...prev, postCode: e.target.value }))}
-                        className="w-full mt-1.5 px-4 py-3 rounded-xl bg-ink/[0.02] border border-ink/10 focus:border-brand-blue focus:bg-white focus:outline-none text-sm transition-all font-semibold text-ink text-ink-secondary"
-                      />
-                    </div>
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full mt-4 py-3.5 rounded-full bg-brand-blue hover:bg-brand-deep disabled:bg-brand-blue/70 text-white font-bold text-sm transition-all duration-200 hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
-                  >
-                    {isSubmitting ? 'Generating...' : 'Get Sandbox Access'}
-                  </button>
-                </form>
-              ) : (
-                <div className="text-center py-6 flex flex-col items-center gap-4 animate-in fade-in zoom-in duration-300">
-                  <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-600 flex items-center justify-center mb-2">
-                    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-bold text-ink">Credentials Generated!</h3>
-                  <p className="text-sm text-ink-secondary font-semibold max-w-sm">
-                    We've sent temporary sandbox details and the access link to your email inbox. Check it shortly!
-                  </p>
-                  <button
-                    onClick={() => {
-                      setShowDashboardModal(false);
-                      setIsSubmitted(false);
-                    }}
-                    className="mt-4 px-6 py-2 rounded-full border border-ink/10 hover:bg-ink/[0.02] text-xs font-bold text-ink transition-all cursor-pointer"
-                  >
-                    Close
-                  </button>
-                </div>
-              )}
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
     </>
   );
 }

@@ -51,8 +51,8 @@ export default function App() {
       const anchor = target.closest('a');
       if (anchor) {
         const href = anchor.getAttribute('href');
-        // Intercept internal paths starting with / but not /# hashes
-        if (href && href.startsWith('/') && !href.startsWith('/#')) {
+        // Intercept internal paths starting with / but not /# hashes, and not /dashboard (handled by Vercel rewrite)
+        if (href && href.startsWith('/') && !href.startsWith('/#') && !href.startsWith('/dashboard')) {
           e.preventDefault();
           window.history.pushState(null, '', href);
           handleLocationChange();

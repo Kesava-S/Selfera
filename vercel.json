@@ -38,6 +38,8 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
+    { "source": "/dashboard/(.*)", "destination": "https://ranna-admin-sandbox.vercel.app/$1" },
+    { "source": "/dashboard", "destination": "https://ranna-admin-sandbox.vercel.app/" },
     { "source": "/((?!assets/|logos/|fonts/|favicon.*|apple-touch-icon.png|site.webmanifest|sitemap.xml|robots.txt).*).*", "destination": "/index.html" }
   ]
 }
