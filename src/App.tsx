@@ -65,7 +65,7 @@ export default function App() {
         // Intercept internal paths starting with / but not /# hashes, and not /dashboard (handled by Vercel rewrite)
         if (href && href.startsWith('/') && !href.startsWith('/#') && !href.startsWith('/dashboard')) {
           e.preventDefault();
-          window.history.pushState(null, '', href);
+          window.history.replaceState(null, '', href);
           handleLocationChange();
           window.scrollTo({ top: 0, behavior: 'instant' });
         }
