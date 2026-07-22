@@ -75,7 +75,7 @@ export default function CaseStudies() {
             transition={{ duration: 0.8, delay: 0.25, ease: EASE }}
             className="mt-6 max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed text-emerald-100/80 font-medium"
           >
-            How we partner with owner-led business managers to replace manual admin with premium digital operations workflows.
+            How we partner with owner-led business managers and owners to replace repeated and complex admin operations with premium digital operations workflows.
           </motion.p>
         </div>
       </section>
