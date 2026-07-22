@@ -33,6 +33,9 @@ export default function IntroOverlay({ onComplete }: IntroOverlayProps) {
     const timer = window.setTimeout(onComplete, HOLD_MS);
     return () => {
       window.clearTimeout(timer);
+      if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'auto';
+      }
     };
   }, [onComplete]);
 
