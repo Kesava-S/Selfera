@@ -37,12 +37,16 @@ export default function App() {
       setCurrentPath(window.location.pathname);
       if (window.location.hash === '#booking') {
         setShowBookingModal(true);
+      } else {
+        setShowBookingModal(false);
       }
     };
 
     const handleHashChange = () => {
       if (window.location.hash === '#booking') {
         setShowBookingModal(true);
+      } else {
+        setShowBookingModal(false);
       }
     };
 
@@ -51,6 +55,13 @@ export default function App() {
       const anchor = target.closest('a');
       if (anchor) {
         const href = anchor.getAttribute('href');
+        if (href === '#booking') {
+          e.preventDefault();
+          window.history.pushState(null, '', window.location.pathname + window.location.search + '#booking');
+          setShowBookingModal(true);
+          return;
+        }
+        
         // Intercept internal paths starting with / but not /# hashes, and not /dashboard (handled by Vercel rewrite)
         if (href && href.startsWith('/') && !href.startsWith('/#') && !href.startsWith('/dashboard')) {
           e.preventDefault();

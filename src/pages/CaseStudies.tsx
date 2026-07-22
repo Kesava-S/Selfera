@@ -364,6 +364,8 @@ export default function CaseStudies() {
                       <div className="flex gap-3 flex-wrap">
                         <a
                           href="/dashboard"
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="rounded-full bg-brand-blue px-5 py-2.5 text-xs font-bold text-white transition-all duration-200 hover:bg-brand-deep hover:scale-[1.04] active:scale-95 cursor-pointer inline-flex items-center justify-center"
                         >
                           Try the Live Sandbox
