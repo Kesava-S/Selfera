@@ -127,7 +127,7 @@ export default function About() {
               </div>
               <h3 className="text-xl font-bold text-ink tracking-tight">Mission</h3>
               <p className="text-sm text-ink-secondary leading-relaxed font-medium">
-                To empower SMEs with effective AI Automations and compete with larger corporates through personalised business operations, finance and marketing automation services.
+                To empower owner-led SMEs with effective AI Automations through personalised business operations, finance and marketing automation services.
               </p>
             </div>
 
@@ -138,7 +138,7 @@ export default function About() {
               </div>
               <h3 className="text-xl font-bold text-ink tracking-tight">Vision</h3>
               <p className="text-sm text-ink-secondary leading-relaxed font-medium">
-                A future where Owner-Led Small enterprises can compete on a level playing field with global corporations by leveraging custom-fit, self-managing AI agents that work silently in the background and also a solid growth in the employment for students in computer science and AI and Management.
+                A future where Owner-Led Small enterprises can compete on a level playing field with global corporations by leveraging custom-fit, self-managing AI agents that work silently in the background and also a solid growth in the employment for youths.
               </p>
             </div>
 
