@@ -8,9 +8,9 @@ import App from './App';
  * real content instead of an empty root div. The browser build ignores this
  * file entirely.
  */
-export function render(): string {
+export function render(url: string): string {
   return renderToString(
-    <StaticRouter location="/">
+    <StaticRouter location={url}>
       <App />
     </StaticRouter>
   );
