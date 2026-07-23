@@ -1,4 +1,5 @@
 import { lazy, Suspense, useState, useEffect } from 'react';
+import { Routes, Route, useLocation, useNavigate, useNavigationType } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import IntroOverlay from './components/IntroOverlay';
 import Navbar from './components/Navbar';
@@ -10,9 +11,8 @@ import AboutSelfera from './components/AboutSelfera';
 import Industries from './components/Industries';
 import BookingForm from './components/BookingForm';
 import Footer from './components/Footer';
+import NotFound from './pages/NotFound';
 
-// Loaded on demand: only the temporary /?orch-preview route renders this, so
-// its code (diagram + brand logo set) stays out of the main bundle.
 const Orchestration = lazy(() => import('./components/Orchestration'));
 const MicroAutomation = lazy(() => import('./pages/MicroAutomation'));
 const SilentChurn = lazy(() => import('./pages/SilentChurn'));
@@ -24,83 +24,46 @@ const About = lazy(() => import('./pages/About'));
 const CustomSolutions = lazy(() => import('./pages/CustomSolutions'));
 const CaseStudies = lazy(() => import('./pages/CaseStudies'));
 
-export default function App() {
-  // During build-time prerendering (no window) the intro is skipped so the
-  // static HTML snapshot contains the full page content for crawlers. In the
-  // browser this is always false and the intro plays as normal.
-  const [introDone, setIntroDone] = useState(() => typeof window === 'undefined');
-  const [currentPath, setCurrentPath] = useState(() => typeof window !== 'undefined' ? window.location.pathname : '/');
-  const [showBookingModal, setShowBookingModal] = useState(false);
+function ScrollManager() {
+  const { pathname, hash } = useLocation();
+  const navigationType = useNavigationType();
 
   useEffect(() => {
-    const handleLocationChange = () => {
-      setCurrentPath(window.location.pathname);
-      if (window.location.hash === '#booking') {
-        setShowBookingModal(true);
-      } else {
-        setShowBookingModal(false);
-      }
-    };
-
-    const handleHashChange = () => {
-      if (window.location.hash === '#booking') {
-        setShowBookingModal(true);
-      } else {
-        setShowBookingModal(false);
-      }
-    };
-
-    const handleLinkClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const anchor = target.closest('a');
-      if (anchor) {
-        const href = anchor.getAttribute('href');
-        if (href && href.startsWith('#')) {
-          e.preventDefault();
-          
-          // Use standard browser history for hash navigation
-          window.history.pushState(null, '', window.location.pathname + window.location.search + href);
-          
-          if (href === '#booking') {
-            setShowBookingModal(true);
-          } else {
-            const id = href.substring(1);
-            const el = document.getElementById(id);
-            if (el) {
-              el.scrollIntoView({ behavior: 'smooth' });
-            }
-          }
-          return;
+    if (hash && hash !== '#booking') {
+      setTimeout(() => {
+        const id = hash.substring(1);
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
         }
-        
-        // Intercept internal paths starting with / but not /dashboard (handled by Vercel rewrite)
-        if (href && href.startsWith('/') && !href.startsWith('/dashboard')) {
-          e.preventDefault();
-          window.history.pushState(null, '', href);
-          handleLocationChange();
-          window.scrollTo({ top: 0, behavior: 'instant' });
-        }
-      }
-    };
-
-    window.addEventListener('popstate', handleLocationChange);
-    window.addEventListener('hashchange', handleHashChange);
-    window.addEventListener('click', handleLinkClick);
-
-    // Initial check
-    if (typeof window !== 'undefined' && window.location.hash === '#booking') {
-      setShowBookingModal(true);
+      }, 10);
     }
-    return () => {
-      window.removeEventListener('popstate', handleLocationChange);
-      window.removeEventListener('hashchange', handleHashChange);
-      window.removeEventListener('click', handleLinkClick);
-    };
-  }, []);
+  }, [hash]);
 
-  // Temporary sample gallery: open /?orch-preview to review the orchestration
-  // diagram in isolation. Remove once its home on the site is decided.
-  if (typeof window !== 'undefined' && window.location.search.includes('orch-preview')) {
+  useEffect(() => {
+    if (navigationType !== 'POP' && !hash) {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, navigationType, hash]);
+
+  return null;
+}
+
+export default function App() {
+  const [introDone, setIntroDone] = useState(() => typeof window === 'undefined');
+  const [showBookingModal, setShowBookingModal] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (location.hash === '#booking') {
+      setShowBookingModal(true);
+    } else {
+      setShowBookingModal(false);
+    }
+  }, [location.hash]);
+
+  if (typeof window !== 'undefined' && location.search.includes('orch-preview')) {
     return (
       <div className="grid min-h-screen place-items-center bg-white px-4 py-10">
         <Suspense fallback={null}>
@@ -110,92 +73,52 @@ export default function App() {
     );
   }
 
-  const isMicroAutomation = 
-    currentPath === '/solutions-micro' || 
-    currentPath === '/products' ||
-    (typeof window !== 'undefined' && (window.location.hash === '#solutions-micro' || window.location.hash === '#products'));
-  const isCustomSolutions = 
-    currentPath === '/solutions' || 
-    currentPath === '/solutions-custom' ||
-    (typeof window !== 'undefined' && (window.location.hash === '#solutions' || window.location.hash === '#solutions-custom'));
-  const isSilentChurn = currentPath === '/solutions-silentchurn' || (typeof window !== 'undefined' && window.location.hash === '#solutions-silentchurn');
-  const isNoShowRecovery = currentPath === '/solutions-noshow' || (typeof window !== 'undefined' && window.location.hash === '#solutions-noshow');
-  const isAllergenChecker = currentPath === '/solutions-allergen' || (typeof window !== 'undefined' && window.location.hash === '#solutions-allergen');
-  const isLoyaltyLoop = currentPath === '/solutions-loyalty' || (typeof window !== 'undefined' && window.location.hash === '#solutions-loyalty');
-  const isEndToEnd = currentPath === '/solutions-end-to-end' || (typeof window !== 'undefined' && window.location.hash === '#solutions-end-to-end');
-  const isAbout = currentPath === '/about' || (typeof window !== 'undefined' && window.location.hash === '#about');
-  const isCaseStudies =
-    currentPath === '/case-studies' ||
-    currentPath === '/case-studies-ranna' ||
-    currentPath === '/case-study-ranna' ||
-    (typeof window !== 'undefined' && (
-      window.location.hash === '#case-studies' ||
-      window.location.hash === '#case-studies-ranna' ||
-      window.location.hash === '#case-study-ranna'
-    ));
-
   return (
     <div className="relative min-h-screen">
+      <ScrollManager />
       <AnimatePresence>
         {!introDone && <IntroOverlay onComplete={() => setIntroDone(true)} />}
       </AnimatePresence>
 
       <Navbar show={introDone} />
       <main>
-        {isMicroAutomation ? (
-          <Suspense fallback={null}>
-            <MicroAutomation />
-          </Suspense>
-        ) : isSilentChurn ? (
-          <Suspense fallback={null}>
-            <SilentChurn />
-          </Suspense>
-        ) : isNoShowRecovery ? (
-          <Suspense fallback={null}>
-            <NoShowRecovery />
-          </Suspense>
-        ) : isAllergenChecker ? (
-          <Suspense fallback={null}>
-            <AllergenChecker />
-          </Suspense>
-        ) : isLoyaltyLoop ? (
-          <Suspense fallback={null}>
-            <LoyaltyLoop />
-          </Suspense>
-        ) : isEndToEnd ? (
-          <Suspense fallback={null}>
-            <EndToEnd />
-          </Suspense>
-        ) : isCustomSolutions ? (
-          <Suspense fallback={null}>
-            <CustomSolutions />
-          </Suspense>
-        ) : isAbout ? (
-          <Suspense fallback={null}>
-            <About />
-          </Suspense>
-        ) : isCaseStudies ? (
-          <Suspense fallback={null}>
-            <CaseStudies />
-          </Suspense>
-        ) : (
-          <>
-            <Hero show={introDone} />
-            <MagicText />
-            <ConcernCards />
-            <div
-              className="bg-[#002b22] text-white border-y border-emerald-500/10 py-16 sm:py-24"
-              style={{ backgroundImage: 'linear-gradient(180deg, #002b22 0%, #001e18 100%)' }}
-            >
-              <ConfidenceText />
-              <AboutSelfera />
-            </div>
-            <Industries />
-          </>
-        )}
+        <Suspense fallback={null}>
+          <Routes>
+            <Route path="/" element={
+              <>
+                <Hero show={introDone} />
+                <MagicText />
+                <ConcernCards />
+                <div
+                  className="bg-[#002b22] text-white border-y border-emerald-500/10 py-16 sm:py-24"
+                  style={{ backgroundImage: 'linear-gradient(180deg, #002b22 0%, #001e18 100%)' }}
+                >
+                  <ConfidenceText />
+                  <AboutSelfera />
+                </div>
+                <Industries />
+              </>
+            } />
+            <Route path="/solutions-micro" element={<MicroAutomation />} />
+            <Route path="/products" element={<MicroAutomation />} />
+            <Route path="/solutions-silentchurn" element={<SilentChurn />} />
+            <Route path="/solutions-noshow" element={<NoShowRecovery />} />
+            <Route path="/solutions-allergen" element={<AllergenChecker />} />
+            <Route path="/solutions-loyalty" element={<LoyaltyLoop />} />
+            <Route path="/solutions-end-to-end" element={<EndToEnd />} />
+            <Route path="/solutions" element={<CustomSolutions />} />
+            <Route path="/solutions-custom" element={<CustomSolutions />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/case-studies" element={<CaseStudies />} />
+            <Route path="/case-studies-ranna" element={<CaseStudies />} />
+            <Route path="/case-study-ranna" element={<CaseStudies />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
         <BookingForm 
           isOpen={showBookingModal} 
           onClose={() => {
+            navigate(location.pathname + location.search, { replace: true });
             setShowBookingModal(false);
           }} 
         />

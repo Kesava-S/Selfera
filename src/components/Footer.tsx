@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -11,24 +13,24 @@ export default function Footer() {
 
         {/* Right: Policy Links */}
         <div className="flex items-center gap-6">
-          <a
-            href="/privacy-policy"
+          <Link
+            to="/privacy-policy"
             className="hover:text-[#00f5c0] transition-colors duration-200"
           >
             Privacy Policy
-          </a>
-          <a
-            href="/terms-and-conditions"
+          </Link>
+          <Link
+            to="/terms-and-conditions"
             className="hover:text-[#00f5c0] transition-colors duration-200"
           >
             Terms of Service
-          </a>
-          <a
-            href="/refund-policy"
+          </Link>
+          <Link
+            to="/refund-policy"
             className="hover:text-[#00f5c0] transition-colors duration-200"
           >
             Refund Policy
-          </a>
+          </Link>
         </div>
       </div>
     </footer>

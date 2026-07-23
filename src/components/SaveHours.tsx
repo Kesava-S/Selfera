@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Clock, TrendingUp, CheckCircle2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -41,12 +42,12 @@ export default function SaveHours() {
           transition={{ duration: 0.8, delay: 0.85, ease: EASE }}
           className="mt-8"
         >
-          <a
-            href="#roi"
+          <Link
+            to="#roi"
             className="inline-block rounded-full bg-brand-blue px-7 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-deep hover:scale-[1.04] hover:shadow-lg hover:shadow-brand-blue/30 active:scale-95"
           >
             Calculate Your Savings
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

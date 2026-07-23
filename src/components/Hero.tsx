@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 interface HeroProps {
   show: boolean;
@@ -638,18 +639,18 @@ export default function Hero({ show }: HeroProps) {
         transition={{ duration: 0.8, delay: 1.1, ease: EASE }}
         className="relative z-20 mt-8 flex flex-wrap items-center justify-center gap-4"
       >
-        <a
-          href="#how-it-works"
+        <Link
+          to="#how-it-works"
           className="rounded-full bg-white px-7 py-3 text-sm font-semibold text-[#002b22] transition-all duration-200 hover:bg-emerald-50 hover:scale-[1.04] hover:shadow-lg hover:shadow-white/10 active:scale-95"
         >
           See How It Works
-        </a>
-        <a
-          href="#booking"
+        </Link>
+        <Link
+          to="#booking"
           className="rounded-full bg-brand-blue px-7 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-deep hover:scale-[1.04] hover:shadow-lg hover:shadow-brand-blue/25 active:scale-95"
         >
           Book Your Consultation
-        </a>
+        </Link>
       </motion.div>
 
 

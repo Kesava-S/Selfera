@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface NavbarProps {
   show: boolean;
@@ -52,9 +53,9 @@ export default function Navbar({ show }: NavbarProps) {
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-8 py-3.5">
         <div className="flex flex-col items-start leading-none">
-          <a href="/" className="text-2xl sm:text-3xl font-bold tracking-tightest text-ink leading-none">
+          <Link to="/" className="text-2xl sm:text-3xl font-bold tracking-tightest text-ink leading-none">
             Selfera<span className="text-brand-blue">.</span>
-          </a>
+          </Link>
           <span className="mt-1 text-[10px] sm:text-xs font-semibold text-brand-blue tracking-wide uppercase">
             Enterprise Grade AI for Owner-Led SMEs
           </span>
@@ -94,14 +95,14 @@ export default function Navbar({ show }: NavbarProps) {
                   className="absolute left-0 mt-1 w-64 rounded-2xl border border-ink/5 bg-white p-2.5 shadow-xl shadow-ink/5 backdrop-blur-lg z-50"
                 >
                   {PRODUCTS.map((item) => (
-                    <a
+                    <Link
                       key={item.href}
-                      href={item.href}
+                      to={item.href}
                       onClick={() => setIsProductsOpen(false)}
                       className="block rounded-lg px-4 py-2.5 text-sm font-semibold text-ink-secondary hover:bg-ink/5 hover:text-ink transition-all duration-200"
                     >
                       <span>{item.label}</span>
-                    </a>
+                    </Link>
                   ))}
                 </motion.div>
               )}
@@ -109,24 +110,25 @@ export default function Navbar({ show }: NavbarProps) {
           </div>
 
           {LINKS.filter((l) => l.label !== 'Products').map((link) => (
-            <a
+            <Link
               key={link.href}
-              href={link.href}
+              to={link.href}
               className="rounded-full px-4 py-1.5 text-[15px] font-semibold text-ink-secondary transition-colors duration-200 hover:bg-ink/5 hover:text-ink"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
         {/* Action Button & Mobile Trigger */}
         <div className="flex items-center gap-2">
-          <a
-            href="#booking"
-            className="hidden md:inline-flex rounded-full bg-brand-blue px-5 py-2 text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-deep hover:scale-[1.04] hover:shadow-lg hover:shadow-brand-blue/25 active:scale-95"
+          <Link
+            to="#booking"
+            className="hidden md:inline-flex items-center gap-2 rounded-full bg-brand-blue px-5 py-2 text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-deep hover:scale-[1.04] hover:shadow-lg hover:shadow-brand-blue/25 active:scale-95"
           >
             Book Your Consultation
-          </a>
+            <ArrowRight size={14} />
+          </Link>
 
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -174,9 +176,9 @@ export default function Navbar({ show }: NavbarProps) {
                       className="overflow-hidden pl-4 flex flex-col gap-2.5 mt-2 border-l border-ink/5 ml-2"
                     >
                       {PRODUCTS.map((item) => (
-                        <a
+                        <Link
                           key={item.href}
-                          href={item.href}
+                          to={item.href}
                           onClick={() => {
                             setIsOpen(false);
                             setIsMobileProductsOpen(false);
@@ -184,7 +186,7 @@ export default function Navbar({ show }: NavbarProps) {
                           className="flex items-center justify-between gap-3 text-sm font-semibold text-ink-secondary hover:text-brand-blue transition-colors duration-200 py-1"
                         >
                           <span>{item.label}</span>
-                        </a>
+                        </Link>
                       ))}
                     </motion.div>
                   )}
@@ -192,22 +194,23 @@ export default function Navbar({ show }: NavbarProps) {
               </div>
 
               {LINKS.filter((l) => l.label !== 'Products').map((link) => (
-                <a
+                <Link
                   key={link.href}
-                  href={link.href}
+                  to={link.href}
                   onClick={() => setIsOpen(false)}
                   className="text-[17px] font-bold text-ink-secondary hover:text-brand-blue transition-colors duration-200 py-1"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
-              <a
-                href="#booking"
+              <Link
+                to="#booking"
                 onClick={() => setIsOpen(false)}
-                className="mt-2 rounded-full bg-brand-blue px-5 py-3 text-center text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-deep active:scale-95"
+                className="mt-2 flex items-center justify-center gap-2 w-full rounded-full bg-brand-blue px-5 py-3 text-center text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-deep active:scale-95"
               >
                 Book Your Consultation
-              </a>
+                <ArrowRight size={16} />
+              </Link>
             </div>
           </motion.div>
         )}

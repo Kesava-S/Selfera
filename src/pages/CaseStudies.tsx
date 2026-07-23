@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -370,12 +371,12 @@ export default function CaseStudies() {
                         >
                           Try the Live Sandbox
                         </a>
-                        <a
-                          href="#booking"
+                        <Link
+                          to="#booking"
                           className="rounded-full border border-ink/10 px-5 py-2.5 text-xs font-bold text-ink hover:bg-ink/[0.02] transition-all flex items-center gap-1 cursor-pointer"
                         >
                           Book Walkthrough <ArrowRight size={12} />
-                        </a>
+                        </Link>
                       </div>
                     </div>
 

@@ -1,4 +1,5 @@
 import { renderToString } from 'react-dom/server';
+import { StaticRouter } from 'react-router-dom/server';
 import App from './App';
 
 /**
@@ -8,5 +9,9 @@ import App from './App';
  * file entirely.
  */
 export function render(): string {
-  return renderToString(<App />);
+  return renderToString(
+    <StaticRouter location="/">
+      <App />
+    </StaticRouter>
+  );
 }
