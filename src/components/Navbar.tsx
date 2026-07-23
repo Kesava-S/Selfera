@@ -10,7 +10,6 @@ interface NavbarProps {
 const LINKS = [
   { label: 'Solutions', href: '/solutions' },
   { label: 'Products', href: '/solutions-micro' },
-  { label: 'How it Works', href: '/#how-it-works' },
   { label: 'Case Studies', href: '/case-studies' },
   { label: 'About', href: '/about' },
 ];
