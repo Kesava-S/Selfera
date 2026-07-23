@@ -35,10 +35,19 @@ export default function App() {
   useEffect(() => {
     const handleLocationChange = () => {
       setCurrentPath(window.location.pathname);
+      if (window.location.hash === '#booking') {
+        setShowBookingModal(true);
+      } else {
+        setShowBookingModal(false);
+      }
     };
 
     const handleHashChange = () => {
-      // Handled internally now
+      if (window.location.hash === '#booking') {
+        setShowBookingModal(true);
+      } else {
+        setShowBookingModal(false);
+      }
     };
 
     const handleLinkClick = (e: MouseEvent) => {
@@ -48,6 +57,10 @@ export default function App() {
         const href = anchor.getAttribute('href');
         if (href && href.startsWith('#')) {
           e.preventDefault();
+          
+          // Use standard browser history for hash navigation
+          window.history.pushState(null, '', window.location.pathname + window.location.search + href);
+          
           if (href === '#booking') {
             setShowBookingModal(true);
           } else {
@@ -63,7 +76,7 @@ export default function App() {
         // Intercept internal paths starting with / but not /dashboard (handled by Vercel rewrite)
         if (href && href.startsWith('/') && !href.startsWith('/dashboard')) {
           e.preventDefault();
-          window.history.replaceState(null, '', href);
+          window.history.pushState(null, '', href);
           handleLocationChange();
           window.scrollTo({ top: 0, behavior: 'instant' });
         }
