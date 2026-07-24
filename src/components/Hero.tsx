@@ -640,10 +640,10 @@ export default function Hero({ show }: HeroProps) {
         className="relative z-20 mt-8 flex flex-wrap items-center justify-center gap-4"
       >
         <Link
-          to="#how-it-works"
-          className="rounded-full bg-white px-7 py-3 text-sm font-semibold text-[#002b22] transition-all duration-200 hover:bg-emerald-50 hover:scale-[1.04] hover:shadow-lg hover:shadow-white/10 active:scale-95"
+          to="#enquire"
+          className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-7 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-emerald-500/20 hover:scale-[1.04] active:scale-95 backdrop-blur-sm"
         >
-          See How It Works
+          Enquire
         </Link>
         <Link
           to="#booking"

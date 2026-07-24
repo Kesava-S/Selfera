@@ -29,6 +29,8 @@ const ROUTES = [
   '/case-studies',
   '/case-studies-ranna',
   '/case-study-ranna',
+  '/privacy-policy',
+  '/sub-processors',
   '/404'
 ];
 

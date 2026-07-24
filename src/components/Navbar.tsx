@@ -122,6 +122,12 @@ export default function Navbar({ show }: NavbarProps) {
         {/* Action Button & Mobile Trigger */}
         <div className="flex items-center gap-2">
           <Link
+            to="#enquire"
+            className="hidden md:inline-flex items-center justify-center rounded-full border border-ink/10 px-5 py-2 text-sm font-semibold text-ink transition-all duration-200 hover:bg-ink/5 hover:border-ink/20 active:scale-95"
+          >
+            Enquire
+          </Link>
+          <Link
             to="#booking"
             className="hidden md:inline-flex items-center gap-2 rounded-full bg-brand-blue px-5 py-2 text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-deep hover:scale-[1.04] hover:shadow-lg hover:shadow-brand-blue/25 active:scale-95"
           >
@@ -202,14 +208,22 @@ export default function Navbar({ show }: NavbarProps) {
                   {link.label}
                 </Link>
               ))}
-              <Link
-                to="#booking"
-                onClick={() => setIsOpen(false)}
-                className="mt-2 flex items-center justify-center gap-2 w-full rounded-full bg-brand-blue px-5 py-3 text-center text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-deep active:scale-95"
-              >
-                Book Your Consultation
-                <ArrowRight size={16} />
-              </Link>
+              <div className="grid grid-cols-2 gap-2 mt-2">
+                <Link
+                  to="#enquire"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-center rounded-full border border-ink/10 px-4 py-3 text-center text-sm font-semibold text-ink transition-all duration-200 hover:bg-ink/5 active:scale-95"
+                >
+                  Enquire
+                </Link>
+                <Link
+                  to="#booking"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-center rounded-full bg-brand-blue px-4 py-3 text-center text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-deep active:scale-95"
+                >
+                  Book Consult
+                </Link>
+              </div>
             </div>
           </motion.div>
         )}

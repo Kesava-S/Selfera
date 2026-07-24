@@ -10,6 +10,7 @@ import ConfidenceText from './components/ConfidenceText';
 import AboutSelfera from './components/AboutSelfera';
 import Industries from './components/Industries';
 import BookingForm from './components/BookingForm';
+import EnquireForm from './components/EnquireForm';
 import Footer from './components/Footer';
 import NotFound from './pages/NotFound';
 
@@ -23,13 +24,15 @@ const EndToEnd = lazy(() => import('./pages/EndToEnd'));
 const About = lazy(() => import('./pages/About'));
 const CustomSolutions = lazy(() => import('./pages/CustomSolutions'));
 const CaseStudies = lazy(() => import('./pages/CaseStudies'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const SubProcessors = lazy(() => import('./pages/SubProcessors'));
 
 function ScrollManager() {
   const { pathname, hash } = useLocation();
   const navigationType = useNavigationType();
 
   useEffect(() => {
-    if (hash && hash !== '#booking') {
+    if (hash && hash !== '#booking' && hash !== '#enquire') {
       setTimeout(() => {
         const id = hash.substring(1);
         const element = document.getElementById(id);
@@ -52,14 +55,20 @@ function ScrollManager() {
 export default function App() {
   const [introDone, setIntroDone] = useState(() => typeof window === 'undefined');
   const [showBookingModal, setShowBookingModal] = useState(false);
+  const [showEnquireModal, setShowEnquireModal] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (location.hash === '#booking') {
       setShowBookingModal(true);
+      setShowEnquireModal(false);
+    } else if (location.hash === '#enquire') {
+      setShowEnquireModal(true);
+      setShowBookingModal(false);
     } else {
       setShowBookingModal(false);
+      setShowEnquireModal(false);
     }
   }, [location.hash]);
 
@@ -112,6 +121,8 @@ export default function App() {
             <Route path="/case-studies" element={<CaseStudies />} />
             <Route path="/case-studies-ranna" element={<CaseStudies />} />
             <Route path="/case-study-ranna" element={<CaseStudies />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/sub-processors" element={<SubProcessors />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
@@ -120,6 +131,13 @@ export default function App() {
           onClose={() => {
             navigate(location.pathname + location.search, { replace: true });
             setShowBookingModal(false);
+          }} 
+        />
+        <EnquireForm 
+          isOpen={showEnquireModal} 
+          onClose={() => {
+            navigate(location.pathname + location.search, { replace: true });
+            setShowEnquireModal(false);
           }} 
         />
       </main>

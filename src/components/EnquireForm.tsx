@@ -1,25 +1,28 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, Calendar, X } from 'lucide-react';
+import { Check, MessageSquare, X } from 'lucide-react';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-interface BookingFormProps {
+interface EnquireFormProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export default function BookingForm({ isOpen, onClose }: BookingFormProps) {
+export default function EnquireForm({ isOpen, onClose }: EnquireFormProps) {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
+    fullName: '',
     businessName: '',
-    businessType: '',
+    email: '',
+    whatsAppNumber: '',
     websiteUrl: '',
-    employeeCount: '',
-    preferredDate: '',
+    industry: '',
+    companySize: '',
+    enquiryType: '',
     message: '',
+    contactMethod: 'Email',
+    bestTime: '',
+    consent: false,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -32,15 +35,18 @@ export default function BookingForm({ isOpen, onClose }: BookingFormProps) {
       setIsSubmitting(false);
       setIsSubmitted(true);
       setFormData({
-        name: '',
-        email: '',
-        phone: '',
+        fullName: '',
         businessName: '',
-        businessType: '',
+        email: '',
+        whatsAppNumber: '',
         websiteUrl: '',
-        employeeCount: '',
-        preferredDate: '',
+        industry: '',
+        companySize: '',
+        enquiryType: '',
         message: '',
+        contactMethod: 'Email',
+        bestTime: '',
+        consent: false,
       });
     }, 1200);
   };
@@ -76,7 +82,7 @@ export default function BookingForm({ isOpen, onClose }: BookingFormProps) {
                 onClose();
                 setIsSubmitted(false);
               }}
-              className="absolute top-6 right-6 text-emerald-100/70 hover:text-white transition-colors p-1.5 rounded-full hover:bg-white/[0.04] cursor-pointer"
+              className="absolute top-6 right-6 text-emerald-100/70 hover:text-white transition-colors p-1.5 rounded-full hover:bg-white/[0.04] cursor-pointer z-50"
             >
               <X size={18} />
             </button>
@@ -91,15 +97,15 @@ export default function BookingForm({ isOpen, onClose }: BookingFormProps) {
               <div className="lg:col-span-5 flex flex-col gap-5 text-left">
                 <div>
                   <p className="text-xs font-bold text-[#00f5c0] uppercase tracking-widest mb-2">
-                    Partner with us
+                    Start a Conversation
                   </p>
                   <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tightest text-white leading-tight">
-                    Book Your Consultation
+                    Enquire Now
                   </h2>
                 </div>
                 
                 <p className="text-xs sm:text-sm text-emerald-100/70 font-semibold leading-relaxed">
-                  We design custom AI agents and integrations tailor-made for your marketing, operations, and finance. Tell us what you want to automate.
+                  Have a question about our services, partnerships, or need technical support? Fill out the form and our team will get back to you promptly.
                 </p>
 
                 <div className="flex flex-col gap-3 mt-2">
@@ -108,8 +114,8 @@ export default function BookingForm({ isOpen, onClose }: BookingFormProps) {
                       <Check size={10} strokeWidth={3} />
                     </div>
                     <div>
-                      <h4 className="text-xs sm:text-sm font-bold text-white">Save 10+ Hours Every Week</h4>
-                      <p className="text-[11px] text-emerald-100/60 font-semibold">Remove repetitive workflows and focus on business growth.</p>
+                      <h4 className="text-xs sm:text-sm font-bold text-white">Rapid Response</h4>
+                      <p className="text-[11px] text-emerald-100/60 font-semibold">We aim to reply to all enquiries within 24 hours.</p>
                     </div>
                   </div>
 
@@ -118,18 +124,8 @@ export default function BookingForm({ isOpen, onClose }: BookingFormProps) {
                       <Check size={10} strokeWidth={3} />
                     </div>
                     <div>
-                      <h4 className="text-xs sm:text-sm font-bold text-white">Custom-Built & Monitored</h4>
-                      <p className="text-[11px] text-emerald-100/60 font-semibold">We handle setup, API integrations, and proactive continuous optimization.</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#00f5c0]/10 text-[#00f5c0]">
-                      <Check size={10} strokeWidth={3} />
-                    </div>
-                    <div>
-                      <h4 className="text-xs sm:text-sm font-bold text-white">Data Security First</h4>
-                      <p className="text-[11px] text-emerald-100/60 font-semibold">Highest safety standards for customer data and business analytics.</p>
+                      <h4 className="text-xs sm:text-sm font-bold text-white">Expert Advice</h4>
+                      <p className="text-[11px] text-emerald-100/60 font-semibold">Speak directly with our automation and integration specialists.</p>
                     </div>
                   </div>
                 </div>
@@ -141,7 +137,7 @@ export default function BookingForm({ isOpen, onClose }: BookingFormProps) {
                   <AnimatePresence mode="wait">
                     {!isSubmitted ? (
                       <motion.form
-                        key="booking-form"
+                        key="enquire-form"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
@@ -152,51 +148,21 @@ export default function BookingForm({ isOpen, onClose }: BookingFormProps) {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <div>
                             <label className="text-[9px] sm:text-[10px] font-bold tracking-wider text-emerald-100/60 uppercase">
-                              Name (first and last)
+                              Full Name <span className="text-emerald-500">*</span>
                             </label>
                             <input
                               type="text"
                               required
                               placeholder="John Doe"
-                              value={formData.name}
-                              onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                              value={formData.fullName}
+                              onChange={(e) => setFormData(prev => ({ ...prev, fullName: e.target.value }))}
                               className="w-full mt-1.5 px-4 py-3 rounded-xl bg-[#002b22] border border-emerald-500/10 focus:border-brand-blue focus:outline-none text-xs sm:text-sm transition-all font-semibold text-white"
                             />
                           </div>
 
                           <div>
                             <label className="text-[9px] sm:text-[10px] font-bold tracking-wider text-emerald-100/60 uppercase">
-                              Email
-                            </label>
-                            <input
-                              type="email"
-                              required
-                              placeholder="john@company.com"
-                              value={formData.email}
-                              onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                              className="w-full mt-1.5 px-4 py-3 rounded-xl bg-[#002b22] border border-emerald-500/10 focus:border-brand-blue focus:outline-none text-xs sm:text-sm transition-all font-semibold text-white"
-                            />
-                          </div>
-                        </div>
-
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                          <div>
-                            <label className="text-[9px] sm:text-[10px] font-bold tracking-wider text-emerald-100/60 uppercase">
-                              Phone number
-                            </label>
-                            <input
-                              type="tel"
-                              required
-                              placeholder="+44 123 456 7890"
-                              value={formData.phone}
-                              onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-                              className="w-full mt-1.5 px-4 py-3 rounded-xl bg-[#002b22] border border-emerald-500/10 focus:border-brand-blue focus:outline-none text-xs sm:text-sm transition-all font-semibold text-white"
-                            />
-                          </div>
-
-                          <div>
-                            <label className="text-[9px] sm:text-[10px] font-bold tracking-wider text-emerald-100/60 uppercase">
-                              Business name
+                              Business Name <span className="text-emerald-500">*</span>
                             </label>
                             <input
                               type="text"
@@ -212,21 +178,37 @@ export default function BookingForm({ isOpen, onClose }: BookingFormProps) {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <div>
                             <label className="text-[9px] sm:text-[10px] font-bold tracking-wider text-emerald-100/60 uppercase">
-                              Business type or sector
+                              Email Address <span className="text-emerald-500">*</span>
                             </label>
                             <input
-                              type="text"
+                              type="email"
                               required
-                              placeholder="e.g. Healthcare, Retail"
-                              value={formData.businessType}
-                              onChange={(e) => setFormData(prev => ({ ...prev, businessType: e.target.value }))}
+                              placeholder="john@company.com"
+                              value={formData.email}
+                              onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                               className="w-full mt-1.5 px-4 py-3 rounded-xl bg-[#002b22] border border-emerald-500/10 focus:border-brand-blue focus:outline-none text-xs sm:text-sm transition-all font-semibold text-white"
                             />
                           </div>
 
                           <div>
                             <label className="text-[9px] sm:text-[10px] font-bold tracking-wider text-emerald-100/60 uppercase">
-                              Website URL
+                              WhatsApp Number <span className="text-emerald-500">*</span>
+                            </label>
+                            <input
+                              type="tel"
+                              required
+                              placeholder="+44 123 456 7890"
+                              value={formData.whatsAppNumber}
+                              onChange={(e) => setFormData(prev => ({ ...prev, whatsAppNumber: e.target.value }))}
+                              className="w-full mt-1.5 px-4 py-3 rounded-xl bg-[#002b22] border border-emerald-500/10 focus:border-brand-blue focus:outline-none text-xs sm:text-sm transition-all font-semibold text-white"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div>
+                            <label className="text-[9px] sm:text-[10px] font-bold tracking-wider text-emerald-100/60 uppercase">
+                              Business Website <span className="opacity-50">(Optional)</span>
                             </label>
                             <input
                               type="url"
@@ -236,55 +218,134 @@ export default function BookingForm({ isOpen, onClose }: BookingFormProps) {
                               className="w-full mt-1.5 px-4 py-3 rounded-xl bg-[#002b22] border border-emerald-500/10 focus:border-brand-blue focus:outline-none text-xs sm:text-sm transition-all font-semibold text-white"
                             />
                           </div>
+
+                          <div>
+                            <label className="text-[9px] sm:text-[10px] font-bold tracking-wider text-emerald-100/60 uppercase">
+                              Industry <span className="text-emerald-500">*</span>
+                            </label>
+                            <select
+                              required
+                              value={formData.industry}
+                              onChange={(e) => setFormData(prev => ({ ...prev, industry: e.target.value }))}
+                              className="w-full mt-1.5 px-4 py-3 rounded-xl bg-[#002b22] border border-emerald-500/10 focus:border-brand-blue focus:outline-none text-xs sm:text-sm transition-all font-semibold text-white appearance-none cursor-pointer"
+                            >
+                              <option value="" disabled>Select...</option>
+                              <option value="Restaurant">Restaurant</option>
+                              <option value="Salon">Salon</option>
+                              <option value="Retail">Retail</option>
+                              <option value="Clinic">Clinic</option>
+                              <option value="Professional Services">Professional Services</option>
+                              <option value="Hospitality">Hospitality</option>
+                              <option value="Other">Other</option>
+                            </select>
+                          </div>
                         </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <div>
                             <label className="text-[9px] sm:text-[10px] font-bold tracking-wider text-emerald-100/60 uppercase">
-                              Number of employees
+                              Company Size <span className="text-emerald-500">*</span>
                             </label>
                             <select
                               required
-                              value={formData.employeeCount}
-                              onChange={(e) => setFormData(prev => ({ ...prev, employeeCount: e.target.value }))}
+                              value={formData.companySize}
+                              onChange={(e) => setFormData(prev => ({ ...prev, companySize: e.target.value }))}
                               className="w-full mt-1.5 px-4 py-3 rounded-xl bg-[#002b22] border border-emerald-500/10 focus:border-brand-blue focus:outline-none text-xs sm:text-sm transition-all font-semibold text-white appearance-none cursor-pointer"
                             >
                               <option value="" disabled>Select...</option>
-                              <option value="1-10">1-10</option>
-                              <option value="11-50">11-50</option>
-                              <option value="51-200">51-200</option>
-                              <option value="201-500">201-500</option>
-                              <option value="500+">500+</option>
+                              <option value="Just me">Just me</option>
+                              <option value="2–10 employees">2–10 employees</option>
+                              <option value="11–50 employees">11–50 employees</option>
+                              <option value="50+">50+</option>
                             </select>
                           </div>
 
                           <div>
                             <label className="text-[9px] sm:text-[10px] font-bold tracking-wider text-emerald-100/60 uppercase">
-                              Preferred date and time
+                              Type of enquiry <span className="text-emerald-500">*</span>
                             </label>
-                            <input
-                              type="datetime-local"
+                            <select
                               required
-                              value={formData.preferredDate}
-                              onChange={(e) => setFormData(prev => ({ ...prev, preferredDate: e.target.value }))}
-                              className="w-full mt-1.5 px-4 py-3 rounded-xl bg-[#002b22] border border-emerald-500/10 focus:border-brand-blue focus:outline-none text-xs sm:text-sm transition-all font-semibold text-white [color-scheme:dark]"
-                            />
+                              value={formData.enquiryType}
+                              onChange={(e) => setFormData(prev => ({ ...prev, enquiryType: e.target.value }))}
+                              className="w-full mt-1.5 px-4 py-3 rounded-xl bg-[#002b22] border border-emerald-500/10 focus:border-brand-blue focus:outline-none text-xs sm:text-sm transition-all font-semibold text-white appearance-none cursor-pointer"
+                            >
+                              <option value="" disabled>Select...</option>
+                              <option value="Partnership">Partnership</option>
+                              <option value="Press">Press</option>
+                              <option value="Careers">Careers</option>
+                              <option value="General question">General question</option>
+                              <option value="Technical support">Technical support</option>
+                              <option value="Billing">Billing</option>
+                            </select>
                           </div>
                         </div>
 
                         <div>
                           <label className="text-[9px] sm:text-[10px] font-bold tracking-wider text-emerald-100/60 uppercase">
-                            Message
+                            Tell us about your business or challenge <span className="text-emerald-500">*</span>
                           </label>
                           <textarea
                             required
                             rows={3}
-                            placeholder="Tell us what you want to automate..."
+                            placeholder="Write your message here..."
                             value={formData.message}
                             onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
                             className="w-full mt-1.5 px-4 py-3 rounded-xl bg-[#002b22] border border-emerald-500/10 focus:border-brand-blue focus:outline-none text-xs sm:text-sm transition-all font-semibold text-white resize-none"
                           />
                         </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-end">
+                          <div>
+                            <label className="text-[9px] sm:text-[10px] font-bold tracking-wider text-emerald-100/60 uppercase mb-2 block">
+                              Preferred Contact Method
+                            </label>
+                            <div className="flex items-center gap-4 text-xs font-semibold">
+                              {['WhatsApp', 'Email', 'Phone'].map(method => (
+                                <label key={method} className="flex items-center gap-1.5 cursor-pointer">
+                                  <input 
+                                    type="radio" 
+                                    name="contactMethod" 
+                                    value={method}
+                                    checked={formData.contactMethod === method}
+                                    onChange={(e) => setFormData(prev => ({ ...prev, contactMethod: e.target.value }))}
+                                    className="accent-brand-blue cursor-pointer"
+                                  />
+                                  <span>{method}</span>
+                                </label>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div>
+                            <label className="text-[9px] sm:text-[10px] font-bold tracking-wider text-emerald-100/60 uppercase">
+                              Best Time to Contact <span className="opacity-50">(Optional)</span>
+                            </label>
+                            <select
+                              value={formData.bestTime}
+                              onChange={(e) => setFormData(prev => ({ ...prev, bestTime: e.target.value }))}
+                              className="w-full mt-1.5 px-4 py-3 rounded-xl bg-[#002b22] border border-emerald-500/10 focus:border-brand-blue focus:outline-none text-xs sm:text-sm transition-all font-semibold text-white appearance-none cursor-pointer"
+                            >
+                              <option value="">Select...</option>
+                              <option value="Morning">Morning</option>
+                              <option value="Afternoon">Afternoon</option>
+                              <option value="Evening">Evening</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <label className="flex items-start gap-2.5 mt-1 cursor-pointer">
+                          <input 
+                            type="checkbox" 
+                            required
+                            checked={formData.consent}
+                            onChange={(e) => setFormData(prev => ({ ...prev, consent: e.target.checked }))}
+                            className="mt-1 accent-brand-blue shrink-0 cursor-pointer"
+                          />
+                          <span className="text-[11px] sm:text-xs font-medium text-emerald-100/70 leading-tight">
+                            I agree to be contacted regarding my enquiry.
+                          </span>
+                        </label>
 
                         <button
                           type="submit"
@@ -292,18 +353,18 @@ export default function BookingForm({ isOpen, onClose }: BookingFormProps) {
                           className="w-full mt-2 py-3.5 rounded-full bg-brand-blue hover:bg-brand-deep disabled:bg-brand-blue/70 text-white font-bold text-xs sm:text-sm transition-all duration-200 hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
                         >
                           {isSubmitting ? (
-                            'Scheduling...'
+                            'Sending Enquiry...'
                           ) : (
                             <>
-                              <Calendar size={14} />
-                              <span>Book Your Consultation</span>
+                              <MessageSquare size={14} />
+                              <span>Start the Conversation</span>
                             </>
                           )}
                         </button>
                       </motion.form>
                     ) : (
                       <motion.div
-                        key="booking-success"
+                        key="enquiry-success"
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.9 }}
@@ -313,9 +374,9 @@ export default function BookingForm({ isOpen, onClose }: BookingFormProps) {
                         <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-[#00f5c0] flex items-center justify-center mb-2">
                           <Check size={32} strokeWidth={2.5} />
                         </div>
-                        <h3 className="text-xl font-bold text-white">Consultation Booked!</h3>
+                        <h3 className="text-xl font-bold text-white">Enquiry Sent!</h3>
                         <p className="text-xs sm:text-sm text-emerald-100/75 font-semibold max-w-sm leading-relaxed">
-                          Thank you for sharing your details. We have sent an email confirmation with calendar slots. Speak soon!
+                          Thank you for reaching out. A member of our team will review your enquiry and get back to you shortly via your preferred contact method.
                         </p>
                         <button
                           onClick={() => {
