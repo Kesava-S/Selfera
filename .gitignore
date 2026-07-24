@@ -37,6 +37,9 @@ out/
 .DS_Store
 Thumbs.db
 
+# External handover overview (shared outside the repo)
+SELFERA_HANDOVER_OVERVIEW.md
+
 # Env files
 .env
 .env.local

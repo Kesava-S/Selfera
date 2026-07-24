@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(which pandoc; python3 -c \"import docx\" 2>&1; which python3)",
+      "Bash(python3 -m pip install --user python-docx 2>&1 | tail -3)",
+      "Bash(cd \"/Users/kesav/Gemini Learning/2 - Selfera\" && python3 scripts/md_to_docx.py 2>&1 || true)",
+      "Bash(cd \"/Users/kesav/Gemini Learning/2 - Selfera\" && ls -la *.docx && python3 -c \"\nfrom docx import Document\nfor f in ['Self…)",
+      "Bash(cd \"/Users/kesav/Gemini Learning/2 - Selfera\" && mv Selfera_Website_Handover.docx Selfera_Handover_Overview.docx ~/Downl…)"
+    ]
+  }
+}
